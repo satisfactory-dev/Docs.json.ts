@@ -448,6 +448,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableDockingStation--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableDockingStation--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDockingStation"
 				},
 				{
@@ -825,13 +828,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base--base--base"
@@ -920,6 +920,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--fuel--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mRTPCInterval"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
 				},
 				{
@@ -984,6 +987,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
@@ -1507,6 +1513,9 @@
 		"FGBuildablePipeline": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root--quantized"
 				},
 				{
@@ -1639,6 +1648,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base--base"
@@ -2410,6 +2422,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGColorGun--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGColorGun--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--instant"
 				},
 				{
@@ -2496,7 +2511,6 @@
 		},
 		"FGDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--base",
 			"required": ["mSmallIcon", "mPersistentBigIcon"],
 			"properties": {
 				"mPersistentBigIcon": {
@@ -2542,6 +2556,9 @@
 					"$ref": "#/$defs/FGDescriptor"
 				},
 				{
+					"$ref": "#/$defs/FGDescriptor--base"
+				},
+				{
 					"$ref": "#/$defs/FGDescriptor--BuildMenu--base"
 				}
 			]
@@ -2566,6 +2583,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--base"
 				}
 			]
 		},
@@ -3248,6 +3268,9 @@
 		"FGVehicleDescriptor--fueled": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
 					"$ref": "#/$defs/FGDescriptor--BuildMenu"
 				},
 				{
@@ -3268,6 +3291,9 @@
 		"FGVehicleDescriptor--fueled---with-inventory--base": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
 					"$ref": "#/$defs/FGVehicleDescriptor--fueled--base"
 				},
 				{
@@ -3277,7 +3303,6 @@
 		},
 		"FGVehicleDescriptor--fueled--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
 			"required": ["mFuelConsumption"],
 			"properties": {
 				"mFuelConsumption": {
@@ -3288,6 +3313,9 @@
 		"FGVehicleDescriptor--powered": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
 					"$ref": "#/$defs/FGDescriptor--BuildMenu"
 				},
 				{
@@ -3297,7 +3325,6 @@
 		},
 		"FGVehicleDescriptor--powered--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
 			"required": ["mPowerConsumption"],
 			"properties": {
 				"mPowerConsumption": {

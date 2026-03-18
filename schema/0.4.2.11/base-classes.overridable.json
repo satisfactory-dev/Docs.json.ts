@@ -14,6 +14,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor"
 				},
 				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--base"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorNuclearFuel"
 				},
 				{

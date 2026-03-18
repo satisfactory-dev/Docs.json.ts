@@ -230,10 +230,13 @@
 		"FGBuildable--docking-station": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
@@ -245,7 +248,6 @@
 		},
 		"FGBuildable--docking-station--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base",
 			"required": ["mTransferSpeed", "mStackTransferSize"],
 			"properties": {
 				"mTransferSpeed": {
@@ -258,7 +260,6 @@
 		},
 		"FGBuildable--docking-station--base--with-mMapText": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base--base--base",
 			"required": ["mMapText"],
 			"properties": {
 				"mMapText": {"type": "string"}
@@ -474,7 +475,6 @@
 		},
 		"FGBuildable--powered-storage--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mStorageSizeX", "mStorageSizeY"],
 			"properties": {
 				"mStorageSizeX": {
@@ -787,12 +787,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDockingStation--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--base--base"
 				}
 			]
 		},
 		"FGBuildableDockingStation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableDockingStation--base--base",
 			"required": ["mMapText"],
 			"properties": {
 				"mMapText": {
@@ -804,10 +806,13 @@
 		"FGBuildableDockingStation--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
@@ -819,6 +824,9 @@
 		},
 		"FGBuildableDockingStation--with--mFuelTransferSpeed": {
 			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
@@ -832,7 +840,6 @@
 		},
 		"FGBuildableDockingStation--with--mFuelTransferSpeed--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base--base--base",
 			"required": ["mFuelTransferSpeed"],
 			"properties": {
 				"mFuelTransferSpeed": {
@@ -1012,7 +1019,6 @@
 		},
 		"FGBuildableFactorySimpleProducer--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mTimeToProduceItem", "mEventType"],
 			"properties": {
 				"mTimeToProduceItem": {
@@ -1166,6 +1172,9 @@
 					"$ref": "#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base"
 				},
 				{
@@ -1175,7 +1184,6 @@
 		},
 		"FGBuildableGenerator--no-fuel--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base",
 			"required": ["mPowerProductionExponent"],
 			"properties": {
 				"mPowerProductionExponent": {
@@ -1185,7 +1193,6 @@
 		},
 		"FGBuildableGenerator--no-fuel--base--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mPowerProduction", "mLoadPercentage"],
 			"properties": {
 				"mPowerProduction": {
@@ -1211,16 +1218,16 @@
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+					"$ref": "#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorFuel--base--base--base"
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
 				}
 			]
 		},
-		"FGBuildableGeneratorFuel--base--base--base": {
+		"has--mRTPCInterval": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base--base--base",
+			"required": ["mRTPCInterval"],
 			"properties": {
 				"mRTPCInterval": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -1323,6 +1330,9 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
 				},
 				{
+					"$ref": "#/$defs/has--mRTPCInterval"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -1398,13 +1408,15 @@
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--base--base--base"
 				}
 			]
 		},
 		"FGBuildableGeneratorGeoThermal--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base",
 			"required": ["mProductionEffectsRunning"],
 			"properties": {
 				"mProductionEffectsRunning": {
@@ -1425,6 +1437,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
@@ -1527,7 +1542,6 @@
 		},
 		"FGBuildableJumppad--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": [
 				"mPowerBankCapacity",
 				"mLaunchPowerCost",
@@ -1753,7 +1767,6 @@
 		},
 		"FGBuildableManufacturer--base--IsPowered--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["IsPowered"],
 			"properties": {
 				"IsPowered": {
@@ -1795,7 +1808,6 @@
 		},
 		"FGBuildableManufacturer--base--mProductionEffectsRunning--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mProductionEffectsRunning"],
 			"properties": {
 				"mProductionEffectsRunning": {
@@ -1837,7 +1849,6 @@
 		},
 		"FGBuildableManufacturer--base--packager--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
 			"properties": {
 				"mCurrentColor_VFX": {
@@ -2014,6 +2025,9 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildablePipeline--base-root"
+				},
+				{
 					"$ref": "#/$defs/FGBuildablePipeline--base-root--quantized"
 				},
 				{
@@ -2033,7 +2047,6 @@
 		},
 		"FGBuildablePipeline--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base",
 			"required": ["mIndicatorData"],
 			"properties": {
 				"mIndicatorData": {
@@ -2108,7 +2121,6 @@
 		},
 		"FGBuildablePipeline--base-root--quantized": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base-root",
 			"required": ["mQuantiziedContent", "mQuantiziedFlow"],
 			"properties": {
 				"mQuantiziedContent": {
@@ -2139,6 +2151,9 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				},
 				{
 					"$ref": "#/$defs/has--mMeshLength"
@@ -2183,13 +2198,15 @@
 					"$ref": "#/$defs/FGBuildablePipeline--junction"
 				},
 				{
+					"$ref": "#/$defs/FGBuildablePipeline--junction--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildablePipelineJunction--base"
 				}
 			]
 		},
 		"FGBuildablePipelineJunction--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--junction--base",
 			"required": ["mFluidBoxVolume"],
 			"properties": {
 				"mFluidBoxVolume": {
@@ -2207,6 +2224,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipelinePump--powered--version-specific"
@@ -2317,7 +2337,7 @@
 					"$ref": "#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipelinePump--base--base"
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipelinePump--base--base"
@@ -2461,7 +2481,6 @@
 		},
 		"FGBuildablePipeReservoir--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": [
 				"mStackingHeight",
 				"mFluidBox",
@@ -2812,13 +2831,15 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--mk1--base"
 				}
 			]
 		},
 		"FGBuildableResourceExtractor--miner--mk1--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--miner",
 			"required": ["mDisplayName"],
 			"properties": {
 				"mDisplayName": {
@@ -3362,7 +3383,6 @@
 		},
 		"FGBuildableResourceSink--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mProcessingTime"],
 			"properties": {
 				"mProcessingTime": {
@@ -3454,7 +3474,6 @@
 		},
 		"FGBuildableResourceSinkShop--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": ["mShopInventoryDefaultSize"],
 			"properties": {
 				"mShopInventoryDefaultSize": {
@@ -3654,7 +3673,6 @@
 		},
 		"FGBuildableStorage--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": [
 				"mStackingHeight",
 				"mInventorySizeX",
@@ -4148,6 +4166,9 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
 				}
 			]
@@ -4237,13 +4258,15 @@
 					"$ref": "#/$defs/FGColorGun--base"
 				},
 				{
+					"$ref": "#/$defs/FGColorGun--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGWeaponProjectile--instant"
 				}
 			]
 		},
 		"FGColorGun--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGColorGun--base--base",
 			"required": ["mPrimaryColor", "mSecondaryColor", "mArmAnimation"],
 			"properties": {
 				"mPrimaryColor": {
@@ -4523,7 +4546,6 @@
 		},
 		"FGDescriptor--BuildMenu--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--base",
 			"required": ["mSubCategories", "mBuildMenuPriority"],
 			"properties": {
 				"mSubCategories": {
@@ -4543,16 +4565,12 @@
 					"$ref": "#/$defs/FGDescriptor--base"
 				},
 				{
-					"$ref": "#/$defs/FGDescriptor--base"
-				},
-				{
 					"$ref": "#/$defs/has--mResourceSinkPoints"
 				}
 			]
 		},
 		"FGEquipment": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
 			"required": ["mAttachSocket"],
 			"properties": {
 				"mAttachSocket": {
@@ -4587,6 +4605,9 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--has--mPlaceDistanceMax"
@@ -4696,7 +4717,6 @@
 		},
 		"FGEquipmentStunSpear--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipmentStunSpear--base--base",
 			"required": ["mDamage"],
 			"properties": {
 				"mDamage": {
@@ -4708,6 +4728,9 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific"
@@ -4757,6 +4780,9 @@
 					"$ref": "#/$defs/FGEquipmentStunSpear--base"
 				},
 				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGEquipmentStunSpear--xenobasher--base"
 				}
 			]
@@ -4765,6 +4791,9 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipmentStunSpear--base--pre-1.0"
@@ -4821,6 +4850,9 @@
 					"$ref": "#/$defs/FGEquipmentStunSpear--base"
 				},
 				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGEquipmentStunSpear--xenozapper--base"
 				}
 			]
@@ -4829,6 +4861,9 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
@@ -4854,6 +4889,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--has--mFilterDuration"
@@ -4976,6 +5014,9 @@
 					"$ref": "#/$defs/FGJetPack--pre-update7"
 				},
 				{
+					"$ref": "#/$defs/has--mRTPCInterval"
+				},
+				{
 					"$ref": "#/$defs/FGJetPack--version-specific"
 				}
 			]
@@ -5050,7 +5091,6 @@
 			"required": [
 				"mCurrentFuel",
 				"mDefaultAirControl",
-				"mRTPCInterval",
 				"mIsThrusting",
 				"mArmAnimation",
 				"mBackAnimation"
@@ -5060,9 +5100,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mDefaultAirControl": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRTPCInterval": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mIsThrusting": {
@@ -5085,6 +5122,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGJumpingStilts--base"
@@ -5141,6 +5181,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
@@ -5242,6 +5285,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "#/$defs/FGParachute--has--mIsDeployed"
@@ -5803,6 +5849,9 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--has--mFilterDuration"
 				},
 				{
@@ -5892,7 +5941,6 @@
 		},
 		"FGWeaponInstantFire--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket",
 			"required": ["Fire", "mHasReloadedOnce", "mArmAnimation"],
 			"properties": {
 				"Fire": {
@@ -5920,6 +5968,9 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--base--version-specific"
@@ -5972,7 +6023,6 @@
 		},
 		"FGWeaponProjectile--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
 			"required": ["mMagSize", "mCurrentAmmo"],
 			"properties": {
 				"mMagSize": {
@@ -5999,6 +6049,9 @@
 					"$ref": "#/$defs/FGWeaponProjectile"
 				},
 				{
+					"$ref": "#/$defs/FGWeaponProjectile--base"
+				},
+				{
 					"$ref": "#/$defs/FGWeaponProjectile--instant--base"
 				},
 				{
@@ -6018,7 +6071,6 @@
 		},
 		"FGWeaponProjectile--instant--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--base",
 			"required": ["mInstantHitDamage", "mWeaponTraceLength"],
 			"properties": {
 				"mInstantHitDamage": {
@@ -6036,12 +6088,17 @@
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--thrown--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--thrown--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--thrown--base--pre-1.0"
 				}
 			]
 		},
 		"FGWeaponProjectile--thrown--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--thrown--base--base",
 			"required": [
 				"mExplosiveData",
 				"mDispensedExplosives",
@@ -6116,7 +6173,6 @@
 		},
 		"FGWeaponProjectile--thrown--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--thrown--base--pre-1.0",
 			"required": ["mIsPendingExecuteFire"],
 			"properties": {
 				"mIsPendingExecuteFire": {
