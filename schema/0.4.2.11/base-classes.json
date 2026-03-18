@@ -100,20 +100,19 @@
 		"FGBuildable--docking-station": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage"
-				}
-			]
-		},
-		"FGBuildable--docking-station--base": {
-			"allOf": [
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage"
 				}
 			]
 		},
@@ -468,7 +467,16 @@
 					"$ref": "#/$defs/FGBuildable--docking-station"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDroneStation--pre-1.0"
@@ -495,7 +503,6 @@
 		},
 		"FGBuildableDroneStation--pre-update5": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base",
 			"required": ["mMapText"],
 			"properties": {
 				"mMapText": {

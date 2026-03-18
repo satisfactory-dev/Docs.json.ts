@@ -230,16 +230,6 @@
 		"FGBuildable--docking-station": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered-storage"
-				}
-			]
-		},
-		"FGBuildable--docking-station--base": {
-			"allOf": [
-				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
@@ -247,6 +237,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage"
 				}
 			]
 		},
@@ -811,7 +804,13 @@
 		"FGBuildableDockingStation--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base"
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed"

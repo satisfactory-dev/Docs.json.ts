@@ -212,9 +212,7 @@ type FGBuildable_base_version_specific = {
 	mHideOnBuildEffectStart: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
-
-type FGBuildable_docking_station_base = FGBuildable_docking_station_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_powered_storage_base_base;
+type FGBuildable_docking_station = FGBuildable_docking_station_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_powered_storage_base_base & FGBuildable_powered_storage;
 
 type FGBuildable_docking_station_base_base_base = FGBuildable_powered_storage_base_base_base & {
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
@@ -344,7 +342,7 @@ type FGBuildableDockingStation_base = FGBuildableDockingStation_base_base & {
 	mMapText: '',
 };
 
-type FGBuildableDockingStation_base_base = FGBuildable_docking_station_base & FGBuildableDockingStation_with_mFuelTransferSpeed;
+type FGBuildableDockingStation_base_base = FGBuildable_docking_station_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_powered_storage_base_base & FGBuildableDockingStation_with_mFuelTransferSpeed;
 
 type FGBuildableDockingStation_with_mFuelTransferSpeed = FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base & FGBuildableDockingStation_with_mFuelTransferSpeed_base;
 
@@ -1538,7 +1536,6 @@ export type {
 	FGBuildable_base_pre_update5,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
-	FGBuildable_docking_station_base,
 	FGBuildable_docking_station_base_base_base,
 	FGBuildable_docking_station_base_with_mMapText,
 	FGBuildable_occupied,
