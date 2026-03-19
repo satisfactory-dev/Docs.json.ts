@@ -4067,9 +4067,7 @@
 		},
 		"FGObjectScanner--version-specific": {
 			"type": "object",
-			"required": [
-				"mClosestObject"
-			],
+			"required": ["mClosestObject"],
 			"properties": {
 				"mClosestObject": {
 					"type": "string",

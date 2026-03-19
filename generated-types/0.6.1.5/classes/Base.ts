@@ -479,18 +479,18 @@ type FGAmmoTypeSpreadshot_version_specific = {
 	mSpreadAngleDegrees: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & FGBuildable_base_pre_update8 & FGBuildable_base_pre_1_2 & FGBuildable_base_version_specific;
+type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & FGBuildable_base_pre_1_2 & FGBuildable_base_pre_update8 & FGBuildable_base_version_specific;
+
+type FGBuildable_base_pre_1_2 = {
+	mScaleCustomOffset: docs_json_ts_common_types_decimal_string,
+	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot',
+};
 
 type FGBuildable_base_pre_update8 = {
 	mOcclusionBoxInfo: null | [
 		docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
 		...docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item[],
 	],
-};
-
-type FGBuildable_base_pre_1_2 = {
-	mScaleCustomOffset: docs_json_ts_common_types_decimal_string,
-	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot',
 };
 
 type FGBuildable_base_version_specific = {
@@ -771,9 +771,9 @@ type FGEquipmentStunSpear_base_version_specific = {
 	mAttackSweepRadius: docs_json_ts_common_types_decimal_string,
 };
 
-type FGEquipmentStunSpear_xenobasher = docs_json_ts_common_classes_FGEquipmentStunSpear & docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher_base & FGEquipmentStunSpear_base;
+type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher_base & docs_json_ts_common_classes_FGEquipmentStunSpear & FGEquipmentStunSpear_base;
 
-type FGEquipmentStunSpear_xenozapper = docs_json_ts_common_classes_FGEquipmentStunSpear & docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper_base & FGEquipmentStunSpear_base;
+type FGEquipmentStunSpear_xenozapper = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper_base & docs_json_ts_common_classes_FGEquipmentStunSpear & FGEquipmentStunSpear_base;
 
 type FGEquipmentZipline = docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline_version_specific & docs_json_ts_common_classes_FGEquipmentZipline & FGEquipment_noisy;
 
@@ -909,8 +909,8 @@ export type {
 	FGAmmoTypeSpreadshot,
 	FGAmmoTypeSpreadshot_version_specific,
 	FGBuildable_base,
-	FGBuildable_base_pre_update8,
 	FGBuildable_base_pre_1_2,
+	FGBuildable_base_pre_update8,
 	FGBuildable_base_version_specific,
 	FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_occupied,

@@ -152,6 +152,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
@@ -164,13 +167,10 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
-				},
-				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-1.2"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--pre-1.2"
@@ -254,6 +254,31 @@
 				}
 			]
 		},
+		"FGBuildable--pre-1.2": {
+			"type": "object",
+			"required": ["mOcclusionBoxInfo"],
+			"properties": {
+				"mOcclusionBoxInfo": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/FGBuildable--mOcclusionBoxInfo--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
 		"FGBuildable--tiered": {
 			"allOf": [
 				{
@@ -277,38 +302,9 @@
 				}
 			]
 		},
-		"FGBuildable--pre-1.2": {
-			"type": "object",
-			"required": [
-				"mOcclusionBoxInfo"
-			],
-			"properties": {
-				"mOcclusionBoxInfo": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/FGBuildable--mOcclusionBoxInfo--item"
-								}
-							}
-						}
-					]
-				}
-			}
-		},
 		"FGBuildable--version-specific": {
 			"type": "object",
-			"required": [
-				"mIsConsideredForBaseWeightValue"
-			],
+			"required": ["mIsConsideredForBaseWeightValue"],
 			"properties": {
 				"mIsConsideredForBaseWeightValue": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
