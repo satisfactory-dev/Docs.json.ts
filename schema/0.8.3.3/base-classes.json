@@ -167,10 +167,19 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--version-specific"
@@ -268,16 +277,12 @@
 				}
 			]
 		},
-		"FGBuildable--version-specific": {
+		"FGBuildable--pre-1.2": {
 			"type": "object",
 			"required": [
-				"mIsConsideredForBaseWeightValue",
 				"mOcclusionBoxInfo"
 			],
 			"properties": {
-				"mIsConsideredForBaseWeightValue": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mOcclusionBoxInfo": {
 					"oneOf": [
 						{
@@ -296,6 +301,17 @@
 							}
 						}
 					]
+				}
+			}
+		},
+		"FGBuildable--version-specific": {
+			"type": "object",
+			"required": [
+				"mIsConsideredForBaseWeightValue"
+			],
+			"properties": {
+				"mIsConsideredForBaseWeightValue": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -2469,9 +2485,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				}
 			]
 		},
@@ -2522,6 +2535,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentStunSpear"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
@@ -2539,6 +2555,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentStunSpear"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
@@ -2920,6 +2939,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGPortableMinerDispenser--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGPortableMinerDispenser"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--dispenser"

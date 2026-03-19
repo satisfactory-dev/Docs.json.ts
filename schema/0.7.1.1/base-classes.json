@@ -26,26 +26,39 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				}
 			]
 		},
+		"FGBuildable--base--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mIsMultiSpawnedBuildable"
+			],
+			"properties": {
+				"mIsMultiSpawnedBuildable": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGBuildable--base--version-specific": {
 			"type": "object",
 			"required": [
 				"mContainsComponents",
-				"mIsMultiSpawnedBuildable",
 				"mCanContainLightweightInstances",
 				"mBlueprintBuildEffectID"
 			],
 			"properties": {
 				"mContainsComponents": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mIsMultiSpawnedBuildable": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mCanContainLightweightInstances": {

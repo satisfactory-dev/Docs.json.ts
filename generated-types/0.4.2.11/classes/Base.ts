@@ -243,14 +243,13 @@ import type {
 } from './../types/overridable.ts';
 
 import type {
-	hasClassName as docs_json_ts_common_classes_base_hasClassName,
-	isDescribed as docs_json_ts_common_classes_base_isDescribed,
-} from './../../common/classes/Base.ts';
-
-import type {
 	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base,
 	FGSchematic_version_specific as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_version_specific,
 } from './Base.overridable.ts';
+
+import type {
+	isDescribed as docs_json_ts_common_classes_base_isDescribed,
+} from './../../common/classes/Base.ts';
 
 import type {
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
@@ -744,7 +743,7 @@ type FGDescriptor_sinkable = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base
 
 type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & FGEquipment_base;
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_common_classes_base_hasClassName & FGEquipment_version_specific;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_version_specific;
 
 type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',

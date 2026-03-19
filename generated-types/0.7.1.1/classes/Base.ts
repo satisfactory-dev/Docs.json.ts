@@ -156,6 +156,7 @@ import type {
 } from './../../0.5.2.1/classes/Base.ts';
 
 import type {
+	FGBuildable_base_pre_1_2 as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_1_2,
 	FGBuildable_base_pre_update8 as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_update8,
 	FGBuildable_base_version_specific as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific,
 	FGBuildable_foundation_mDisableSnapOn as docs_json_ts_0_6_1_5_classes_base_FGBuildable_foundation_mDisableSnapOn,
@@ -268,11 +269,14 @@ import type {
 	FGJetPack_version_specific as docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific,
 } from './Base.overridable.ts';
 
-type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_update8 & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific & FGBuildable_base_version_specific;
+type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_update8 & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_1_2 & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific & FGBuildable_base_pre_1_2 & FGBuildable_base_version_specific;
+
+type FGBuildable_base_pre_1_2 = {
+	mIsMultiSpawnedBuildable: docs_json_ts_common_types_bool_string,
+};
 
 type FGBuildable_base_version_specific = {
 	mContainsComponents: docs_json_ts_common_types_bool_string,
-	mIsMultiSpawnedBuildable: docs_json_ts_common_types_bool_string,
 	mCanContainLightweightInstances: docs_json_ts_common_types_bool_string,
 	mBlueprintBuildEffectID: docs_json_ts_common_types_integer_string_signed,
 };
@@ -511,6 +515,7 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pr
 
 export type {
 	FGBuildable_base,
+	FGBuildable_base_pre_1_2,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
 	FGBuildable_occupied,

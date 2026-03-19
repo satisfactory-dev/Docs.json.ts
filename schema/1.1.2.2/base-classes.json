@@ -397,13 +397,22 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--pre-1.2"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--version-specific"
@@ -3048,6 +3057,9 @@
 					"$ref": "#/$defs/FGChainsaw--version-specific"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
@@ -3086,6 +3098,9 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
@@ -3111,22 +3126,32 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
 		},
+		"FGEquipment--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mEquipMontage"
+			],
+			"properties": {
+				"mEquipMontage": {
+					"$ref": "docs.json.ts--1.1.2.2--properties#/$defs/Montages"
+				}
+			}
+		},
 		"FGEquipment--version-specific": {
 			"type": "object",
 			"required": [
-				"mEquipMontage",
 				"mMagnetismStrength",
 				"mMagnetismZeroInputStrength",
 				"bMagnetismActive"
 			],
 			"properties": {
-				"mEquipMontage": {
-					"$ref": "docs.json.ts--1.1.2.2--properties#/$defs/Montages"
-				},
 				"mMagnetismStrength": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -3165,7 +3190,10 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipmentStunSpear--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentStunSpear"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3199,7 +3227,10 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipmentStunSpear--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentStunSpear"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3221,6 +3252,12 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipmentZipline--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentZipline"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
@@ -3238,6 +3275,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGGasMask"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3259,6 +3302,12 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGGolfCartDispenser--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGGolfCartDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
@@ -3276,6 +3325,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGHoverPack--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGHoverPack"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3337,6 +3392,12 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGJetPack--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGJetPack"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
@@ -3351,6 +3412,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGJumpingStilts"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3390,6 +3457,12 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGNobeliskDetonator--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGNobeliskDetonator"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				},
 				{
@@ -3418,7 +3491,16 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGObjectScanner--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGObjectScanner--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGObjectScanner"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3438,6 +3520,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGParachute--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGParachute"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3470,6 +3558,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGPortableMinerDispenser--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGPortableMinerDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3608,7 +3702,10 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSuitBase--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSuitBase"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3640,6 +3737,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGWeapon--Equip_RebarGun_Projectile_C"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
@@ -3680,6 +3783,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGWeapon--Equip_Rifle_C"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"

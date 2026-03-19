@@ -7,6 +7,7 @@ import type {
 	FGAmmoTypeInstantHit_version_specific as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_version_specific,
 	FGAmmoTypeProjectile_version_specific as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjectile_version_specific,
 	FGAmmoTypeSpreadshot_version_specific as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot_version_specific,
+	FGBuildable_base_pre_1_2 as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_1_2,
 	FGBuildable_base_version_specific as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific,
 	FGBuildable_foundation_mDisableSnapOn as docs_json_ts_0_6_1_5_classes_base_FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_with_depth as docs_json_ts_0_6_1_5_classes_base_FGBuildable_with_depth,
@@ -134,16 +135,30 @@ import type {
 	FGConsumableDescriptor as docs_json_ts_common_classes_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGEquipmentDescriptor as docs_json_ts_common_classes_FGEquipmentDescriptor,
+	FGEquipmentStunSpear as docs_json_ts_common_classes_FGEquipmentStunSpear,
+	FGEquipmentZipline as docs_json_ts_common_classes_FGEquipmentZipline,
+	FGGasMask as docs_json_ts_common_classes_FGGasMask,
+	FGGolfCartDispenser as docs_json_ts_common_classes_FGGolfCartDispenser,
+	FGHoverPack as docs_json_ts_common_classes_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_common_classes_FGItemDescriptorNuclearFuel,
 	FGItemDescriptorPowerBoosterFuel as docs_json_ts_common_classes_FGItemDescriptorPowerBoosterFuel,
+	FGJetPack as docs_json_ts_common_classes_FGJetPack,
+	FGJumpingStilts as docs_json_ts_common_classes_FGJumpingStilts,
+	FGNobeliskDetonator as docs_json_ts_common_classes_FGNobeliskDetonator,
+	FGObjectScanner as docs_json_ts_common_classes_FGObjectScanner,
+	FGParachute as docs_json_ts_common_classes_FGParachute,
 	FGPipeHyperStart as docs_json_ts_common_classes_FGPipeHyperStart,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
+	FGPortableMinerDispenser as docs_json_ts_common_classes_FGPortableMinerDispenser,
 	FGPowerShardDescriptor as docs_json_ts_common_classes_FGPowerShardDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_common_classes_FGResourceDescriptor,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
+	FGSuitBase as docs_json_ts_common_classes_FGSuitBase,
+	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_common_classes_FGWeapon_Equip_RebarGun_Projectile_C,
+	FGWeapon_Equip_Rifle_C as docs_json_ts_common_classes_FGWeapon_Equip_Rifle_C,
 } from './../common/classes.ts';
 
 import type {
@@ -153,6 +168,7 @@ import type {
 import type {
 	FGAmmoTypeProjectile_version_specific as docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeProjectile_version_specific,
 	FGBuildable_has_mOnCircuitsChanged as docs_json_ts_0_8_3_3_classes_base_FGBuildable_has_mOnCircuitsChanged,
+	FGBuildable_pre_1_2 as docs_json_ts_0_8_3_3_classes_base_FGBuildable_pre_1_2,
 	FGBuildable_version_specific as docs_json_ts_0_8_3_3_classes_base_FGBuildable_version_specific,
 	FGBuildable_with_mTickExponent as docs_json_ts_0_8_3_3_classes_base_FGBuildable_with_mTickExponent,
 	FGBuildableBlueprintDesigner_version_specific as docs_json_ts_0_8_3_3_classes_base_FGBuildableBlueprintDesigner_version_specific,
@@ -355,6 +371,7 @@ import type {
 } from './../0.5.2.1/classes/Base.ts';
 
 import type {
+	FGBuildable_base_pre_1_2 as docs_json_ts_0_7_1_1_classes_base_FGBuildable_base_pre_1_2,
 	FGBuildable_base_version_specific as docs_json_ts_0_7_1_1_classes_base_FGBuildable_base_version_specific,
 	FGBuildable_powered_version_specific as docs_json_ts_0_7_1_1_classes_base_FGBuildable_powered_version_specific,
 	FGBuildableBlueprintDesigner_version_specific as docs_json_ts_0_7_1_1_classes_base_FGBuildableBlueprintDesigner_version_specific,
@@ -388,17 +405,16 @@ import type {
 } from './../0.3.7.7/classes/Base.overridable--1.0.1.4.ts';
 
 import type {
-	hasClassName as docs_json_ts_common_classes_base_hasClassName,
-	isDescribed as docs_json_ts_common_classes_base_isDescribed,
-} from './../common/classes/Base.ts';
-
-import type {
 	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
 } from './../0.4.2.11/types/overridable--1.0.1.4.ts';
 
 import type {
 	FGJetPack_version_specific as docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific,
 } from './../0.7.1.1/classes/Base.1.0.1.4.ts';
+
+import type {
+	isDescribed as docs_json_ts_common_classes_base_isDescribed,
+} from './../common/classes/Base.ts';
 
 import type {
 	AnimMontage_quoted as docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
@@ -429,7 +445,7 @@ type FGAmmoTypeProjectile_version_specific = {
 
 type FGAmmoTypeSpreadshot = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_pre_1_1 & docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot_version_specific & docs_json_ts_common_classes_FGAmmoTypeSpreadshot & FGItemDescriptor_version_specific;
 
-type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_7_1_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_8_3_3_classes_base_FGBuildable_version_specific & FGBuildable_version_specific;
+type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_pre_1_2 & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_7_1_1_classes_base_FGBuildable_base_pre_1_2 & docs_json_ts_0_7_1_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_8_3_3_classes_base_FGBuildable_pre_1_2 & docs_json_ts_0_8_3_3_classes_base_FGBuildable_version_specific & FGBuildable_version_specific;
 
 type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied_base & docs_json_ts_common_classes_FGBuildable_occupied & FGBuildable_base;
 
@@ -959,7 +975,7 @@ type FGConsumableEquipment_medkit_version_specific = {
 	},
 };
 
-type FGEquipment = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_version_specific & docs_json_ts_common_classes_base_hasClassName & FGEquipment_pre_1_1 & FGEquipment_version_specific;
+type FGEquipment = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_version_specific & FGEquipment_pre_1_1 & FGEquipment_version_specific;
 
 type FGEquipment_pre_1_1 = {
 	mEquipMontage: docs_json_ts_1_0_1_4_properties_Montages,
@@ -986,11 +1002,11 @@ type FGEquipmentStunSpear_version_specific = {
 	mSecondSwingUseCoolDown: docs_json_ts_common_types_decimal_string,
 };
 
-type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base_version_specific & FGEquipmentStunSpear_base & FGEquipmentStunSpear_version_specific;
+type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base_version_specific & docs_json_ts_common_classes_FGEquipmentStunSpear & FGEquipmentStunSpear_base & FGEquipmentStunSpear_version_specific;
 
-type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_base & FGEquipmentStunSpear_version_specific;
+type FGEquipmentStunSpear_xenozapper = docs_json_ts_common_classes_FGEquipmentStunSpear & FGEquipmentStunSpear_base & FGEquipmentStunSpear_version_specific;
 
-type FGEquipmentZipline = docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & FGEquipment & FGEquipmentZipline_version_specific;
+type FGEquipmentZipline = docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & docs_json_ts_common_classes_FGEquipmentZipline & FGEquipment & FGEquipmentZipline_version_specific;
 
 type FGEquipmentZipline_version_specific = {
 	mZiplineAttachMontage: docs_json_ts_1_0_1_4_properties_Montages_item,
@@ -999,9 +1015,9 @@ type FGEquipmentZipline_version_specific = {
 	mWantToGrab: docs_json_ts_common_types_bool_string,
 };
 
-type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGGasMask_base & docs_json_ts_0_8_3_3_classes_base_FGGasMask_version_specific & FGEquipment;
+type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGGasMask_base & docs_json_ts_0_8_3_3_classes_base_FGGasMask_version_specific & docs_json_ts_common_classes_FGGasMask & FGEquipment;
 
-type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser_has_mArmAnimation & docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser_version_specific & FGEquipment & FGGolfCartDispenser_version_specific;
+type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser_has_mArmAnimation & docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser_version_specific & docs_json_ts_common_classes_FGGolfCartDispenser & FGEquipment & FGGolfCartDispenser_version_specific;
 
 type FGGolfCartDispenser_version_specific = {
 	mBuildDisqualifierText: Exclude<string, ''>,
@@ -1011,7 +1027,7 @@ type FGGolfCartDispenser_version_specific = {
 	mCartPlacementDistance: docs_json_ts_common_types_decimal_string,
 };
 
-type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & FGEquipment & FGHoverPack_version_specific;
+type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & docs_json_ts_common_classes_FGHoverPack & FGEquipment & FGHoverPack_version_specific;
 
 type FGHoverPack_version_specific = {
 	mCurrentPlayerVelocity_SFX: docs_json_ts_common_types_decimal_string,
@@ -1051,7 +1067,7 @@ type FGItemDescriptorPowerBoosterFuel_version_specific = {
 	mBoostDuration: docs_json_ts_common_types_decimal_string,
 };
 
-type FGJetPack = docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mRTPCInterval & docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & docs_json_ts_0_8_3_3_classes_base_FGJetPack_version_specific & FGEquipment & FGJetPack_version_specific;
+type FGJetPack = docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mRTPCInterval & docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & docs_json_ts_0_8_3_3_classes_base_FGJetPack_version_specific & docs_json_ts_common_classes_FGJetPack & FGEquipment & FGJetPack_version_specific;
 
 type FGJetPack_version_specific = {
 	mAttachSocket: 'backpack',
@@ -1063,9 +1079,9 @@ type FGJetPack_version_specific = {
 	mAvailableFuelTypes: null,
 };
 
-type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base & docs_json_ts_0_6_1_5_classes_base_FGJumpingStilts_version_specific & FGEquipment;
+type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base & docs_json_ts_0_6_1_5_classes_base_FGJumpingStilts_version_specific & docs_json_ts_common_classes_FGJumpingStilts & FGEquipment;
 
-type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & FGEquipment & FGNobeliskDetonator_version_specific;
+type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & docs_json_ts_common_classes_FGNobeliskDetonator & FGEquipment & FGNobeliskDetonator_version_specific;
 
 type FGNobeliskDetonator_version_specific = {
 	AmmoTypeToAkEvent: [
@@ -1085,17 +1101,20 @@ type FGNobeliskDetonator_version_specific = {
 	mReleaseCooldown: docs_json_ts_common_types_decimal_string,
 };
 
-type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & docs_json_ts_0_8_3_3_classes_base_FGObjectScanner_version_specific & FGEquipment & FGObjectScanner_version_specific;
+type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & docs_json_ts_0_8_3_3_classes_base_FGObjectScanner_version_specific & docs_json_ts_common_classes_FGObjectScanner & FGEquipment & FGObjectScanner_pre_1_2 & FGObjectScanner_version_specific;
 
-type FGObjectScanner_version_specific = {
+type FGObjectScanner_pre_1_2 = {
 	mScannerCycleLeftMontage: docs_json_ts_1_0_1_4_properties_Montages_item,
 	mScannerCycleRightMontage: docs_json_ts_1_0_1_4_properties_Montages_item,
+};
+
+type FGObjectScanner_version_specific = {
 	mClosestObject: {
 		ActorLocation: docs_json_ts_common_types_XYZ_decimal_string,
 	},
 };
 
-type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed & docs_json_ts_0_8_3_3_classes_base_FGParachute_version_specific & FGEquipment & FGParachute_version_specific;
+type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed & docs_json_ts_0_8_3_3_classes_base_FGParachute_version_specific & docs_json_ts_common_classes_FGParachute & FGEquipment & FGParachute_version_specific;
 
 type FGParachute_version_specific = {
 	mParachuteDeployMontageList: docs_json_ts_1_0_1_4_properties_Montages,
@@ -1106,7 +1125,7 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLeng
 
 type FGPoleDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_common_classes_FGPoleDescriptor & FGItemDescriptor_version_specific;
 
-type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser_version_specific & docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser_version_specific & FGEquipment & FGPortableMinerDispenser_version_specific;
+type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser_version_specific & docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser_version_specific & docs_json_ts_common_classes_FGPortableMinerDispenser & FGEquipment & FGPortableMinerDispenser_version_specific;
 
 type FGPortableMinerDispenser_version_specific = {
 	mEquipmentLookAtDescOverride: `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}` | `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'{Ore}'}` | `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}` | `[{PlayerActions_PrimaryFire}]${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'{Ore}'}${'{Purity}'}${Exclude<string, ''>}${'{PlayerActions_PrimaryFire}'}${Exclude<string, ''>}` | `{Ore}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'{PlayerActions_PrimaryFire}'}${Exclude<string, ''>}${'{Ore}'}${'{Purity}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'<{PlayerActions_PrimaryFire}>'}${Exclude<string, ''>}${'<{Ore}>'}${Exclude<string, ''>}${'<{Purity}>'}`,
@@ -1154,7 +1173,7 @@ type FGSchematic_version_specific = {
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_version_specific & FGSchematic;
 
-type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & docs_json_ts_0_6_1_5_classes_base_FGSuitBase_version_specific & FGEquipment & FGSuitBase_version_specific;
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & docs_json_ts_0_6_1_5_classes_base_FGSuitBase_version_specific & docs_json_ts_common_classes_FGSuitBase & FGEquipment & FGSuitBase_version_specific;
 
 type FGSuitBase_version_specific = {
 	mSuitMeshMaterials: [
@@ -1185,9 +1204,9 @@ type FGVehicleDescriptor_Desc_Tractor_C = docs_json_ts_0_6_1_5_classes_base_FGVe
 
 type FGVehicleDescriptor_Desc_Truck_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Truck_C & FGItemDescriptor_base;
 
-type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mEquipmentSlot & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & FGEquipment & FGWeapon_pre_1_1 & FGWeapon_version_specific;
+type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mEquipmentSlot & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & docs_json_ts_common_classes_FGWeapon_Equip_RebarGun_Projectile_C & FGEquipment & FGWeapon_pre_1_1 & FGWeapon_version_specific;
 
-type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mEquipmentSlot & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & FGEquipment & FGWeapon_pre_1_1 & FGWeapon_version_specific;
+type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mEquipmentSlot & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & docs_json_ts_common_classes_FGWeapon_Equip_Rifle_C & FGEquipment & FGWeapon_pre_1_1 & FGWeapon_version_specific;
 
 type FGWeapon_pre_1_1 = {
 	mFireMontage: {
@@ -1376,6 +1395,7 @@ export type {
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_version_specific,
 	FGObjectScanner,
+	FGObjectScanner_pre_1_2,
 	FGObjectScanner_version_specific,
 	FGParachute,
 	FGParachute_version_specific,

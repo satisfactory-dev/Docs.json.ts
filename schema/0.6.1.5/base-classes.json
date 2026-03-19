@@ -412,7 +412,7 @@
 					"$ref": "#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
+					"$ref": "#/$defs/FGBuildable--base--pre-1.2"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base--version-specific"
@@ -444,14 +444,28 @@
 				}
 			}
 		},
+		"FGBuildable--base--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mScaleCustomOffset",
+				"mCustomScaleType"
+			],
+			"properties": {
+				"mScaleCustomOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomScaleType": {
+					"type": "string",
+					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
+				}
+			}
+		},
 		"FGBuildable--base--version-specific": {
 			"type": "object",
 			"required": [
 				"mAllowPatterning",
 				"mAffectsOcclusion",
-				"mOcclusionShape",
-				"mScaleCustomOffset",
-				"mCustomScaleType"
+				"mOcclusionShape"
 			],
 			"properties": {
 				"mAllowPatterning": {
@@ -468,13 +482,6 @@
 						"ROCS_Box_Special",
 						"ROCS_CornerRamp"
 					]
-				},
-				"mScaleCustomOffset": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCustomScaleType": {
-					"type": "string",
-					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
 				}
 			}
 		},
@@ -966,12 +973,6 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--pre-update8"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--foundation--mDisableSnapOn"
@@ -1829,12 +1830,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base--pre-update8"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable--foundation--mDisableSnapOn"
 				},
 				{
@@ -2558,6 +2553,9 @@
 		"FGEquipmentStunSpear--xenobasher": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentStunSpear"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenobasher--base"
 				},
 				{
@@ -2567,6 +2565,9 @@
 		},
 		"FGEquipmentStunSpear--xenozapper": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentStunSpear"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenozapper--base"
 				},
