@@ -2,14 +2,18 @@ import {
 	writeFile,
 } from 'node:fs/promises';
 
-import update3 from './data/0.3.7.7/Docs/Docs.utf8.json' with {type: 'json'}
-import update4 from './data/0.4.2.11/Docs/Docs.utf8.json' with {type: 'json'}
-import update5 from './data/0.5.2.1/Docs/Docs.utf8.json' with {type: 'json'}
-import update6 from './data/0.6.1.5/Docs/Docs.utf8.json' with {type: 'json'}
-import update7 from './data/0.7.1.1/Docs/Docs.utf8.json' with {type: 'json'}
-import update8 from './data/0.8.3.3/Docs/Docs.utf8.json' with {type: 'json'}
-import version_1p0 from './data/1.0.1.4/Docs/en-US.utf8.json' with {type: 'json'}
-import version_1p1 from './data/1.1.2.2/Docs/en-US.utf8.json' with {type: 'json'}
+import update3 from './data/0.3.7.7/Docs/Docs.utf8.json' with {type: 'json'};
+import update4 from './data/0.4.2.11/Docs/Docs.utf8.json' with {type: 'json'};
+import update5 from './data/0.5.2.1/Docs/Docs.utf8.json' with {type: 'json'};
+import update6 from './data/0.6.1.5/Docs/Docs.utf8.json' with {type: 'json'};
+import update7 from './data/0.7.1.1/Docs/Docs.utf8.json' with {type: 'json'};
+import update8 from './data/0.8.3.3/Docs/Docs.utf8.json' with {type: 'json'};
+
+// oxlint-disable-next-line @stylistic/max-len
+import version_1p0 from './data/1.0.1.4/Docs/en-US.utf8.json' with {type: 'json'};
+
+// oxlint-disable-next-line @stylistic/max-len
+import version_1p1 from './data/1.1.2.2/Docs/en-US.utf8.json' with {type: 'json'};
 
 import type {
 	semver_full,
@@ -38,11 +42,23 @@ for (const [version, data] of [
 	[semver('1.0.1.4'), version_1p0],
 	[semver('1.1.2.2'), version_1p1],
 ]) {
-	for (const {NativeClass, Classes} of data) {
+	for (
+		const {
+			NativeClass,
+			Classes,
+		} of data as {
+			NativeClass: string,
+			Classes: {
+				ClassName: string,
+			}[],
+		}[]
+	) {
 		const match = regex_get_short.exec(NativeClass);
 
 		if (null === match) {
-			throw new Error(`Could not get short NativeClass from ${NativeClass}`);
+			throw new Error(`Could not get short NativeClass from ${
+				NativeClass
+			}`);
 		}
 
 		const NativeClass_short = match[1] as `FG${string}`;
