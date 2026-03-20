@@ -469,6 +469,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--has--mCachedSkeletalMeshes"
 				},
 				{
@@ -1253,6 +1256,9 @@
 		"FGBuildableMAM": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
 				},
 				{
@@ -1866,9 +1872,6 @@
 		"FGBuildableResourceExtractor--base--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
@@ -1945,9 +1948,6 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
-				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},

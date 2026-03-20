@@ -1360,6 +1360,19 @@
 				}
 			]
 		},
+		"FGVehiclePathSegment": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
 		"FGWeapon--Equip_RebarGun_Projectile_C": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"

@@ -191,6 +191,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -223,20 +226,10 @@
 		"FGBuildable--powered--has-mAllowedResourceForms--with-resources": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base"
-				}
-			]
-		},
-		"FGBuildable--powered--has-mAllowedResourceForms--with-resources--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base--base"
@@ -721,7 +714,7 @@
 		"FGBuildableFrackingActivator--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base"
+					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableFrackingActivator--version-specific"
@@ -1145,6 +1138,9 @@
 		"FGBuildableMAM": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableMAM"
 				},
 				{
@@ -1160,11 +1156,8 @@
 		},
 		"FGBuildableMAM--version-specific": {
 			"type": "object",
-			"required": ["mSignificanceRange", "mCurrentResearchState"],
+			"required": ["mCurrentResearchState"],
 			"properties": {
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mCurrentResearchState": {
 					"type": "string",
 					"const": "ERS_NotResearching"
@@ -1934,9 +1927,6 @@
 		"FGBuildableResourceExtractor--miner--mk1--base--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
 				},
 				{
@@ -1987,9 +1977,6 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
-				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},

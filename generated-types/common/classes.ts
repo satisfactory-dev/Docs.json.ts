@@ -248,6 +248,8 @@ type FGSuitBase = docs_json_ts_common_classes_base_hasClassName;
 
 type FGVehicleDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
+type FGVehiclePathSegment = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
 type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_common_classes_base_Weapon;
 
 type FGWeapon_Equip_Rifle_C = docs_json_ts_common_classes_base_Weapon;
@@ -372,6 +374,7 @@ export type {
 	FGSnowballWeapon,
 	FGSuitBase,
 	FGVehicleDescriptor,
+	FGVehiclePathSegment,
 	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C,
 };

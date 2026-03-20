@@ -313,22 +313,9 @@
 				},
 				{
 					"$ref": "#/$defs/has--mNumCyclesForProductivity"
-				}
-			]
-		},
-		"FGBuildable--powered--base--resources": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--pre-1.0"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--version-specific"
-				},
-				{
-					"$ref": "#/$defs/has--mNumCyclesForProductivity"
+					"$ref": "#/$defs/has--mSignificanceRange"
 				}
 			]
 		},
@@ -388,8 +375,7 @@
 				"mFluidStackSizeDefault",
 				"mFluidStackSizeMultiplier",
 				"mEffectUpdateInterval",
-				"mAddToSignificanceManager",
-				"mSignificanceRange"
+				"mAddToSignificanceManager"
 			],
 			"properties": {
 				"mPowerConsumption": {
@@ -434,7 +420,13 @@
 				},
 				"mAddToSignificanceManager": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
+				}
+			}
+		},
+		"has--mSignificanceRange": {
+			"type": "object",
+			"required": ["mSignificanceRange"],
+			"properties": {
 				"mSignificanceRange": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
@@ -2750,15 +2742,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
 				},
 				{
@@ -2769,9 +2752,6 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
@@ -2883,9 +2863,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
@@ -2937,9 +2914,6 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--pre-1.0"
@@ -3008,12 +2982,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
 				},
 				{
@@ -3034,9 +3002,6 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--pre-1.0"
@@ -3162,12 +3127,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
 				},
 				{
@@ -3191,9 +3150,6 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base--resources--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--pre-1.0"

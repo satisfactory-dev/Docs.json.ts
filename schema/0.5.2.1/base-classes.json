@@ -188,6 +188,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--has--mCachedSkeletalMeshes"
 				},
 				{
@@ -878,7 +881,7 @@
 		"FGBuildableFrackingActivator": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFrackingActivator--base"
@@ -1190,6 +1193,9 @@
 		},
 		"FGBuildableMAM": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
 				},
@@ -1701,6 +1707,9 @@
 		"FGBuildableRailroadSignal--base": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -1719,8 +1728,7 @@
 				"mBlockValidation",
 				"mIsPathSignal",
 				"mIsBiDirectional",
-				"mVisualState",
-				"mSignificanceRange"
+				"mVisualState"
 			],
 			"properties": {
 				"mOnAspectChangedDelegate": {
@@ -1753,9 +1761,6 @@
 				},
 				"mVisualState": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -1985,9 +1990,6 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
-				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},

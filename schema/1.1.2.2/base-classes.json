@@ -441,6 +441,9 @@
 		"FGBuildable--powered": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
@@ -760,6 +763,9 @@
 		"FGBuildableConveyorMonitor": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorMonitor"
 				},
 				{
@@ -781,8 +787,7 @@
 				"mTotalItems",
 				"mTotalTime",
 				"mConfidence",
-				"mReplicatedCoreData",
-				"mSignificanceRange"
+				"mReplicatedCoreData"
 			],
 			"properties": {
 				"WidgetClass": {
@@ -811,9 +816,6 @@
 				},
 				"mReplicatedCoreData": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -1093,6 +1095,9 @@
 		"FGBuildableElevatorFloorStop": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableElevatorFloorStop"
 				},
 				{
@@ -1111,7 +1116,6 @@
 				"DoorStartTime",
 				"mElevatorDataStruct",
 				"bIsSignificant",
-				"mSignificanceRange",
 				"mFloorRelevantElevatorState",
 				"mCachedQueuedStatus",
 				"mCachedFloorStopInfo"
@@ -1143,9 +1147,6 @@
 				},
 				"bIsSignificant": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mFloorRelevantElevatorState": {
 					"type": "string",
@@ -1576,6 +1577,9 @@
 		},
 		"FGBuildableMAM": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
 				},
@@ -2403,6 +2407,9 @@
 		"FGBuildableRailroadSignal--base": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--base--version-specific"
 				},
 				{
@@ -2675,6 +2682,9 @@
 		},
 		"FGBuildableSnowCannon": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGBuildableSnowCannon--version-specific"
 				},

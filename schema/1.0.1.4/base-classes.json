@@ -226,6 +226,9 @@
 		"FGBuildable--powered": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
@@ -1264,6 +1267,9 @@
 		},
 		"FGBuildableMAM": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
 				},
@@ -2328,6 +2334,9 @@
 		"FGBuildableRailroadSignal--base": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--base--version-specific"
 				},
 				{
@@ -2615,6 +2624,9 @@
 		"FGBuildableSnowCannon": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSignificanceRange"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSnowCannon"
 				},
 				{
@@ -2629,7 +2641,6 @@
 			"type": "object",
 			"required": [
 				"SFXLocation",
-				"mSignificanceRange",
 				"mAngleLimit",
 				"mAngleOffset",
 				"mCannonAngle"
@@ -2637,9 +2648,6 @@
 			"properties": {
 				"SFXLocation": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mAngleLimit": {
 					"type": "string",
