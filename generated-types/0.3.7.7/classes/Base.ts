@@ -172,6 +172,10 @@ type has_mRTPCInterval = {
 	mRTPCInterval: docs_json_ts_common_types_decimal_string,
 };
 
+type has_mSignificanceRange = {
+	mSignificanceRange: docs_json_ts_common_types_decimal_string,
+};
+
 type has_mSize = {
 	mSize: docs_json_ts_common_types_decimal_string,
 };
@@ -261,10 +265,6 @@ type FGBuildable_powered_version_specific = {
 	mFluidStackSizeMultiplier: docs_json_ts_common_types_integer_string,
 	mEffectUpdateInterval: docs_json_ts_common_types_decimal_string,
 	mAddToSignificanceManager: docs_json_ts_common_types_bool_string,
-};
-
-type has_mSignificanceRange = {
-	mSignificanceRange: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildable_powered_storage = FGBuildable_powered & FGBuildable_powered_storage_base;
@@ -1527,6 +1527,7 @@ export type {
 	has_mNumCyclesForProductivity,
 	has_mResourceSinkPoints,
 	has_mRTPCInterval,
+	has_mSignificanceRange,
 	has_mSize,
 	has_mSplineData,
 	has_mStackHeight,
@@ -1546,7 +1547,6 @@ export type {
 	FGBuildable_powered_pre_1_0,
 	FGBuildable_powered_pre_update4,
 	FGBuildable_powered_version_specific,
-	has_mSignificanceRange,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_powered_storage_base_base,

@@ -105,6 +105,15 @@
 				}
 			}
 		},
+		"has--mSignificanceRange": {
+			"type": "object",
+			"required": ["mSignificanceRange"],
+			"properties": {
+				"mSignificanceRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"has--mSize": {
 			"type": "object",
 			"required": ["mSize"],
@@ -420,15 +429,6 @@
 				},
 				"mAddToSignificanceManager": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"has--mSignificanceRange": {
-			"type": "object",
-			"required": ["mSignificanceRange"],
-			"properties": {
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
