@@ -419,46 +419,6 @@
 				}
 			]
 		},
-		"FGBuildable--pre-update8": {
-			"type": "object",
-			"required": ["mOcclusionBoxInfo"],
-			"properties": {
-				"mOcclusionBoxInfo": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/FGBuildable--mOcclusionBoxInfo--item"
-								}
-							}
-						}
-					]
-				}
-			}
-		},
-		"FGBuildable--version-specific": {
-			"type": "object",
-			"required": [
-				"mAllowPatterning",
-				"mAffectsOcclusion"
-			],
-			"properties": {
-				"mAllowPatterning": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mAffectsOcclusion": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
 		"FGBuildable--foundation--mDisableSnapOn": {
 			"type": "object",
 			"required": ["mDisableSnapOn"],
@@ -558,6 +518,31 @@
 				}
 			}
 		},
+		"FGBuildable--pre-update8": {
+			"type": "object",
+			"required": ["mOcclusionBoxInfo"],
+			"properties": {
+				"mOcclusionBoxInfo": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/FGBuildable--mOcclusionBoxInfo--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
 		"FGBuildable--tiered": {
 			"allOf": [
 				{
@@ -580,6 +565,18 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildable--version-specific": {
+			"type": "object",
+			"required": ["mAllowPatterning", "mAffectsOcclusion"],
+			"properties": {
+				"mAllowPatterning": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAffectsOcclusion": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		},
 		"FGBuildable--with-depth": {
 			"type": "object",

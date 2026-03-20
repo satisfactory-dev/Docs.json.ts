@@ -481,18 +481,6 @@ type FGAmmoTypeSpreadshot_version_specific = {
 
 type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & FGBuildable_pre_1_2 & FGBuildable_pre_update8 & FGBuildable_version_specific;
 
-type FGBuildable_pre_update8 = {
-	mOcclusionBoxInfo: null | [
-		docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
-		...docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item[],
-	],
-};
-
-type FGBuildable_version_specific = {
-	mAllowPatterning: docs_json_ts_common_types_bool_string,
-	mAffectsOcclusion: docs_json_ts_common_types_bool_string,
-};
-
 type FGBuildable_foundation_mDisableSnapOn = {
 	mDisableSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 };
@@ -509,9 +497,21 @@ type FGBuildable_pre_1_2 = {
 	mOcclusionShape: 'ROCS_Box' | 'ROCS_Ramp' | 'ROCS_Box_Special' | 'ROCS_CornerRamp',
 };
 
+type FGBuildable_pre_update8 = {
+	mOcclusionBoxInfo: null | [
+		docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
+		...docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item[],
+	],
+};
+
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_base & docs_json_ts_common_classes_FGBuildable_tiered & FGBuildable_base;
 
 type FGBuildable_unoccupied_and_untiered = docs_json_ts_common_classes_FGBuildable_unoccupied_and_untiered & FGBuildable_base;
+
+type FGBuildable_version_specific = {
+	mAllowPatterning: docs_json_ts_common_types_bool_string,
+	mAffectsOcclusion: docs_json_ts_common_types_bool_string,
+};
 
 type FGBuildable_with_depth = {
 	mDepth: docs_json_ts_common_types_decimal_string,
@@ -909,15 +909,15 @@ export type {
 	FGAmmoTypeSpreadshot,
 	FGAmmoTypeSpreadshot_version_specific,
 	FGBuildable_base,
-	FGBuildable_pre_update8,
-	FGBuildable_version_specific,
 	FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_occupied,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
 	FGBuildable_pre_1_2,
+	FGBuildable_pre_update8,
 	FGBuildable_tiered,
 	FGBuildable_unoccupied_and_untiered,
+	FGBuildable_version_specific,
 	FGBuildable_with_depth,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter,
