@@ -479,24 +479,18 @@ type FGAmmoTypeSpreadshot_version_specific = {
 	mSpreadAngleDegrees: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & FGBuildable_base_pre_1_2 & FGBuildable_base_pre_update8 & FGBuildable_base_version_specific;
+type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & FGBuildable_pre_1_2 & FGBuildable_pre_update8 & FGBuildable_version_specific;
 
-type FGBuildable_base_pre_1_2 = {
-	mScaleCustomOffset: docs_json_ts_common_types_decimal_string,
-	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot',
-};
-
-type FGBuildable_base_pre_update8 = {
+type FGBuildable_pre_update8 = {
 	mOcclusionBoxInfo: null | [
 		docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
 		...docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item[],
 	],
 };
 
-type FGBuildable_base_version_specific = {
+type FGBuildable_version_specific = {
 	mAllowPatterning: docs_json_ts_common_types_bool_string,
 	mAffectsOcclusion: docs_json_ts_common_types_bool_string,
-	mOcclusionShape: 'ROCS_Box' | 'ROCS_Ramp' | 'ROCS_Box_Special' | 'ROCS_CornerRamp',
 };
 
 type FGBuildable_foundation_mDisableSnapOn = {
@@ -508,6 +502,12 @@ type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupi
 type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mNumCyclesForProductivity & docs_json_ts_0_4_2_11_classes_base_FGBuildable_has_mCachedSkeletalMeshes & docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered_version_specific & FGBuildable_base;
 
 type FGBuildable_powered_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_has_mCachedSkeletalMeshes & docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered_version_specific & FGBuildable_base;
+
+type FGBuildable_pre_1_2 = {
+	mScaleCustomOffset: docs_json_ts_common_types_decimal_string,
+	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot',
+	mOcclusionShape: 'ROCS_Box' | 'ROCS_Ramp' | 'ROCS_Box_Special' | 'ROCS_CornerRamp',
+};
 
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_base & docs_json_ts_common_classes_FGBuildable_tiered & FGBuildable_base;
 
@@ -555,7 +555,7 @@ type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuil
 
 type FGBuildableFloodlight = docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableFloodlight_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildableLightSource_version_specific & docs_json_ts_0_4_2_11_classes_base_has_mHasPower & docs_json_ts_0_4_2_11_classes_base_has_mPowerConsumption & docs_json_ts_0_5_2_1_classes_base_FGBuildableLightSource_base & docs_json_ts_common_classes_FGBuildableFloodlight & FGBuildable_base;
 
-type FGBuildableFoundation = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mElevation & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mWidth & docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame & docs_json_ts_common_classes_FGBuildableFoundation & FGBuildable_base & FGBuildable_foundation_mDisableSnapOn & FGBuildable_with_depth & FGBuildableFoundation_version_specific;
+type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_has_mElevation & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mWidth & docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame & docs_json_ts_common_classes_FGBuildableFoundation & FGBuildable_base & FGBuildable_foundation_mDisableSnapOn & FGBuildable_with_depth & FGBuildableFoundation_version_specific;
 
 type FGBuildableFoundation_version_specific = {
 	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom | docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
@@ -656,7 +656,7 @@ type FGBuildableRailroadStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableR
 
 type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_has_mMeshLength & docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadTrack_base & docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadTrack_base_version_specific & docs_json_ts_common_classes_FGBuildableRailroadTrack & FGBuildable_base;
 
-type FGBuildableRamp = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mElevation & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mWidth & docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame & docs_json_ts_0_5_2_1_classes_base_FGBuildableRamp_base & docs_json_ts_common_classes_FGBuildableRamp & FGBuildable_base & FGBuildable_foundation_mDisableSnapOn & FGBuildable_with_depth & FGBuildableFoundation_version_specific;
+type FGBuildableRamp = docs_json_ts_0_3_7_7_classes_base_has_mElevation & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mWidth & docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame & docs_json_ts_0_5_2_1_classes_base_FGBuildableRamp_base & docs_json_ts_common_classes_FGBuildableRamp & FGBuildable_base & FGBuildable_foundation_mDisableSnapOn & FGBuildable_with_depth & FGBuildableFoundation_version_specific;
 
 type FGBuildableRamp_version_specific = {
 	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
@@ -909,13 +909,13 @@ export type {
 	FGAmmoTypeSpreadshot,
 	FGAmmoTypeSpreadshot_version_specific,
 	FGBuildable_base,
-	FGBuildable_base_pre_1_2,
-	FGBuildable_base_pre_update8,
-	FGBuildable_base_version_specific,
+	FGBuildable_pre_update8,
+	FGBuildable_version_specific,
 	FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_occupied,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
+	FGBuildable_pre_1_2,
 	FGBuildable_tiered,
 	FGBuildable_unoccupied_and_untiered,
 	FGBuildable_with_depth,

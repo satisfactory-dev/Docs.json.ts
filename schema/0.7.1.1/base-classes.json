@@ -23,13 +23,13 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-1.2"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--pre-update8"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-update8"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--pre-1.2"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base--pre-1.2"
@@ -595,9 +595,6 @@
 		"FGBuildableFoundation": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mElevation"
 				},
 				{
@@ -608,9 +605,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--isFrame"
-				},
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--foundation--mDisableSnapOn"
@@ -632,9 +626,6 @@
 		"FGBuildableFoundationLightweight": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mElevation"
 				},
 				{
@@ -645,9 +636,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--isFrame"
-				},
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--foundation--mDisableSnapOn"
@@ -1476,9 +1464,6 @@
 		},
 		"FGBuildableRamp": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
-				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mElevation"
 				},

@@ -152,9 +152,6 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
@@ -167,10 +164,10 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--pre-1.2"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--pre-1.2"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--pre-1.2"

@@ -409,30 +409,17 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base--pre-1.2"
+					"$ref": "#/$defs/FGBuildable--pre-1.2"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base--pre-update8"
+					"$ref": "#/$defs/FGBuildable--pre-update8"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
+					"$ref": "#/$defs/FGBuildable--version-specific"
 				}
 			]
 		},
-		"FGBuildable--base--pre-1.2": {
-			"type": "object",
-			"required": ["mScaleCustomOffset", "mCustomScaleType"],
-			"properties": {
-				"mScaleCustomOffset": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCustomScaleType": {
-					"type": "string",
-					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
-				}
-			}
-		},
-		"FGBuildable--base--pre-update8": {
+		"FGBuildable--pre-update8": {
 			"type": "object",
 			"required": ["mOcclusionBoxInfo"],
 			"properties": {
@@ -457,12 +444,11 @@
 				}
 			}
 		},
-		"FGBuildable--base--version-specific": {
+		"FGBuildable--version-specific": {
 			"type": "object",
 			"required": [
 				"mAllowPatterning",
-				"mAffectsOcclusion",
-				"mOcclusionShape"
+				"mAffectsOcclusion"
 			],
 			"properties": {
 				"mAllowPatterning": {
@@ -470,15 +456,6 @@
 				},
 				"mAffectsOcclusion": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mOcclusionShape": {
-					"type": "string",
-					"enum": [
-						"ROCS_Box",
-						"ROCS_Ramp",
-						"ROCS_Box_Special",
-						"ROCS_CornerRamp"
-					]
 				}
 			}
 		},
@@ -554,6 +531,32 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildable--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mScaleCustomOffset",
+				"mCustomScaleType",
+				"mOcclusionShape"
+			],
+			"properties": {
+				"mScaleCustomOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomScaleType": {
+					"type": "string",
+					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
+				},
+				"mOcclusionShape": {
+					"type": "string",
+					"enum": [
+						"ROCS_Box",
+						"ROCS_Ramp",
+						"ROCS_Box_Special",
+						"ROCS_CornerRamp"
+					]
+				}
+			}
 		},
 		"FGBuildable--tiered": {
 			"allOf": [
@@ -950,9 +953,6 @@
 		},
 		"FGBuildableFoundation": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
-				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mElevation"
 				},
@@ -1802,9 +1802,6 @@
 		},
 		"FGBuildableRamp": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
-				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mElevation"
 				},
