@@ -3976,9 +3976,7 @@
 		},
 		"FGNobeliskDetonator--pre-1.2": {
 			"type": "object",
-			"required": [
-				"mPrimaryFireEndMontageList"
-			],
+			"required": ["mPrimaryFireEndMontageList"],
 			"properties": {
 				"mPrimaryFireEndMontageList": {
 					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"

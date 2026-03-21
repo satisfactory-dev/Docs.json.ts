@@ -350,52 +350,6 @@
 				}
 			}
 		},
-		"mUnlocks--item--mCustomizationUnlocks": {
-					"type": "object",
-					"required": ["Class", "mCustomizationUnlocks"],
-					"properties": {
-						"Class": {
-							"type": "string",
-							"const": "FGUnlockCustomization"
-						},
-						"mCustomizationUnlocks": {
-							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-						}
-					}
-				},
-		"mUnlocks--item--mUploadSpeedPercentageDecrease": {
-					"type": "object",
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-					"unevaluatedProperties": false,
-					"required": ["mUploadSpeedPercentageDecrease"],
-					"properties": {
-						"mUploadSpeedPercentageDecrease": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
-				},
-		"mUnlocks--item--mItemStackLimitIncrease": {
-					"type": "object",
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-					"unevaluatedProperties": false,
-					"required": ["mItemStackLimitIncrease"],
-					"properties": {
-						"mItemStackLimitIncrease": {
-							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-						}
-					}
-				},
-		"mUnlocks--item--mNumSlotsToUnlock": {
-					"type": "object",
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-					"unevaluatedProperties": false,
-					"required": ["mNumSlotsToUnlock"],
-					"properties": {
-						"mNumSlotsToUnlock": {
-							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-						}
-					}
-				},
 		"mUnlocks--item": {
 			"oneOf": [
 				{
@@ -414,6 +368,52 @@
 					"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/mUnlocks--item"
 				}
 			]
+		},
+		"mUnlocks--item--mCustomizationUnlocks": {
+			"type": "object",
+			"required": ["Class", "mCustomizationUnlocks"],
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "FGUnlockCustomization"
+				},
+				"mCustomizationUnlocks": {
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"mUnlocks--item--mItemStackLimitIncrease": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mItemStackLimitIncrease"],
+			"properties": {
+				"mItemStackLimitIncrease": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"mUnlocks--item--mNumSlotsToUnlock": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mNumSlotsToUnlock"],
+			"properties": {
+				"mNumSlotsToUnlock": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"mUnlocks--item--mUploadSpeedPercentageDecrease": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mUploadSpeedPercentageDecrease"],
+			"properties": {
+				"mUploadSpeedPercentageDecrease": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGItemDescriptor--version-specific--mDescriptorStatBars--item": {
 			"oneOf": [
