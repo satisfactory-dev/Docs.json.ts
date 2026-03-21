@@ -1081,7 +1081,11 @@ type FGJetPack_version_specific = {
 
 type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base & docs_json_ts_0_6_1_5_classes_base_FGJumpingStilts_version_specific & docs_json_ts_common_classes_FGJumpingStilts & FGEquipment;
 
-type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & docs_json_ts_common_classes_FGNobeliskDetonator & FGEquipment & FGNobeliskDetonator_version_specific;
+type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & docs_json_ts_0_6_1_5_classes_base_FGWeapon_base & docs_json_ts_common_classes_FGNobeliskDetonator & FGEquipment & FGNobeliskDetonator_pre_1_2 & FGNobeliskDetonator_version_specific;
+
+type FGNobeliskDetonator_pre_1_2 = {
+	mPrimaryFireEndMontageList: docs_json_ts_1_0_1_4_properties_Montages,
+};
 
 type FGNobeliskDetonator_version_specific = {
 	AmmoTypeToAkEvent: [
@@ -1097,7 +1101,6 @@ type FGNobeliskDetonator_version_specific = {
 	mPrimaryFireStartMontageList: docs_json_ts_1_0_1_4_properties_Montages,
 	mReloadMontageList: docs_json_ts_1_0_1_4_properties_Montages,
 	mSecondaryFireMontageList: docs_json_ts_1_0_1_4_properties_Montages,
-	mPrimaryFireEndMontageList: docs_json_ts_1_0_1_4_properties_Montages,
 	mReleaseCooldown: docs_json_ts_common_types_decimal_string,
 };
 
@@ -1151,7 +1154,7 @@ type FGResourceDescriptor_version_specific = {
 	mManualMiningAudioName: 'Metal' | 'Sam',
 };
 
-type FGSchematic = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_1_0_1_4_properties_FGSchematic_has_mSchematicDependencies & docs_json_ts_common_classes_FGSchematic & docs_json_ts_common_classes_base_isDescribed & FGSchematic_has_mTechTier & FGSchematic_pre_1_1 & FGSchematic_version_specific;
+type FGSchematic = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_1_0_1_4_properties_FGSchematic_has_mSchematicDependencies & docs_json_ts_common_classes_FGSchematic & docs_json_ts_common_classes_base_isDescribed & FGSchematic_has_mTechTier & FGSchematic_pre_1_1 & FGSchematic_pre_1_2 & FGSchematic_version_specific;
 
 type FGSchematic_has_mTechTier = {
 	mTechTier: docs_json_ts_1_0_1_4_properties_Tier,
@@ -1161,13 +1164,16 @@ type FGSchematic_pre_1_1 = {
 	mStatisticGameplayTag: docs_json_ts_common_types_empty_object | docs_json_ts_1_0_1_4_properties_mStatisticGameplayTag,
 };
 
+type FGSchematic_pre_1_2 = {
+	mUnlocks: [
+		...docs_json_ts_1_0_1_4_properties_mUnlocks_item[],
+	],
+};
+
 type FGSchematic_version_specific = {
 	mSchematicUnlockTag: docs_json_ts_common_types_empty_object | {
 		TagName: 'Stats.Gameplay.UnlockedGoldenNut',
 	},
-	mUnlocks: [
-		...docs_json_ts_1_0_1_4_properties_mUnlocks_item[],
-	],
 	mType?: 'EST_Custom' | 'EST_Customization' | 'EST_Tutorial' | 'EST_MAM' | 'EST_HardDrive' | 'EST_Milestone' | 'EST_Alternate' | 'EST_ResourceSink',
 };
 
@@ -1393,6 +1399,7 @@ export type {
 	FGJetPack_version_specific,
 	FGJumpingStilts,
 	FGNobeliskDetonator,
+	FGNobeliskDetonator_pre_1_2,
 	FGNobeliskDetonator_version_specific,
 	FGObjectScanner,
 	FGObjectScanner_pre_1_2,
@@ -1412,6 +1419,7 @@ export type {
 	FGSchematic,
 	FGSchematic_has_mTechTier,
 	FGSchematic_pre_1_1,
+	FGSchematic_pre_1_2,
 	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,

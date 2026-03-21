@@ -3967,9 +3967,23 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGNobeliskDetonator--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGNobeliskDetonator--version-specific"
 				}
 			]
+		},
+		"FGNobeliskDetonator--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mPrimaryFireEndMontageList"
+			],
+			"properties": {
+				"mPrimaryFireEndMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				}
+			}
 		},
 		"FGNobeliskDetonator--version-specific": {
 			"type": "object",
@@ -3978,7 +3992,6 @@
 				"mPrimaryFireStartMontageList",
 				"mReloadMontageList",
 				"mSecondaryFireMontageList",
-				"mPrimaryFireEndMontageList",
 				"mReleaseCooldown"
 			],
 			"properties": {
@@ -4026,9 +4039,6 @@
 					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
 				},
 				"mSecondaryFireMontageList": {
-					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
-				},
-				"mPrimaryFireEndMontageList": {
 					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
 				},
 				"mReleaseCooldown": {
@@ -4539,6 +4549,9 @@
 					"$ref": "#/$defs/FGSchematic--pre-1.1"
 				},
 				{
+					"$ref": "#/$defs/FGSchematic--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGSchematic--version-specific"
 				}
 			]
@@ -4568,9 +4581,23 @@
 				}
 			}
 		},
+		"FGSchematic--pre-1.2": {
+			"type": "object",
+			"required": ["mUnlocks"],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 7,
+					"items": {
+						"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mUnlocks--item"
+					}
+				}
+			}
+		},
 		"FGSchematic--version-specific": {
 			"type": "object",
-			"required": ["mSchematicUnlockTag", "mUnlocks"],
+			"required": ["mSchematicUnlockTag"],
 			"properties": {
 				"mSchematicUnlockTag": {
 					"oneOf": [
@@ -4592,14 +4619,6 @@
 							}
 						}
 					]
-				},
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"maxItems": 7,
-					"items": {
-						"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mUnlocks--item"
-					}
 				},
 				"mType": {
 					"type": "string",

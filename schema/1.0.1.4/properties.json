@@ -350,9 +350,7 @@
 				}
 			}
 		},
-		"mUnlocks--item": {
-			"oneOf": [
-				{
+		"mUnlocks--item--mCustomizationUnlocks": {
 					"type": "object",
 					"required": ["Class", "mCustomizationUnlocks"],
 					"properties": {
@@ -365,7 +363,7 @@
 						}
 					}
 				},
-				{
+		"mUnlocks--item--mUploadSpeedPercentageDecrease": {
 					"type": "object",
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 					"unevaluatedProperties": false,
@@ -376,7 +374,7 @@
 						}
 					}
 				},
-				{
+		"mUnlocks--item--mItemStackLimitIncrease": {
 					"type": "object",
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 					"unevaluatedProperties": false,
@@ -387,7 +385,7 @@
 						}
 					}
 				},
-				{
+		"mUnlocks--item--mNumSlotsToUnlock": {
 					"type": "object",
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 					"unevaluatedProperties": false,
@@ -397,6 +395,20 @@
 							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 						}
 					}
+				},
+		"mUnlocks--item": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/mUnlocks--item--mCustomizationUnlocks"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mUploadSpeedPercentageDecrease"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mItemStackLimitIncrease"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mNumSlotsToUnlock"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/mUnlocks--item"

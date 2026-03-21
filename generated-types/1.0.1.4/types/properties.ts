@@ -100,16 +100,24 @@ type mStatisticGameplayTag = {
 	TagName: `Stats.Gameplay.Schematics.Schematic${'1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '2-5' | '3-1' | '3-2' | '3-3' | '3-4' | '4-1' | '4-2' | '4-3' | '4-4' | '4-5' | '5-1' | '5-2' | '5-3' | '5-4' | '5-5' | '6-1' | '6-2' | '6-3' | '6-4' | '6-5' | '6-6' | '6-7' | '7-1' | '7-2' | '7-3' | '7-4' | '7-5' | '8-1' | '8-2' | '8-3' | '8-4' | '8-5' | '9-1' | '9-2' | '9-3' | '9-4' | '9-5'}`,
 };
 
-type mUnlocks_item = {
+type mUnlocks_item_mCustomizationUnlocks = {
 	Class: 'FGUnlockCustomization',
 	mCustomizationUnlocks: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-} | (docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+};
+
+type mUnlocks_item_mUploadSpeedPercentageDecrease = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mUploadSpeedPercentageDecrease: docs_json_ts_common_types_decimal_string,
-}) | (docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+};
+
+type mUnlocks_item_mItemStackLimitIncrease = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mItemStackLimitIncrease: docs_json_ts_common_types_integer_string,
-}) | (docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+};
+
+type mUnlocks_item_mNumSlotsToUnlock = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mNumSlotsToUnlock: docs_json_ts_common_types_integer_string,
-}) | docs_json_ts_0_8_3_3_properties_overridable_mUnlocks_item;
+};
+
+type mUnlocks_item = mUnlocks_item_mCustomizationUnlocks | mUnlocks_item_mUploadSpeedPercentageDecrease | mUnlocks_item_mItemStackLimitIncrease | mUnlocks_item_mNumSlotsToUnlock | docs_json_ts_0_8_3_3_properties_overridable_mUnlocks_item;
 
 type FGItemDescriptor_version_specific_mDescriptorStatBars_item = docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item | docs_json_ts_common_types_empty_object;
 
@@ -425,6 +433,10 @@ export type {
 	mSchematicDependencies_item,
 	mSchematicDependencies_item_version_specific,
 	mStatisticGameplayTag,
+	mUnlocks_item_mCustomizationUnlocks,
+	mUnlocks_item_mUploadSpeedPercentageDecrease,
+	mUnlocks_item_mItemStackLimitIncrease,
+	mUnlocks_item_mNumSlotsToUnlock,
 	mUnlocks_item,
 	FGItemDescriptor_version_specific_mDescriptorStatBars_item,
 	FGJetPackFuelParameters_quoted,

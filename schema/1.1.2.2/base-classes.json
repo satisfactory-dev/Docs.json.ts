@@ -3462,6 +3462,9 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGNobeliskDetonator--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGNobeliskDetonator--version-specific"
 				},
 				{
@@ -3618,6 +3621,9 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSchematic--has--mTechTier"
 				},
 				{
+					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSchematic--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSchematic--version-specific"
 				},
 				{
@@ -3625,9 +3631,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
@@ -3658,6 +3661,9 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSchematic--has--mTechTier"
 				},
 				{
+					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSchematic--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGSchematic--version-specific"
 				},
 				{
@@ -3665,9 +3671,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
