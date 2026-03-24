@@ -146,6 +146,9 @@ export class Utf16leJsonHandler<
 		}/Docs/${
 			utf8
 		}.json`;
+
+		this.#filepath = this.#filepath.replace(/\/\//g, '/');
+		this.#utf8path = this.#utf8path.replace(/\/\//g, '/');
 	}
 
 	async read(
@@ -174,10 +177,15 @@ export class Utf16leJsonHandler<
 			return (await readFile(this.#utf8path)).toString();
 		}
 
+		const encoding = (
+			this.#filepath.includes('/Docs/io.json')
+			&& !this.#filepath.includes('/data/1.2')
+		)
+			? 'utf8'
+			: 'utf-16le';
+
 		const file = (await readFile(this.#filepath, {
-			encoding: this.#filepath.includes('/Docs/io.json')
-				? 'utf8'
-				: 'utf-16le',
+			encoding,
 		})).replace(/"NativeClass":"Class'/g, `\n"NativeClass":"Class'`);
 
 		const utf8 = JSON.stringify(

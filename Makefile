@@ -42,6 +42,7 @@ prepare: prepare--version1_1
 prepare--quick: prepare--update8
 	@node ./prepare-1.0.1.4.ts en-US
 	@node ./prepare-1.1.2.2.ts en-US
+	@node ./prepare-1.2.0.0.ts en-US
 
 prepare--update3:
 	@echo 'prepare 0.3.7.7'
@@ -181,6 +182,63 @@ prepare--version1_1: prepare--version1_0
 	@node ./prepare-1.1.2.2.ts vun
 	@node ./prepare-1.1.2.2.ts zh-Hans
 	@node ./prepare-1.1.2.2.ts zh-Hant
+
+prepare--version1_2: prepare--version1_1
+	@node ./prepare-1.2.0.0.ts af
+	@node ./prepare-1.2.0.0.ts ar
+	@node ./prepare-1.2.0.0.ts bg
+	@node ./prepare-1.2.0.0.ts ca
+	@node ./prepare-1.2.0.0.ts cs
+	@node ./prepare-1.2.0.0.ts da
+	@node ./prepare-1.2.0.0.ts de
+	@node ./prepare-1.2.0.0.ts el
+	@node ./prepare-1.2.0.0.ts en-AE
+	@node ./prepare-1.2.0.0.ts en-AU
+	@node ./prepare-1.2.0.0.ts en-CA
+	@node ./prepare-1.2.0.0.ts en-GB
+	@node ./prepare-1.2.0.0.ts en-US
+	@node ./prepare-1.2.0.0.ts eo
+	@node ./prepare-1.2.0.0.ts es-419
+	@node ./prepare-1.2.0.0.ts es-ES
+	@node ./prepare-1.2.0.0.ts et
+	@node ./prepare-1.2.0.0.ts fa
+	@node ./prepare-1.2.0.0.ts fi
+	@node ./prepare-1.2.0.0.ts fr
+	@node ./prepare-1.2.0.0.ts he
+	@node ./prepare-1.2.0.0.ts hi
+	@node ./prepare-1.2.0.0.ts hr
+	@node ./prepare-1.2.0.0.ts hu
+	@node ./prepare-1.2.0.0.ts ia-001
+	@node ./prepare-1.2.0.0.ts id
+	@node ./prepare-1.2.0.0.ts ie
+	@node ./prepare-1.2.0.0.ts io
+	@node ./prepare-1.2.0.0.ts it
+	@node ./prepare-1.2.0.0.ts ja
+	@node ./prepare-1.2.0.0.ts ko
+	@node ./prepare-1.2.0.0.ts kw
+	@node ./prepare-1.2.0.0.ts lb
+	@node ./prepare-1.2.0.0.ts lt
+	@node ./prepare-1.2.0.0.ts lv
+	@node ./prepare-1.2.0.0.ts mt
+	@node ./prepare-1.2.0.0.ts nl
+	@node ./prepare-1.2.0.0.ts no
+	@node ./prepare-1.2.0.0.ts pl
+	@node ./prepare-1.2.0.0.ts pt-BR
+	@node ./prepare-1.2.0.0.ts pt-PT
+	@node ./prepare-1.2.0.0.ts ro
+	@node ./prepare-1.2.0.0.ts ru
+	@node ./prepare-1.2.0.0.ts sk
+	@node ./prepare-1.2.0.0.ts sr-Cyrl
+	@node ./prepare-1.2.0.0.ts sr-Latn
+	@node ./prepare-1.2.0.0.ts sv
+	@node ./prepare-1.2.0.0.ts th
+	@node ./prepare-1.2.0.0.ts tr
+	@node ./prepare-1.2.0.0.ts uk
+	@node ./prepare-1.2.0.0.ts vi
+	@node ./prepare-1.2.0.0.ts vo
+	@node ./prepare-1.2.0.0.ts vun
+	@node ./prepare-1.2.0.0.ts zh-Hans
+	@node ./prepare-1.2.0.0.ts zh-Hant
 
 generate--clean:
 	@echo 'cleaning ./generated-types/'
