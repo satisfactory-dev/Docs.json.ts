@@ -904,7 +904,7 @@ type FGBuildableStorage_base_base_base = {
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableTradingPost = docs_json_ts_common_classes_FGBuildableTradingPost & FGBuildable_base & FGBuildable_powered & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableTradingPost_pre_1_0 & FGBuildableTradingPost_pre_update5 & FGBuildableTradingPost_pre_update8 & FGBuildableTradingPost_version_specific & has_mNumCyclesForProductivity;
+type FGBuildableTradingPost = docs_json_ts_common_classes_FGBuildableTradingPost & FGBuildable_base & FGBuildable_powered & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableTradingPost_pre_1_0 & FGBuildableTradingPost_pre_update5 & FGBuildableTradingPost_pre_update8 & FGBuildableTradingPost_version_specific & has_mStorageInventorySize & has_mNumCyclesForProductivity;
 
 type FGBuildableTradingPost_pre_1_0 = {
 	mWorkBenchOccupied: 'Craft Bench occupied',
@@ -923,13 +923,16 @@ type FGBuildableTradingPost_pre_update8 = {
 	],
 };
 
+type has_mStorageInventorySize = {
+	mStorageInventorySize: docs_json_ts_common_types_integer_string,
+};
+
 type FGBuildableTradingPost_version_specific = {
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
 	mStorageText: Exclude<string, ''>,
 	mMamFreeText: Exclude<string, ''>,
 	mMamOccupiedText: Exclude<string, ''>,
 	mGenerators: '',
-	mStorageInventorySize: docs_json_ts_common_types_integer_string,
 	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
 	mSpawningGroundZOffset: docs_json_ts_common_types_decimal_string,
 	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
@@ -1736,6 +1739,7 @@ export type {
 	FGBuildableTradingPost_pre_1_0,
 	FGBuildableTradingPost_pre_update5,
 	FGBuildableTradingPost_pre_update8,
+	has_mStorageInventorySize,
 	FGBuildableTradingPost_version_specific,
 	FGBuildableTrainPlatform_base,
 	FGBuildableTrainPlatform_base_base,

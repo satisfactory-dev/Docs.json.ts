@@ -651,6 +651,9 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDockingStation--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDockingStation--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDockingStation"
 				},
 				{
@@ -894,6 +897,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFrackingActivator"
 				},
 				{
@@ -914,6 +920,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--pre-1.2"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFrackingExtractor"
@@ -2469,6 +2478,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--powered"
 				}
 			]
@@ -2748,6 +2760,9 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base--version-specific"
@@ -3629,6 +3644,9 @@
 		"FGHoverPack": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--pre-1.2"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--version-specific"
 				},
 				{
@@ -3641,16 +3659,29 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGHoverPack--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGHoverPack--version-specific"
 				}
 			]
+		},
+		"FGHoverPack--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mLowBatteryWarningActive_SFX"
+			],
+			"properties": {
+				"mLowBatteryWarningActive_SFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		},
 		"FGHoverPack--version-specific": {
 			"type": "object",
 			"required": [
 				"mCurrentPlayerVelocity_SFX",
 				"mCurrentMouseDelta_SFX",
-				"mLowBatteryWarningActive_SFX",
 				"mPropellerVFX",
 				"mDisplayRangeWarning"
 			],
@@ -3660,9 +3691,6 @@
 				},
 				"mCurrentMouseDelta_SFX": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mLowBatteryWarningActive_SFX": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mPropellerVFX": {
 					"type": "string",

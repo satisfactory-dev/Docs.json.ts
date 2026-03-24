@@ -507,6 +507,9 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDockingStation"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableDockingStation--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableDockingStation--base"
 				},
 				{
@@ -514,33 +517,17 @@
 				}
 			]
 		},
-		"FGBuildableDockingStation--base": {
+		"FGBuildableDockingStation--pre-1.2": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base",
 			"required": [
-				"VehicleFuelConsumptionRateChangedDelegate",
-				"ItemTransferRateChangedDelegate",
-				"MaximumStackTransferRateChangedDelegate",
 				"mDockPosition",
 				"mMinimumDockingTime",
 				"mFuelInventorySizeX",
 				"mFuelInventorySizeY",
 				"mForceSignificance",
-				"mVehicleFuelConsumptionRate",
-				"mItemTransferRate",
-				"mMaximumStackTransferRate",
 				"mDockingVehicleStatistics"
 			],
 			"properties": {
-				"VehicleFuelConsumptionRateChangedDelegate": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"ItemTransferRateChangedDelegate": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"MaximumStackTransferRateChangedDelegate": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
 				"mDockPosition": {
 					"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
 				},
@@ -556,6 +543,31 @@
 				"mForceSignificance": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
+				"mDockingVehicleStatistics": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildableDockingStation--base": {
+			"type": "object",
+			"required": [
+				"VehicleFuelConsumptionRateChangedDelegate",
+				"ItemTransferRateChangedDelegate",
+				"MaximumStackTransferRateChangedDelegate",
+				"mVehicleFuelConsumptionRate",
+				"mItemTransferRate",
+				"mMaximumStackTransferRate"
+			],
+			"properties": {
+				"VehicleFuelConsumptionRateChangedDelegate": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"ItemTransferRateChangedDelegate": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"MaximumStackTransferRateChangedDelegate": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
 				"mVehicleFuelConsumptionRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -564,9 +576,6 @@
 				},
 				"mMaximumStackTransferRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDockingVehicleStatistics": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				}
 			}
 		},
@@ -2189,6 +2198,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"

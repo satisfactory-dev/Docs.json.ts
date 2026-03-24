@@ -139,6 +139,7 @@ import type {
 	has_mSize as docs_json_ts_0_3_7_7_classes_base_has_mSize,
 	has_mSplineData as docs_json_ts_0_3_7_7_classes_base_has_mSplineData,
 	has_mStackHeight as docs_json_ts_0_3_7_7_classes_base_has_mStackHeight,
+	has_mStorageInventorySize as docs_json_ts_0_3_7_7_classes_base_has_mStorageInventorySize,
 	has_mUseStaticHeight as docs_json_ts_0_3_7_7_classes_base_has_mUseStaticHeight,
 	has_mWidth as docs_json_ts_0_3_7_7_classes_base_has_mWidth,
 } from './../../0.3.7.7/classes/Base.ts';
@@ -672,7 +673,7 @@ type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_has_mDisableAttachment
 
 type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_base & docs_json_ts_common_classes_FGBuildableResourceExtractor & FGBuildable_powered;
 
-type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update5 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mNumCyclesForProductivity & docs_json_ts_common_classes_FGBuildableTradingPost & FGBuildable_powered & FGBuildableTradingPost_base & FGBuildableTradingPost_base_pre_1_0 & FGBuildableTradingPost_base_version_specific;
+type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update5 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mStorageInventorySize & docs_json_ts_0_3_7_7_classes_base_has_mNumCyclesForProductivity & docs_json_ts_common_classes_FGBuildableTradingPost & FGBuildable_powered & FGBuildableTradingPost_base & FGBuildableTradingPost_base_pre_1_0 & FGBuildableTradingPost_base_version_specific;
 
 type FGBuildableTradingPost_base = {
 	mMamFreeText: 'Use MAM',
@@ -768,7 +769,7 @@ type FGEquipmentZipline_version_specific = {
 	mBackAnimation: 'BE_None',
 };
 
-type FGHoverPack = docs_json_ts_common_classes_FGHoverPack & FGEquipment & FGHoverPack_pre_1_0 & FGHoverPack_pre_update6 & FGHoverPack_version_specific;
+type FGHoverPack = docs_json_ts_common_classes_FGHoverPack & FGEquipment & FGHoverPack_pre_1_0 & FGHoverPack_pre_1_2 & FGHoverPack_pre_update6 & FGHoverPack_version_specific;
 
 type FGHoverPack_pre_1_0 = {
 	mHoverPackActiveTimer: docs_json_ts_common_types_empty_object,
@@ -784,8 +785,14 @@ type FGHoverPack_pre_update6 = {
 	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
 };
 
-type FGHoverPack_version_specific = {
+type FGHoverPack_pre_1_2 = {
 	ConnectionLocationUpdatedDelegate: docs_json_ts_common_types_empty_object,
+	mPowerCapacity: docs_json_ts_common_types_decimal_string,
+	mPowerDrainRate: docs_json_ts_common_types_decimal_string,
+	mCurrentPowerLevel: docs_json_ts_common_types_decimal_string,
+};
+
+type FGHoverPack_version_specific = {
 	ConnectionStatusUpdatedDelegate: docs_json_ts_common_types_empty_object,
 	HoverModeChangedDelegate: docs_json_ts_common_types_empty_object,
 	RangeWarningToggleDelegate: docs_json_ts_common_types_empty_object,
@@ -798,10 +805,7 @@ type FGHoverPack_version_specific = {
 	mPowerConnectionSearchRadius: docs_json_ts_common_types_decimal_string,
 	mPowerConnectionSearchTickRate: docs_json_ts_common_types_decimal_string,
 	mPowerConnectionDisconnectionTime: docs_json_ts_common_types_decimal_string,
-	mPowerCapacity: docs_json_ts_common_types_decimal_string,
-	mPowerDrainRate: docs_json_ts_common_types_decimal_string,
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
-	mCurrentPowerLevel: docs_json_ts_common_types_decimal_string,
 	mRangeWarningNormalizedDistanceThreshold: docs_json_ts_common_types_decimal_string,
 	mCurrentHoverMode: 'HPM_Inactive',
 	mHasConnection: docs_json_ts_common_types_bool_string,
@@ -1077,6 +1081,7 @@ export type {
 	FGHoverPack,
 	FGHoverPack_pre_1_0,
 	FGHoverPack_pre_update6,
+	FGHoverPack_pre_1_2,
 	FGHoverPack_version_specific,
 	FGItemDescriptor,
 	FGItemDescriptorBiomass,

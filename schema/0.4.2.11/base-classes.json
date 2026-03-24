@@ -2246,6 +2246,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
@@ -2719,6 +2722,9 @@
 					"$ref": "#/$defs/FGHoverPack--pre-1.0"
 				},
 				{
+					"$ref": "#/$defs/FGHoverPack--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGHoverPack--pre-update6"
 				},
 				{
@@ -2770,10 +2776,32 @@
 				}
 			}
 		},
-		"FGHoverPack--version-specific": {
+		"FGHoverPack--pre-1.2": {
 			"type": "object",
 			"required": [
 				"ConnectionLocationUpdatedDelegate",
+				"mPowerCapacity",
+				"mPowerDrainRate",
+				"mCurrentPowerLevel"
+			],
+			"properties": {
+				"ConnectionLocationUpdatedDelegate": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mPowerCapacity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerDrainRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentPowerLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGHoverPack--version-specific": {
+			"type": "object",
+			"required": [
 				"ConnectionStatusUpdatedDelegate",
 				"HoverModeChangedDelegate",
 				"RangeWarningToggleDelegate",
@@ -2786,10 +2814,7 @@
 				"mPowerConnectionSearchRadius",
 				"mPowerConnectionSearchTickRate",
 				"mPowerConnectionDisconnectionTime",
-				"mPowerCapacity",
-				"mPowerDrainRate",
 				"mPowerConsumption",
-				"mCurrentPowerLevel",
 				"mRangeWarningNormalizedDistanceThreshold",
 				"mCurrentHoverMode",
 				"mHasConnection",
@@ -2803,9 +2828,6 @@
 				"mBackAnimation"
 			],
 			"properties": {
-				"ConnectionLocationUpdatedDelegate": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
 				"ConnectionStatusUpdatedDelegate": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
@@ -2842,16 +2864,7 @@
 				"mPowerConnectionDisconnectionTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mPowerCapacity": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mPowerDrainRate": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mPowerConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCurrentPowerLevel": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mRangeWarningNormalizedDistanceThreshold": {

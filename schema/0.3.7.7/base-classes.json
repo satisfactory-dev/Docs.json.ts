@@ -3680,6 +3680,9 @@
 					"$ref": "#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
+					"$ref": "#/$defs/has--mStorageInventorySize"
+				},
+				{
 					"$ref": "#/$defs/has--mNumCyclesForProductivity"
 				}
 			]
@@ -3732,6 +3735,15 @@
 				}
 			}
 		},
+		"has--mStorageInventorySize": {
+			"type": "object",
+			"required": ["mStorageInventorySize"],
+			"properties": {
+				"mStorageInventorySize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGBuildableTradingPost--version-specific": {
 			"type": "object",
 			"required": [
@@ -3740,7 +3752,6 @@
 				"mMamFreeText",
 				"mMamOccupiedText",
 				"mGenerators",
-				"mStorageInventorySize",
 				"mStorageVisibilityLevel",
 				"mSpawningGroundZOffset",
 				"mGroundSearchZDistance",
@@ -3765,9 +3776,6 @@
 				"mGenerators": {
 					"type": "string",
 					"const": ""
-				},
-				"mStorageInventorySize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				},
 				"mStorageVisibilityLevel": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
