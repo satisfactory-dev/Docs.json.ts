@@ -353,6 +353,7 @@ import type {
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 } from './../../0.3.7.7/types/properties.ts';
@@ -738,8 +739,8 @@ type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquip
 type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & docs_json_ts_0_3_7_7_classes_base_has_mUseStaticHeight & docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_common_classes_FGConveyorPoleStackable & FGBuildable_base;
 
 type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
-	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
-	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
+	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
+	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
 };
 
 type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & FGEquipment_pre_1_0 & FGEquipment_version_specific;
@@ -790,7 +791,7 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_pre_1_0 & docs
 type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptor;
 
 type FGItemDescriptor_pre_1_0 = {
-	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
+	mClassToScanFor: docs_json_ts_0_3_7_7_properties_const_None | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
 		docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
 		...docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item[],
@@ -798,7 +799,7 @@ type FGItemDescriptor_pre_1_0 = {
 };
 
 type FGItemDescriptor_version_specific = {
-	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
+	mCrosshairMaterial: docs_json_ts_0_3_7_7_properties_const_None | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
 	mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora',
 	mShouldOverrideScannerDisplayText: docs_json_ts_common_types_bool_string,
 	mScannerDisplayText: string,

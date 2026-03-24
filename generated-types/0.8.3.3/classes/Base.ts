@@ -381,6 +381,10 @@ import type {
 } from './../../0.3.7.7/classes/Base.overridable--0.8.3.3.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+} from './../../0.3.7.7/types/properties.ts';
+
+import type {
 	FGJetPack_pre_1_0 as docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_pre_1_0,
 	FGJetPack_version_specific as docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific,
 } from './../../0.7.1.1/classes/Base.0.8.3.3.ts';
@@ -725,9 +729,9 @@ type FGChainsaw_pre_1_0 = {
 
 type FGChainsaw_version_specific = {
 	mCurrentHasFuel: docs_json_ts_common_types_bool_string,
-	mPreviousState: 'None',
+	mPreviousState: docs_json_ts_0_3_7_7_properties_const_None,
 	mSawingProgress: docs_json_ts_common_types_decimal_string,
-	mChainsawState: 'None',
+	mChainsawState: docs_json_ts_0_3_7_7_properties_const_None,
 };
 
 type FGConsumableDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGConsumableDescriptor;

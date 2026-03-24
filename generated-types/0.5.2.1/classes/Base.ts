@@ -171,6 +171,7 @@ import type {
 
 import type {
 	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 	transform_Rotation_Translation_Scale3D as docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
@@ -733,8 +734,8 @@ type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDesc
 type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & docs_json_ts_0_3_7_7_classes_base_has_mUseStaticHeight & docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_common_classes_FGConveyorPoleStackable & FGBuildable_base;
 
 type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
-	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
-	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
+	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
+	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
 };
 
 type FGDescriptor_BuildMenu = FGDescriptor & FGDescriptor_BuildMenu_base;

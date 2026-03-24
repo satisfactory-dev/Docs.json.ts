@@ -2779,8 +2779,7 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mExtractorTypeName": {
-					"type": "string",
-					"const": "Miner"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--Miner"
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -3055,8 +3054,14 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mExtractorTypeName": {
-					"type": "string",
-					"enum": ["None", "Miner"]
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--Miner"
+						}
+					]
 				}
 			}
 		},
@@ -3195,8 +3200,7 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mExtractorTypeName": {
-					"type": "string",
-					"const": "None"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -4089,8 +4093,7 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mConnections": {
-					"type": "string",
-					"const": "None"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 				}
 			}
 		},
@@ -4399,8 +4402,7 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D"
 						},
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						}
 					]
 				},
@@ -4410,8 +4412,7 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D"
 						},
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						}
 					]
 				}
@@ -4466,8 +4467,7 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
 						},
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						}
 					]
 				},
@@ -4477,8 +4477,7 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
 						},
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						}
 					]
 				},
@@ -4777,8 +4776,7 @@
 			],
 			"properties": {
 				"mCurrentMontageSection": {
-					"type": "string",
-					"const": "None"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 				},
 				"mSecondAttackTimer": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

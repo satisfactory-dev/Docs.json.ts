@@ -463,8 +463,7 @@
 				"required": ["IconLibrary", "InconID"],
 				"properties": {
 					"IconLibrary": {
-						"type": "string",
-						"const": "None"
+						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 					},
 					"IconID": {
 						"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"

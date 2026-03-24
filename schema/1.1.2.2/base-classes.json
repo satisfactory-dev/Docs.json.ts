@@ -1104,9 +1104,36 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableElevatorFloorStop--pre-1.2"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableElevatorFloorStop--version-specific"
 				}
 			]
+		},
+		"FGBuildableElevatorFloorStop--pre-1.2": {
+			"type": "object",
+			"required": ["mCachedFloorStopInfo"],
+			"properties": {
+				"mCachedFloorStopInfo": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"required": ["IconId", "IconColor"],
+						"properties": {
+							"IconId": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+							},
+							"IconColor": {
+								"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+							},
+							"Height": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+							}
+						}
+					}
+				}
+			}
 		},
 		"FGBuildableElevatorFloorStop--version-specific": {
 			"type": "object",
@@ -1117,8 +1144,7 @@
 				"mElevatorDataStruct",
 				"bIsSignificant",
 				"mFloorRelevantElevatorState",
-				"mCachedQueuedStatus",
-				"mCachedFloorStopInfo"
+				"mCachedQueuedStatus"
 			],
 			"properties": {
 				"Timeline_Offset_942DA00C47315AC741095991E04356D7": {
@@ -1155,24 +1181,6 @@
 				"mCachedQueuedStatus": {
 					"type": "string",
 					"const": "EEFSQS_None"
-				},
-				"mCachedFloorStopInfo": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"required": ["IconId", "IconColor"],
-						"properties": {
-							"IconId": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
-							},
-							"IconColor": {
-								"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-							},
-							"Height": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
-							}
-						}
-					}
 				}
 			}
 		},
@@ -3079,8 +3087,7 @@
 			"required": ["CurrentState", "StateChanged"],
 			"properties": {
 				"CurrentState": {
-					"type": "string",
-					"const": "None"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 				},
 				"StateChanged": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"

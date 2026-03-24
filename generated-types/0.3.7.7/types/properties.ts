@@ -18,6 +18,10 @@ import type {
 	StringPassesRegex,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
+type const_Miner = 'Miner';
+
+type const_None = 'None';
+
 type mAbbreviatedDisplayName = string;
 
 type mAllowedResourceForms = [
@@ -167,6 +171,8 @@ type Texture2D_base = `Texture2D${Exclude<string, ''>}`;
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 export type {
+	const_Miner,
+	const_None,
 	mAbbreviatedDisplayName,
 	mAllowedResourceForms,
 	mAnimData_item,

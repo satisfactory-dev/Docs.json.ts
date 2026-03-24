@@ -9,6 +9,7 @@ import type {
 } from './../../0.3.7.7/types/overridable--0.8.3.3.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
 } from './../../0.3.7.7/types/properties.ts';
@@ -30,7 +31,7 @@ type mRelevantShopSchematics = '' | [
 	...mRelevantShopSchematics_item[],
 ];
 
-type mRelevantShopSchematics_item = docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted | 'None';
+type mRelevantShopSchematics_item = docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted | docs_json_ts_0_3_7_7_properties_const_None;
 
 type mUnlocks_item = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mItemsToGive | docs_json_ts_0_4_2_11_overridable_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | mUnlocks_item_mEmotes;
 

@@ -13,6 +13,10 @@ import type {
 } from './Base.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+} from './../types/properties.ts';
+
+import type {
 	decimal_string as docs_json_ts_common_types_decimal_string,
 } from './../../common/types.ts';
 
@@ -37,7 +41,7 @@ type FGEquipment_version_specific = {
 
 type FGSchematic_version_specific = {
 	mSubCategories: null | [
-		'None',
+		docs_json_ts_0_3_7_7_properties_const_None,
 	] | docs_json_ts_0_3_7_7_overridable_mSubCategories,
 	mTimeToComplete: docs_json_ts_common_types_decimal_string,
 	mIncludeInBuilds: 'IIB_PublicBuilds',

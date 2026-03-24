@@ -38,6 +38,10 @@ import type {
 } from './Base.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+} from './../../0.3.7.7/types/properties.ts';
+
+import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 } from './../../0.4.2.11/types/properties.ts';
 
@@ -64,7 +68,7 @@ type FGRecipe_version_specific = {
 
 type FGSchematic_version_specific = {
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
-	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
+	mSmallSchematicIcon: docs_json_ts_0_3_7_7_properties_const_None | docs_json_ts_0_4_2_11_properties_Texture2D,
 	mRelevantShopSchematics: docs_json_ts_0_5_2_1_overridable_mRelevantShopSchematics,
 };
 

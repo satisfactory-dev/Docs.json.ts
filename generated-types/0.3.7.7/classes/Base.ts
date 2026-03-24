@@ -15,6 +15,8 @@ import type {
 
 import type {
 	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
+	const_Miner as docs_json_ts_0_3_7_7_properties_const_Miner,
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
 	FGTrainPlatformConnection_quoted as docs_json_ts_0_3_7_7_properties_FGTrainPlatformConnection_quoted,
 	mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
@@ -731,7 +733,7 @@ type FGBuildableResourceExtractor_miner_base = {
 	mMinimumDrillTime_0?: docs_json_ts_common_types_decimal_string,
 	mMaximumDrillTime_0?: docs_json_ts_common_types_decimal_string,
 	mCanPlayAfterStartUpStopped?: docs_json_ts_common_types_bool_string,
-	mExtractorTypeName: 'Miner',
+	mExtractorTypeName: docs_json_ts_0_3_7_7_properties_const_Miner,
 	mAllowedResourceForms: [
 		'RF_SOLID',
 	],
@@ -775,7 +777,7 @@ type FGBuildableResourceExtractor_oil_base_base_base = {
 
 type FGBuildableResourceExtractor_only_allow_certain_resources = {
 	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
-	mExtractorTypeName: 'None' | 'Miner',
+	mExtractorTypeName: docs_json_ts_0_3_7_7_properties_const_None | docs_json_ts_0_3_7_7_properties_const_Miner,
 };
 
 type FGBuildableResourceExtractor_piped = {
@@ -804,7 +806,7 @@ type FGBuildableResourceExtractor_water_base_base_base = {
 	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
 	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
 	HasLostSignificance: docs_json_ts_common_types_bool_string,
-	mExtractorTypeName: 'None',
+	mExtractorTypeName: docs_json_ts_0_3_7_7_properties_const_None,
 	mAllowedResourceForms: [
 		'RF_LIQUID',
 	],
@@ -998,7 +1000,7 @@ type FGBuildableWire = docs_json_ts_common_classes_FGBuildableWire & FGBuildable
 type FGBuildableWire_base = {
 	mMaxLength: docs_json_ts_common_types_decimal_string,
 	mLengthPerCost: docs_json_ts_common_types_decimal_string,
-	mConnections: 'None',
+	mConnections: docs_json_ts_0_3_7_7_properties_const_None,
 };
 
 type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGDescriptor_BuildMenu;
@@ -1075,8 +1077,8 @@ type FGConveyorPoleStackable = docs_json_ts_common_classes_FGConveyorPoleStackab
 
 type FGDescriptor = {
 	mForm: docs_json_ts_0_3_7_7_properties_mForm,
-	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_Texture2D | 'None',
-	mSmallIcon: docs_json_ts_0_3_7_7_properties_Texture2D | 'None',
+	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
+	mSmallIcon: docs_json_ts_0_3_7_7_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
 };
 
 type FGDescriptor_base = {
@@ -1087,8 +1089,8 @@ type FGDescriptor_base = {
 	mEnergyValue: docs_json_ts_common_types_decimal_string,
 	mRadioactiveDecay: docs_json_ts_common_types_decimal_string,
 	mForm: `RF_${Exclude<string, ''>}`,
-	mSmallIcon: docs_json_ts_0_3_7_7_properties_Texture2D_base | 'None',
-	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_Texture2D_base | 'None',
+	mSmallIcon: docs_json_ts_0_3_7_7_properties_Texture2D_base | docs_json_ts_0_3_7_7_properties_const_None,
+	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_Texture2D_base | docs_json_ts_0_3_7_7_properties_const_None,
 	mFluidColor: docs_json_ts_common_types_BGRA,
 };
 
@@ -1175,7 +1177,7 @@ type FGEquipmentStunSpear_xenobasher = docs_json_ts_common_classes_FGEquipmentSt
 type FGEquipmentStunSpear_xenobasher_base = FGEquipment & FGEquipment_base & FGEquipmentStunSpear_base_pre_1_0 & FGEquipmentStunSpear_base_pre_update8 & FGEquipmentStunSpear_base_version_specific & FGEquipmentStunSpear_xenobasher_base_base & FGEquipmentStunSpear_xenobasher_version_specific;
 
 type FGEquipmentStunSpear_xenobasher_base_base = {
-	mCurrentMontageSection: 'None',
+	mCurrentMontageSection: docs_json_ts_0_3_7_7_properties_const_None,
 	mSecondAttackTimer: docs_json_ts_common_types_decimal_string,
 	mFirstAttackTimer: docs_json_ts_common_types_decimal_string,
 };

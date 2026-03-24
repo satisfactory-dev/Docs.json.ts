@@ -434,6 +434,10 @@ import type {
 } from './../0.3.7.7/classes/Base.overridable--1.1.2.2.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+} from './../0.3.7.7/types/properties.ts';
+
+import type {
 	FGJetPack_version_specific as docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific,
 } from './../0.7.1.1/classes/Base.1.1.2.2.ts';
 
@@ -624,7 +628,15 @@ type FGBuildableElevator_version_specific = {
 	mElevatorState: 'EES_NONE',
 };
 
-type FGBuildableElevatorFloorStop = docs_json_ts_0_3_7_7_classes_base_has_mSignificanceRange & docs_json_ts_common_classes_FGBuildableElevatorFloorStop & FGBuildable_base & FGBuildableElevatorFloorStop_version_specific;
+type FGBuildableElevatorFloorStop = docs_json_ts_0_3_7_7_classes_base_has_mSignificanceRange & docs_json_ts_common_classes_FGBuildableElevatorFloorStop & FGBuildable_base & FGBuildableElevatorFloorStop_pre_1_2 & FGBuildableElevatorFloorStop_version_specific;
+
+type FGBuildableElevatorFloorStop_pre_1_2 = {
+	mCachedFloorStopInfo: {
+		IconId: docs_json_ts_common_types_integer_string_signed,
+		IconColor: docs_json_ts_common_types_RGBA,
+		Height?: docs_json_ts_common_types_integer_string_signed,
+	},
+};
 
 type FGBuildableElevatorFloorStop_version_specific = {
 	Timeline_Offset_942DA00C47315AC741095991E04356D7: docs_json_ts_common_types_XYZ_decimal_string,
@@ -636,11 +648,6 @@ type FGBuildableElevatorFloorStop_version_specific = {
 	bIsSignificant: docs_json_ts_common_types_bool_string,
 	mFloorRelevantElevatorState: 'EES_NONE',
 	mCachedQueuedStatus: 'EEFSQS_None',
-	mCachedFloorStopInfo: {
-		IconId: docs_json_ts_common_types_integer_string_signed,
-		IconColor: docs_json_ts_common_types_RGBA,
-		Height?: docs_json_ts_common_types_integer_string_signed,
-	},
 };
 
 type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad_base_base_base & docs_json_ts_common_classes_FGBuildableFactory & FGBuildable_powered;
@@ -882,7 +889,7 @@ type FGCentralStorageContainer = docs_json_ts_1_0_1_4_classes_base_FGCentralStor
 type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & docs_json_ts_0_8_3_3_classes_base_FGChainsaw_version_specific & docs_json_ts_1_0_1_4_classes_base_FGChainsaw_version_specific & docs_json_ts_1_0_1_4_classes_base_FGEquipment & docs_json_ts_common_classes_FGChainsaw & FGChainsaw_version_specific & FGEquipment_pre_1_2 & FGEquipment_version_specific;
 
 type FGChainsaw_version_specific = {
-	CurrentState: 'None',
+	CurrentState: docs_json_ts_0_3_7_7_properties_const_None,
 	StateChanged: docs_json_ts_common_types_bool_string,
 };
 
@@ -999,6 +1006,7 @@ export type {
 	FGBuildableElevator,
 	FGBuildableElevator_version_specific,
 	FGBuildableElevatorFloorStop,
+	FGBuildableElevatorFloorStop_pre_1_2,
 	FGBuildableElevatorFloorStop_version_specific,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,

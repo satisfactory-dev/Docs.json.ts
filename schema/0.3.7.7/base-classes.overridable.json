@@ -120,8 +120,7 @@
 								"items": false,
 								"prefixItems": [
 									{
-										"type": "string",
-										"const": "None"
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 									}
 								]
 							}

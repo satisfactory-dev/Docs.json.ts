@@ -41,6 +41,7 @@ import type {
 } from './../../0.8.3.3/types/properties.1.0.1.4.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 } from './../../0.3.7.7/types/properties.ts';
 
@@ -132,7 +133,7 @@ type FGSchematic_has_mSchematicDependencies = {
 type FGTrainPlatformConnection_quoted = `/Script/FactoryGame.FGTrainPlatformConnection'/Game/FactoryGame${Exclude<string, ''>}${'\''}`;
 
 type IconID = {
-	IconLibrary: 'None',
+	IconLibrary: docs_json_ts_0_3_7_7_properties_const_None,
 	IconID?: docs_json_ts_common_types_integer_string_signed,
 };
 

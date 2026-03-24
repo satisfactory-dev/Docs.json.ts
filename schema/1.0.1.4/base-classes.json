@@ -3101,8 +3101,7 @@
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
 				"mSoftActivePrefabLayout": {
-					"type": "string",
-					"const": "None"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 				},
 				"mActivePrefabLayout": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
@@ -3600,8 +3599,7 @@
 				"mChristmasMaterial": {
 					"oneOf": [
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						},
 						{
 							"type": "string",
@@ -3612,8 +3610,7 @@
 				"mChristmasMaterial1P": {
 					"oneOf": [
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						},
 						{
 							"type": "string",
@@ -3731,8 +3728,7 @@
 				"mClassToScanFor": {
 					"oneOf": [
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						},
 						{
 							"type": "string",
@@ -3818,8 +3814,7 @@
 				"mSpentFuelClass": {
 					"oneOf": [
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/const--None"
 						},
 						{
 							"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/BlueprintGeneratedClass--single-quoted"

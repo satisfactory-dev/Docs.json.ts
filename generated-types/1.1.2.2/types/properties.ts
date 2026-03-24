@@ -53,6 +53,10 @@ import type {
 	AnimMontage_quoted as docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
 } from './../../0.3.7.7/types/overridable--1.1.2.2.ts';
 
+import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+} from './../../0.3.7.7/types/properties.ts';
+
 type mHologramOverrides_item = `/Script/FactoryGame.FGHologramOverride_ConveyorAttachment_FloorToLift'/Game/FactoryGame${Exclude<string, ''>}${'\''}`;
 
 type mPoleVariations_item = {
@@ -156,7 +160,7 @@ type Montages_item_Weight_Montage_1P_Montage_3P_Montage_Equipment_AudioEvent = {
 	AudioEvent: docs_json_ts_0_8_3_3_properties_overridable_DocsDotJson_AkAudioEvent_quoted_list_item,
 };
 
-type WidgetClass = 'None' | `/Game/FactoryGame/${'Buildable' | 'Interface'}${'/'}${Exclude<string, ''>}${'/Widget_'}${Exclude<string, ''>}${'.Widget_'}${Exclude<string, ''>}${'_C'}` | `/Game/FactoryGame/${'Buildable' | 'Interface'}${'/'}${Exclude<string, ''>}${'/BPW_'}${Exclude<string, ''>}${'.BPW_'}${Exclude<string, ''>}${'_C'}`;
+type WidgetClass = docs_json_ts_0_3_7_7_properties_const_None | `/Game/FactoryGame/${'Buildable' | 'Interface'}${'/'}${Exclude<string, ''>}${'/Widget_'}${Exclude<string, ''>}${'.Widget_'}${Exclude<string, ''>}${'_C'}` | `/Game/FactoryGame/${'Buildable' | 'Interface'}${'/'}${Exclude<string, ''>}${'/BPW_'}${Exclude<string, ''>}${'.BPW_'}${Exclude<string, ''>}${'_C'}`;
 
 export type {
 	mHologramOverrides_item,

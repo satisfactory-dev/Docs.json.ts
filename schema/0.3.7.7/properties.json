@@ -2,6 +2,14 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--properties",
 	"$defs": {
+		"const--Miner": {
+			"type": "string",
+			"const": "Miner"
+		},
+		"const--None": {
+			"type": "string",
+			"const": "None"
+		},
 		"mAbbreviatedDisplayName": {"type": "string"},
 		"mAllowedResourceForms": {
 			"oneOf": [

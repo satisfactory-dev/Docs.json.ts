@@ -406,6 +406,10 @@ import type {
 } from './../0.3.7.7/classes/Base.overridable--1.0.1.4.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+} from './../0.3.7.7/types/properties.ts';
+
+import type {
 	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
 } from './../0.4.2.11/types/overridable--1.0.1.4.ts';
 
@@ -923,7 +927,7 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWidgetSign_version_specific = {
 	mTextElementToLocDataMap: docs_json_ts_common_types_empty_object,
-	mSoftActivePrefabLayout: 'None',
+	mSoftActivePrefabLayout: docs_json_ts_0_3_7_7_properties_const_None,
 	mActivePrefabLayout: docs_json_ts_common_types_empty_object,
 	mGlobalPrefabIconElementSaveData: null,
 };
@@ -1021,8 +1025,8 @@ type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser
 
 type FGGolfCartDispenser_version_specific = {
 	mBuildDisqualifierText: Exclude<string, ''>,
-	mChristmasMaterial: 'None' | '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst.MI_ChrismasCart_Inst',
-	mChristmasMaterial1P: 'None' | '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst_1p.MI_ChrismasCart_Inst_1p',
+	mChristmasMaterial: docs_json_ts_0_3_7_7_properties_const_None | '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst.MI_ChrismasCart_Inst',
+	mChristmasMaterial1P: docs_json_ts_0_3_7_7_properties_const_None | '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst_1p.MI_ChrismasCart_Inst_1p',
 	mCartPlacementClearance: docs_json_ts_common_types_XYZ_decimal_string,
 	mCartPlacementDistance: docs_json_ts_common_types_decimal_string,
 };
@@ -1045,7 +1049,7 @@ type FGItemDescriptor_version_specific = {
 	mGasType: 'GT_NORMAL' | 'GT_ENERGY',
 	mIsAlienItem: docs_json_ts_common_types_bool_string,
 	mNeedsPickUpMarker: docs_json_ts_common_types_bool_string,
-	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/' | 'Prototype/WAT'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
+	mClassToScanFor: docs_json_ts_0_3_7_7_properties_const_None | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/' | 'Prototype/WAT'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
 		docs_json_ts_1_0_1_4_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
 		...docs_json_ts_1_0_1_4_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item[],
@@ -1057,7 +1061,7 @@ type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_s
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints & docs_json_ts_common_classes_FGItemDescriptorNuclearFuel & FGItemDescriptor_base & FGItemDescriptorNuclearFuel_version_specific;
 
 type FGItemDescriptorNuclearFuel_version_specific = {
-	mSpentFuelClass: 'None' | docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
+	mSpentFuelClass: docs_json_ts_0_3_7_7_properties_const_None | docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
 };
 
 type FGItemDescriptorPowerBoosterFuel = docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints & docs_json_ts_common_classes_FGItemDescriptorPowerBoosterFuel & FGItemDescriptor_base & FGItemDescriptorPowerBoosterFuel_version_specific;

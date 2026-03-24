@@ -242,6 +242,12 @@ import type {
 } from './../types/overridable.ts';
 
 import type {
+	const_None as docs_json_ts_0_3_7_7_properties_const_None,
+	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
+} from './../../0.3.7.7/types/properties.ts';
+
+import type {
 	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base,
 	FGSchematic_version_specific as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_version_specific,
 } from './Base.overridable.ts';
@@ -249,11 +255,6 @@ import type {
 import type {
 	isDescribed as docs_json_ts_common_classes_base_isDescribed,
 } from './../../common/classes/Base.ts';
-
-import type {
-	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
-} from './../../0.3.7.7/types/properties.ts';
 
 type has_mHasPower = {
 	mHasPower: docs_json_ts_common_types_bool_string,
@@ -722,8 +723,8 @@ type FGConsumableEquipment_version_specific = {
 type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mHeight & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & docs_json_ts_0_3_7_7_classes_base_has_mUseStaticHeight & docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_common_classes_FGConveyorPoleStackable & FGBuildable_base;
 
 type FGDescriptor = {
-	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
-	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
+	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
+	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | docs_json_ts_0_3_7_7_properties_const_None,
 };
 
 type FGDescriptor_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base & {
