@@ -135,7 +135,7 @@ async function generation_factory(
 		data: true,
 	},
 ): Promise<void> {
-	console.log(`Generating Version 1.0 ${lang}`);
+	console.log(`Generating Version 1.2 ${lang}`);
 
 	const ajv = new Ajv({strict: true, verbose: true});
 
