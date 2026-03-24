@@ -93,7 +93,19 @@ type VersionSpecificFilename<
 	LastBit extends ''|'.utf8',
 > = `Docs/${VersionSpecificBasename<Version, LastBit>}.json`;
 
-type filepath = `${string}/${Version}/${VersionSpecificFilename<Version, ''>}`;
+type filepath<
+	Version extends semver_full = semver_full,
+> = `${string}/${Version}/${VersionSpecificFilename<Version, ''>}`;
+
+type utf8path<
+	Version extends semver_full = semver_full,
+> = `${
+	string
+}/${
+	Version
+}/${
+	VersionSpecificFilename<Version, '.utf8'>
+}`;
 
 export type {
 	SupportedLang,
@@ -109,9 +121,9 @@ export class Utf16leJsonHandler<
 		...{[key: string]: unknown}[],
 	],
 > {
-	#filepath: filepath;
+	#filepath: filepath<Version>;
 
-	#utf8path: utf8path;
+	#utf8path: utf8path<Version>;
 
 	#validator: ValidateFunction<T>;
 
@@ -143,8 +155,10 @@ export class Utf16leJsonHandler<
 			utf8
 		}.json`;
 
-		this.#filepath = this.#filepath.replace(/\/\//g, '/') as filepath;
-		this.#utf8path = this.#utf8path.replace(/\/\//g, '/') as utf8path;
+		this.#filepath = this.#filepath
+			.replace(/\/\//g, '/') as filepath<Version>;
+		this.#utf8path = this.#utf8path
+			.replace(/\/\//g, '/') as utf8path<Version>;
 	}
 
 	async read(
