@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@satisfactory-dev/predicates.ts": "^0.2.2",
-    "@signpostmarv/json-schema-typescript-codegen": "^0.8.0",
+    "@signpostmarv/json-schema-typescript-codegen": "^0.8.1",
     "ajv": "^8.17.1"
   },
   "files": [
