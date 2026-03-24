@@ -1911,15 +1911,6 @@
 				}
 			]
 		},
-		"FGBuildableResourceExtractor--pre-1.2": {
-			"type": "object",
-			"required": ["mAllowedResourceForms"],
-			"properties": {
-				"mAllowedResourceForms": {
-					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAllowedResourceForms"
-				}
-			}
-		},
 		"FGBuildableResourceExtractor--base--version-specific--base": {
 			"type": "object",
 			"required": ["mTryFindMissingResource"],
@@ -2016,6 +2007,15 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
 				}
 			]
+		},
+		"FGBuildableResourceExtractor--pre-1.2": {
+			"type": "object",
+			"required": ["mAllowedResourceForms"],
+			"properties": {
+				"mAllowedResourceForms": {
+					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAllowedResourceForms"
+				}
+			}
 		},
 		"FGBuildableResourceExtractor--water": {
 			"allOf": [
@@ -2160,10 +2160,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base"

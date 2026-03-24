@@ -673,7 +673,7 @@ type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_has_mDisableAttachment
 
 type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_base & docs_json_ts_common_classes_FGBuildableResourceExtractor & FGBuildable_powered;
 
-type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update5 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mStorageInventorySize & docs_json_ts_0_3_7_7_classes_base_has_mNumCyclesForProductivity & docs_json_ts_common_classes_FGBuildableTradingPost & FGBuildable_powered & FGBuildableTradingPost_base & FGBuildableTradingPost_base_pre_1_0 & FGBuildableTradingPost_base_version_specific;
+type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update5 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_has_mStorageInventorySize & docs_json_ts_common_classes_FGBuildableTradingPost & FGBuildable_powered & FGBuildableTradingPost_base & FGBuildableTradingPost_base_pre_1_0 & FGBuildableTradingPost_base_version_specific;
 
 type FGBuildableTradingPost_base = {
 	mMamFreeText: 'Use MAM',
@@ -780,16 +780,16 @@ type FGHoverPack_pre_1_0 = {
 	m_PreviousHoverMode: 'HPM_Inactive',
 };
 
-type FGHoverPack_pre_update6 = {
-	mRailRoadSurfSpeed: docs_json_ts_common_types_decimal_string,
-	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
-};
-
 type FGHoverPack_pre_1_2 = {
 	ConnectionLocationUpdatedDelegate: docs_json_ts_common_types_empty_object,
 	mPowerCapacity: docs_json_ts_common_types_decimal_string,
 	mPowerDrainRate: docs_json_ts_common_types_decimal_string,
 	mCurrentPowerLevel: docs_json_ts_common_types_decimal_string,
+};
+
+type FGHoverPack_pre_update6 = {
+	mRailRoadSurfSpeed: docs_json_ts_common_types_decimal_string,
+	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
 };
 
 type FGHoverPack_version_specific = {
@@ -1080,8 +1080,8 @@ export type {
 	FGEquipmentZipline_version_specific,
 	FGHoverPack,
 	FGHoverPack_pre_1_0,
-	FGHoverPack_pre_update6,
 	FGHoverPack_pre_1_2,
+	FGHoverPack_pre_update6,
 	FGHoverPack_version_specific,
 	FGItemDescriptor,
 	FGItemDescriptorBiomass,

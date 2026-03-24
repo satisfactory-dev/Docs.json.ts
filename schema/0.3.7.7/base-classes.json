@@ -142,6 +142,15 @@
 				}
 			}
 		},
+		"has--mStorageInventorySize": {
+			"type": "object",
+			"required": ["mStorageInventorySize"],
+			"properties": {
+				"mStorageInventorySize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"has--mUseStaticHeight": {
 			"type": "object",
 			"required": ["mUseStaticHeight"],
@@ -3680,10 +3689,10 @@
 					"$ref": "#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
-					"$ref": "#/$defs/has--mStorageInventorySize"
+					"$ref": "#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
-					"$ref": "#/$defs/has--mNumCyclesForProductivity"
+					"$ref": "#/$defs/has--mStorageInventorySize"
 				}
 			]
 		},
@@ -3732,15 +3741,6 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Meshes--item"
 						}
 					}
-				}
-			}
-		},
-		"has--mStorageInventorySize": {
-			"type": "object",
-			"required": ["mStorageInventorySize"],
-			"properties": {
-				"mStorageInventorySize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},

@@ -2246,10 +2246,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTradingPost"
@@ -2764,18 +2764,6 @@
 				}
 			}
 		},
-		"FGHoverPack--pre-update6": {
-			"type": "object",
-			"required": ["mRailRoadSurfSpeed", "mRailroadSurfSensitivity"],
-			"properties": {
-				"mRailRoadSurfSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRailroadSurfSensitivity": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGHoverPack--pre-1.2": {
 			"type": "object",
 			"required": [
@@ -2795,6 +2783,18 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mCurrentPowerLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGHoverPack--pre-update6": {
+			"type": "object",
+			"required": ["mRailRoadSurfSpeed", "mRailroadSurfSensitivity"],
+			"properties": {
+				"mRailRoadSurfSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRailroadSurfSensitivity": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}

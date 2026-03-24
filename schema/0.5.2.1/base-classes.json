@@ -507,46 +507,15 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDockingStation"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableDockingStation--pre-1.2"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableDockingStation--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDockingStation--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--pre-1.2"
 				}
 			]
-		},
-		"FGBuildableDockingStation--pre-1.2": {
-			"type": "object",
-			"required": [
-				"mDockPosition",
-				"mMinimumDockingTime",
-				"mFuelInventorySizeX",
-				"mFuelInventorySizeY",
-				"mForceSignificance",
-				"mDockingVehicleStatistics"
-			],
-			"properties": {
-				"mDockPosition": {
-					"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
-				},
-				"mMinimumDockingTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFuelInventorySizeX": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mFuelInventorySizeY": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mForceSignificance": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mDockingVehicleStatistics": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
 		},
 		"FGBuildableDockingStation--base": {
 			"type": "object",
@@ -588,6 +557,37 @@
 					"$ref": "#/$defs/FGBuildable--docking-station"
 				}
 			]
+		},
+		"FGBuildableDockingStation--pre-1.2": {
+			"type": "object",
+			"required": [
+				"mDockPosition",
+				"mMinimumDockingTime",
+				"mFuelInventorySizeX",
+				"mFuelInventorySizeY",
+				"mForceSignificance",
+				"mDockingVehicleStatistics"
+			],
+			"properties": {
+				"mDockPosition": {
+					"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
+				},
+				"mMinimumDockingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelInventorySizeX": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mFuelInventorySizeY": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mForceSignificance": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mDockingVehicleStatistics": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
 		},
 		"FGBuildableDoor": {
 			"oneOf": [
@@ -2200,10 +2200,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mNumCyclesForProductivity"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStorageInventorySize"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base"

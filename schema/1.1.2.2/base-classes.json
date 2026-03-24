@@ -3056,16 +3056,16 @@
 		"FGCentralStorageContainer": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGCentralStorageContainer--version-specific"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage--base--base--base"
 				},
 				{
+					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGCentralStorageContainer--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGCentralStorageContainer"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"

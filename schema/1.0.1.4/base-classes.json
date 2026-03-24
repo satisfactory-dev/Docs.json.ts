@@ -3668,9 +3668,7 @@
 		},
 		"FGHoverPack--pre-1.2": {
 			"type": "object",
-			"required": [
-				"mLowBatteryWarningActive_SFX"
-			],
+			"required": ["mLowBatteryWarningActive_SFX"],
 			"properties": {
 				"mLowBatteryWarningActive_SFX": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
