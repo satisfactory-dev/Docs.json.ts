@@ -1,0 +1,352 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--1.2.1.0",
+	"type": "array",
+	"items": false,
+	"minItems": 114,
+	"maxItems": 114,
+	"prefixItems": [
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGItemDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGResourceDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWallLightweight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGRecipe"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGConsumableEquipment"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGEquipmentStunSpear"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGEquipmentDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGCustomizationRecipe"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGObjectScanner"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGItemDescriptorBiomass"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGConsumableDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildable"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildingDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGVehiclePathSegment"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGAmmoTypeProjectile"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableRailroadTrack"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableBeam"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGWeapon"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGAmmoTypeSpreadshot"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGAmmoTypeInstantHit"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGGasMask"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGSuitBase"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGJetPack"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGChargedWeapon"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableTradingPost"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePoleConveyor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePoleBase"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableConveyorBelt"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePowerPole"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWire"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGSchematic"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableStair"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWalkwayLightweight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWalkway"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWall"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePillarLightweight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFactory"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableGeneratorFuel"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableStorage"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableResourceExtractor"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGPortableMinerDispenser"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableManufacturer"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableSpaceElevator"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableCornerWall"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableDoor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFoundationLightweight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableRampLightweight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableLadder"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePipeReservoir"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePipelinePump"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePoleStackable"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePolePipe"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePassthrough"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGPipeHyperStart"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePipeHyperJunction"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePipeHyper"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePipelineJunction"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWaterPump"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableResourceSink"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableResourceSinkShop"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePipeline"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGItemDescriptorNuclearFuel"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableDroneStation"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGGolfCartDispenser"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGVehicleDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableLightSource"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFloodlight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableStackableShelf"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableCornerWallLightweight"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableElevatorFloorStop"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableElevator"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableLightsControlPanel"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableWidgetSign"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePassthroughPipeHyper"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableBarrierCorner"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableConveyorMonitor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFactoryBuilding"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableManufacturerVariablePower"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableConveyorLift"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGPowerShardDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFrackingExtractor"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFrackingActivator"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableGeneratorNuclear"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGChainsaw"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableSnowDispenser"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableSnowCannon"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableFactorySimpleProducer"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableMergerPriority"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableRadarTower"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGParachute"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableGeneratorGeoThermal"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableSplitterSmart"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePriorityPowerSwitch"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGJumpingStilts"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableCircuitSwitch"
+		},
+		{
+			"$ref": "docs.json.ts--1.1.2.2#/$defs/FGEquipmentZipline"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePowerBooster"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGCentralStorageContainer"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGItemDescriptorPowerBoosterFuel"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePortal"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePortalSatellite"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableBlueprintDesigner"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGHoverPack"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableRailroadSignal"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableRailroadAttachment"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableRailroadStation"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableTrainPlatformCargo"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableTrainPlatformEmpty"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableDockingStation"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildablePowerStorage"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableJumppad"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableMAM"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableAttachmentMerger"
+		},
+		{
+			"$ref": "docs.json.ts--1.2.0.0#/$defs/FGBuildableAttachmentSplitter"
+		}
+	]
+}

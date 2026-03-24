@@ -1,6 +1,9 @@
 import {
-	generation_factory,
+	generation_factory as generation_factory_00,
 } from './src/version-specific/1.2.0.0/generation_factory.ts';
+import {
+	generation_factory as generation_factory_10,
+} from './src/version-specific/1.2.1.0/generation_factory.ts';
 
 import {
 	is_supported,
@@ -28,7 +31,7 @@ if (!is_supported(lang)) {
 }
 
 const {
-	default: release_data,
+	default: release_data_00,
 } = await import(
 	`${import.meta.dirname}/data/1.2.0.0/Docs/${lang}.utf8.json`,
 	{
@@ -40,4 +43,19 @@ const {
 	default: unknown,
 };
 
-await generation_factory(release_data, lang, process_generation);
+await generation_factory_00(release_data_00, lang, process_generation);
+
+const {
+	default: release_data_10,
+} = await import(
+	`${import.meta.dirname}/data/1.2.1.0/Docs/${lang}.utf8.json`,
+	{
+		with: {
+			type: 'json',
+		},
+	},
+) as {
+	default: unknown,
+};
+
+await generation_factory_10(release_data_10, lang, process_generation);
