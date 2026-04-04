@@ -41,7 +41,7 @@ for (const [version, data] of [
 	[semver('0.8.3.3'), update8],
 	[semver('1.0.1.4'), version_1p0],
 	[semver('1.1.2.2'), version_1p1],
-]) {
+] as const) {
 	for (
 		const {
 			NativeClass,
