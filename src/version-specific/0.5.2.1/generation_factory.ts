@@ -51,6 +51,7 @@ import {
 } from '../../FilenameAdjuster.ts';
 
 import type {
+	handle_results_options,
 	processed_results,
 } from '../../printer-factory.ts';
 import {
@@ -79,6 +80,7 @@ async function generation_factory(
 		types: true,
 		data: true,
 	},
+	handle_results_options: handle_results_options = {},
 ): Promise<void> {
 	console.log('Generating Update 5');
 
@@ -153,7 +155,7 @@ async function generation_factory(
 		}
 	}
 
-	await handle_results(results);
+	await handle_results(results, handle_results_options);
 }
 
 export {

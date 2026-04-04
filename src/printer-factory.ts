@@ -20,6 +20,11 @@ import type {
 
 export type processed_results = Awaited<ReturnType<Printer['parse']>>[0][];
 
+export type handle_results_options = {
+	alternate_source?: string,
+	root_directory?: string,
+};
+
 export function printer_factory(adjuster: FilenameAdjuster): Printer {
 	const printer = new Printer({
 		data_filename_callback: (
@@ -79,7 +84,10 @@ export async function* get_results(
 
 export async function handle_results(
 	results: processed_results,
-	alternate_source: undefined | string = undefined,
+	{
+		alternate_source = undefined,
+		root_directory = undefined,
+	}: handle_results_options = {},
 ): Promise<void> {
 	const files = new Set<string>();
 
@@ -126,10 +134,12 @@ export async function handle_results(
 			);
 		}
 
-		const directory = dirname(result.filename);
+		const filename = `${root_directory || ''}${result.filename}`;
+
+		const directory = dirname(filename);
 		await mkdir(directory, {recursive: true});
 		await writeFile(
-			result.filename,
+			filename,
 			`/* eslint-disable @stylistic/max-len */${
 				'\n\n'
 			}${

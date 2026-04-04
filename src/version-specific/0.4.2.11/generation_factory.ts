@@ -47,6 +47,7 @@ import {
 } from '../../FilenameAdjuster.ts';
 
 import type {
+	handle_results_options,
 	processed_results,
 } from '../../printer-factory.ts';
 import {
@@ -75,6 +76,7 @@ async function generation_factory(
 		types: true,
 		data: true,
 	},
+	handle_results_options: handle_results_options = {},
 ): Promise<void> {
 	const ajv = new Ajv({strict: true, verbose: true});
 
@@ -146,7 +148,7 @@ async function generation_factory(
 		}
 	}
 
-	await handle_results(results);
+	await handle_results(results, handle_results_options);
 }
 
 export {
