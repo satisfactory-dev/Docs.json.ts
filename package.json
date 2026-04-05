@@ -47,6 +47,9 @@
     "./generated-types/*/types.ts",
     "./generated-types/*/types.js",
     "./generated-types/*/types.js.map",
+    "./generated-types/*/properties.ts",
+    "./generated-types/*/properties.js",
+    "./generated-types/*/properties.js.map",
     "./generated-types/*/Base.ts",
     "./generated-types/*/Base.js",
     "./generated-types/*/Base.js.map"
