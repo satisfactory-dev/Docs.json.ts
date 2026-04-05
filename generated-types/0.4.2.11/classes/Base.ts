@@ -240,11 +240,11 @@ import type {
 
 import type {
 	has_mBatteryClasses as docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses,
+	mUnlocks_item as docs_json_ts_0_4_2_11_overridable_mUnlocks_item,
 } from './../types/overridable.ts';
 
 import type {
 	const_None as docs_json_ts_0_3_7_7_properties_const_None,
-	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
 } from './../../0.3.7.7/types/properties.ts';
 
@@ -867,7 +867,7 @@ type FGSchematic_has_mTechTier = {
 
 type FGSchematic_has_mUnlocks = {
 	mUnlocks: [
-		...docs_json_ts_0_3_7_7_properties_mUnlocks_item_base[],
+		...docs_json_ts_0_4_2_11_overridable_mUnlocks_item[],
 	],
 };
 
