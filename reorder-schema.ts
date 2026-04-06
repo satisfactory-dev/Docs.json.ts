@@ -137,7 +137,7 @@ for await (const filepath of glob(`${import.meta.dirname}/schema/**/*.json`)) {
 	if (
 		'docs.json.ts--1.2.1.0' !== schema.$id
 	) {
-	sort_$defs(schema);
+		sort_$defs(schema);
 	}
 
 	let result = JSON.stringify(schema, null, '\t');
