@@ -1,16 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
-} from './../classes/overridable--0.8.3.3.ts';
-
-import type {
-	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
-	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
-} from './../classes.ts';
-
-import type {
 	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
@@ -47,37 +37,15 @@ import type {
 	mUnlocks_item_mEmotes as docs_json_ts_0_5_2_1_overridable_mUnlocks_item_mEmotes,
 } from './../../0.5.2.1/types/overridable--0.8.3.3.ts';
 
-type FGBuildingDescriptor = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildingDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
-		...docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor[],
-	],
-};
+import type {
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
+} from './../classes/overridable--0.8.3.3.ts';
 
-type FGResourceDescriptor = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGResourceDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGResourceDescriptor[],
-	],
-};
-
-type FGItemDescriptor = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptor[],
-	],
-};
-
-type FGItemDescriptorBiomass = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass[],
-	],
-};
+import type {
+	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
+	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
+} from './../classes.ts';
 
 type has_mSubCategories = {
 	mSubCategories: null | docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
@@ -118,6 +86,38 @@ type mUnlocks_item_mTapeUnlocks = {
 	mTapeUnlocks: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
+type FGBuildingDescriptor = {
+	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildingDescriptor'}${'\''}`,
+	Classes: [
+		docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
+		...docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor[],
+	],
+};
+
+type FGItemDescriptor = {
+	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptor'}${'\''}`,
+	Classes: [
+		docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
+		...docs_json_ts_0_6_1_5_classes_FGItemDescriptor[],
+	],
+};
+
+type FGItemDescriptorBiomass = {
+	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
+	Classes: [
+		docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
+		...docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass[],
+	],
+};
+
+type FGResourceDescriptor = {
+	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGResourceDescriptor'}${'\''}`,
+	Classes: [
+		docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
+		...docs_json_ts_0_6_1_5_classes_FGResourceDescriptor[],
+	],
+};
+
 type ItemClass_list = [
 	ItemClass_list_item,
 	...ItemClass_list_item[],
@@ -130,10 +130,6 @@ type ItemClass_list_item = {
 type Material_quoted = `/Script/Engine.Material'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 export type {
-	FGBuildingDescriptor,
-	FGResourceDescriptor,
-	FGItemDescriptor,
-	FGItemDescriptorBiomass,
 	has_mSubCategories,
 	mAlternativeMaterialRecipes_item,
 	mCompatibleItemDescriptors_item,
@@ -141,6 +137,10 @@ export type {
 	mMagazineMeshMaterials_item,
 	mUnlocks_item,
 	mUnlocks_item_mTapeUnlocks,
+	FGBuildingDescriptor,
+	FGItemDescriptor,
+	FGItemDescriptorBiomass,
+	FGResourceDescriptor,
 	ItemClass_list,
 	ItemClass_list_item,
 	Material_quoted,
