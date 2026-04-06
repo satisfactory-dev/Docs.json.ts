@@ -1,11 +1,11 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGBuildingDescriptor as docs_json_ts_0_6_1_5_FGBuildingDescriptor,
-	FGItemDescriptor as docs_json_ts_0_6_1_5_FGItemDescriptor,
-	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_FGItemDescriptorBiomass,
-	FGResourceDescriptor as docs_json_ts_0_6_1_5_FGResourceDescriptor,
-} from './../0.6.1.5/types.ts';
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_overridable_FGBuildingDescriptor,
+	FGItemDescriptor as docs_json_ts_0_6_1_5_overridable_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_overridable_FGItemDescriptorBiomass,
+	FGResourceDescriptor as docs_json_ts_0_6_1_5_overridable_FGResourceDescriptor,
+} from './../0.6.1.5/types/overridable--0.8.3.3.ts';
 
 import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C as docs_json_ts_0_8_3_3_classes_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
@@ -933,18 +933,18 @@ type FGWeapon = {
 };
 
 export type update8_docs = [
-	docs_json_ts_0_6_1_5_FGItemDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGItemDescriptor,
 	FGBuildableDroneStation,
 	FGCustomizationRecipe,
 	FGBuildableBlueprintDesigner,
-	docs_json_ts_0_6_1_5_FGBuildingDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGBuildingDescriptor,
 	FGRecipe,
 	FGSchematic,
 	FGBuildableWallLightweight,
 	FGBuildableWall,
 	FGBuildableDoor,
 	FGBuildableCornerWall,
-	docs_json_ts_0_6_1_5_FGResourceDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGResourceDescriptor,
 	FGBuildableRailroadTrack,
 	FGBuildable,
 	FGBuildablePoleLightweight,
@@ -968,7 +968,7 @@ export type update8_docs = [
 	FGBuildableWaterPump,
 	FGBuildableResourceSink,
 	FGBuildableResourceSinkShop,
-	docs_json_ts_0_6_1_5_FGItemDescriptorBiomass,
+	docs_json_ts_0_6_1_5_overridable_FGItemDescriptorBiomass,
 	FGBuildableResourceExtractor,
 	FGBuildableManufacturer,
 	FGPortableMinerDispenser,

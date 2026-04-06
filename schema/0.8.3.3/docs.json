@@ -1866,7 +1866,7 @@
 	"maxItems": 98,
 	"prefixItems": [
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGItemDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGItemDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableDroneStation"
@@ -1878,7 +1878,7 @@
 			"$ref": "#/$defs/FGBuildableBlueprintDesigner"
 		},
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGBuildingDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGBuildingDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGRecipe"
@@ -1899,7 +1899,7 @@
 			"$ref": "#/$defs/FGBuildableCornerWall"
 		},
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGResourceDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGResourceDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableRailroadTrack"
@@ -1971,7 +1971,7 @@
 			"$ref": "#/$defs/FGBuildableResourceSinkShop"
 		},
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGItemDescriptorBiomass"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGItemDescriptorBiomass"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableResourceExtractor"

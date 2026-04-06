@@ -2,6 +2,78 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.6.1.5--overridable",
 	"$defs": {
+		"FGBuildingDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildingDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGBuildingDescriptor"
+					}
+				}
+			}
+		},
+		"FGResourceDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGResourceDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGResourceDescriptor"
+					}
+				}
+			}
+		},
+		"FGItemDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
+					}
+				}
+			}
+		},
+		"FGItemDescriptorBiomass": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorBiomass"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptorBiomass"
+					}
+				}
+			}
+		},
 		"has--mSubCategories": {
 			"type": "object",
 			"required": ["mSubCategories"],

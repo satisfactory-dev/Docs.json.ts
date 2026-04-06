@@ -1313,7 +1313,7 @@
 	"maxItems": 96,
 	"prefixItems": [
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGItemDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGItemDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableDroneStation"
@@ -1328,10 +1328,10 @@
 			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGConsumableDescriptor"
 		},
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGItemDescriptorBiomass"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGItemDescriptorBiomass"
 		},
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGResourceDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGResourceDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableWallLightweight"
@@ -1349,7 +1349,7 @@
 			"$ref": "docs.json.ts--0.5.2.1#/$defs/FGCustomizationRecipe"
 		},
 		{
-			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGBuildingDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/FGBuildingDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableCornerWall"

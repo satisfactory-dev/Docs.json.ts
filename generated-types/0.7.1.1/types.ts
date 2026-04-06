@@ -1,10 +1,16 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_overridable_FGBuildingDescriptor,
+	FGItemDescriptor as docs_json_ts_0_6_1_5_overridable_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_overridable_FGItemDescriptorBiomass,
+	FGResourceDescriptor as docs_json_ts_0_6_1_5_overridable_FGResourceDescriptor,
+} from './../0.6.1.5/types/overridable.ts';
+
+import type {
 	FGAmmoTypeInstantHit as docs_json_ts_0_6_1_5_FGAmmoTypeInstantHit,
 	FGAmmoTypeProjectile as docs_json_ts_0_6_1_5_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_0_6_1_5_FGAmmoTypeSpreadshot,
-	FGBuildingDescriptor as docs_json_ts_0_6_1_5_FGBuildingDescriptor,
 	FGChainsaw as docs_json_ts_0_6_1_5_FGChainsaw,
 	FGChargedWeapon as docs_json_ts_0_6_1_5_FGChargedWeapon,
 	FGConsumableDescriptor as docs_json_ts_0_6_1_5_FGConsumableDescriptor,
@@ -15,8 +21,6 @@ import type {
 	FGGasMask as docs_json_ts_0_6_1_5_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_6_1_5_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_0_6_1_5_FGHoverPack,
-	FGItemDescriptor as docs_json_ts_0_6_1_5_FGItemDescriptor,
-	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_FGItemDescriptorNuclearFuel,
 	FGJumpingStilts as docs_json_ts_0_6_1_5_FGJumpingStilts,
 	FGObjectScanner as docs_json_ts_0_6_1_5_FGObjectScanner,
@@ -24,7 +28,6 @@ import type {
 	FGPoleDescriptor as docs_json_ts_0_6_1_5_FGPoleDescriptor,
 	FGPortableMinerDispenser as docs_json_ts_0_6_1_5_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_6_1_5_FGRecipe,
-	FGResourceDescriptor as docs_json_ts_0_6_1_5_FGResourceDescriptor,
 	FGSchematic as docs_json_ts_0_6_1_5_FGSchematic,
 	FGSuitBase as docs_json_ts_0_6_1_5_FGSuitBase,
 	FGVehicleDescriptor as docs_json_ts_0_6_1_5_FGVehicleDescriptor,
@@ -676,19 +679,19 @@ type FGPipeHyperStart = {
 };
 
 export type update7_docs = [
-	docs_json_ts_0_6_1_5_FGItemDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGItemDescriptor,
 	FGBuildableDroneStation,
 	docs_json_ts_0_6_1_5_FGConsumableEquipment,
 	docs_json_ts_0_6_1_5_FGSchematic,
 	docs_json_ts_0_6_1_5_FGConsumableDescriptor,
-	docs_json_ts_0_6_1_5_FGItemDescriptorBiomass,
-	docs_json_ts_0_6_1_5_FGResourceDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGItemDescriptorBiomass,
+	docs_json_ts_0_6_1_5_overridable_FGResourceDescriptor,
 	FGBuildableWallLightweight,
 	FGBuildableWall,
 	FGBuildableDoor,
 	docs_json_ts_0_6_1_5_FGRecipe,
 	docs_json_ts_0_5_2_1_FGCustomizationRecipe,
-	docs_json_ts_0_6_1_5_FGBuildingDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGBuildingDescriptor,
 	FGBuildableCornerWall,
 	FGBuildableRailroadTrack,
 	FGBuildableBlueprintDesigner,

@@ -1,6 +1,13 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_overridable_FGBuildingDescriptor,
+	FGItemDescriptor as docs_json_ts_0_6_1_5_overridable_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_overridable_FGItemDescriptorBiomass,
+	FGResourceDescriptor as docs_json_ts_0_6_1_5_overridable_FGResourceDescriptor,
+} from './types/overridable.ts';
+
+import type {
 	FGCustomizationRecipe as docs_json_ts_0_5_2_1_FGCustomizationRecipe,
 } from './../0.5.2.1/types.ts';
 
@@ -99,8 +106,6 @@ import type {
 	FGGasMask as docs_json_ts_0_6_1_5_classes_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_6_1_5_classes_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_0_6_1_5_classes_FGHoverPack,
-	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_classes_FGItemDescriptorNuclearFuel,
 	FGJetPack as docs_json_ts_0_6_1_5_classes_FGJetPack,
 	FGJumpingStilts as docs_json_ts_0_6_1_5_classes_FGJumpingStilts,
@@ -108,7 +113,6 @@ import type {
 	FGParachute as docs_json_ts_0_6_1_5_classes_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_6_1_5_classes_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_6_1_5_classes_FGPortableMinerDispenser,
-	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
 	FGSchematic as docs_json_ts_0_6_1_5_classes_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_6_1_5_classes_FGSchematic_with_described_unlocks,
 	FGSuitBase as docs_json_ts_0_6_1_5_classes_FGSuitBase,
@@ -117,7 +121,6 @@ import type {
 } from './classes.ts';
 
 import type {
-	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
 	FGConsumableDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGConsumableDescriptor,
 	FGEquipmentDescriptor_Desc_GolfCartGold_C as docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGPoleDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGPoleDescriptor,
@@ -662,14 +665,6 @@ type FGBuildableWire = {
 	],
 };
 
-type FGBuildingDescriptor = {
-	NativeClass: `Class'/Script/${'FactoryGame.FGBuildingDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
-		...docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor[],
-	],
-};
-
 type FGChainsaw = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGChainsaw'}${'\''}`,
 	Classes: [
@@ -761,22 +756,6 @@ type FGHoverPack = {
 	],
 };
 
-type FGItemDescriptor = {
-	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptor[],
-	],
-};
-
-type FGItemDescriptorBiomass = {
-	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass[],
-	],
-};
-
 type FGItemDescriptorNuclearFuel = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorNuclearFuel'}${'\''}`,
 	Classes: [
@@ -849,14 +828,6 @@ type FGRecipe = {
 	],
 };
 
-type FGResourceDescriptor = {
-	NativeClass: `Class'/Script/${'FactoryGame.FGResourceDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGResourceDescriptor[],
-	],
-};
-
 type FGSchematic = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGSchematic'}${'\''}`,
 	Classes: [
@@ -897,8 +868,8 @@ type FGWeapon = {
 };
 
 export type update6_docs = [
-	FGItemDescriptor,
-	FGResourceDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGItemDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGResourceDescriptor,
 	FGRecipe,
 	FGConsumableEquipment,
 	FGEquipmentDescriptor,
@@ -906,11 +877,11 @@ export type update6_docs = [
 	FGJetPack,
 	FGSchematic,
 	FGConsumableDescriptor,
-	FGItemDescriptorBiomass,
+	docs_json_ts_0_6_1_5_overridable_FGItemDescriptorBiomass,
 	FGBuildableWall,
 	FGBuildableDoor,
 	docs_json_ts_0_5_2_1_FGCustomizationRecipe,
-	FGBuildingDescriptor,
+	docs_json_ts_0_6_1_5_overridable_FGBuildingDescriptor,
 	FGBuildableCornerWall,
 	FGChainsaw,
 	FGItemDescriptorNuclearFuel,
@@ -1058,7 +1029,6 @@ export type {
 	FGBuildableWaterPump,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
-	FGBuildingDescriptor,
 	FGChainsaw,
 	FGChargedWeapon,
 	FGConsumableDescriptor,
@@ -1071,8 +1041,6 @@ export type {
 	FGGasMask,
 	FGGolfCartDispenser,
 	FGHoverPack,
-	FGItemDescriptor,
-	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGJetPack,
 	FGJumpingStilts,
@@ -1082,7 +1050,6 @@ export type {
 	FGPoleDescriptor,
 	FGPortableMinerDispenser,
 	FGRecipe,
-	FGResourceDescriptor,
 	FGSchematic,
 	FGSchematic_Classes_item,
 	FGSuitBase,
