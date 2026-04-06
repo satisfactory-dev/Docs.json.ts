@@ -134,7 +134,12 @@ for await (const filepath of glob(`${import.meta.dirname}/schema/**/*.json`)) {
 		(await readFile(filepath)).toString(),
 	) as SchemaObjectWith$id;
 
+	if (
+		'docs.json.ts--1.2.1.0' !== schema.$id
+	) {
 	sort_$defs(schema);
+	}
+
 	let result = JSON.stringify(schema, null, '\t');
 	result = result.replace(
 		/\{\s+"type": "string"\s+\}/g,
