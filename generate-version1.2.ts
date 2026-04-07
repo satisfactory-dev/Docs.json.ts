@@ -11,7 +11,13 @@ import {
 
 const [,, ...remaining] = process.argv;
 
-const lang = remaining.filter((maybe) => !maybe.startsWith('--'))[0];
+const not_flag = remaining.filter((maybe) => !maybe.startsWith('--'));
+
+const [lang, semver] = not_flag;
+
+if ('1.2.0.0' !== semver && '1.2.1.0' !== semver) {
+	throw new Error('Unexpected semver specified!');
+}
 
 const process_generation = {
 	types: true,
@@ -30,6 +36,7 @@ if (!is_supported(lang)) {
 	throw new Error('Unsupported language');
 }
 
+if ('1.2.0.0' === semver) {
 const {
 	default: release_data_00,
 } = await import(
@@ -44,7 +51,9 @@ const {
 };
 
 await generation_factory_00(release_data_00, lang, process_generation);
+}
 
+if ('1.2.1.0' === semver) {
 const {
 	default: release_data_10,
 } = await import(
@@ -59,3 +68,4 @@ const {
 };
 
 await generation_factory_10(release_data_10, lang, process_generation);
+}

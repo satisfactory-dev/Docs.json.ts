@@ -497,61 +497,121 @@ generate--version1_2--types:
 	@node ./prepare-1.2.0.0.ts en-US
 	@node ./prepare-1.2.1.0.ts en-US
 	@echo 'running generator'
-	@node ./generate-version1.2.ts en-US --skip-data
+	@node ./generate-version1.2.ts en-US --skip-data 1.2.0.0
+	@node ./generate-version1.2.ts en-US --skip-data 1.2.1.0
 
-generate--version1_2: generate--version1_2--types
-	@node ./generate-version1.2.ts af --skip-types
-	@node ./generate-version1.2.ts ar --skip-types
-	@node ./generate-version1.2.ts bg --skip-types
-	@node ./generate-version1.2.ts ca --skip-types
-	@node ./generate-version1.2.ts cs --skip-types
-	@node ./generate-version1.2.ts da --skip-types
-	@node ./generate-version1.2.ts de --skip-types
-	@node ./generate-version1.2.ts el --skip-types
-	@node ./generate-version1.2.ts en-AE --skip-types
-	@node ./generate-version1.2.ts en-AU --skip-types
-	@node ./generate-version1.2.ts en-CA --skip-types
-	@node ./generate-version1.2.ts en-GB --skip-types
-	@node ./generate-version1.2.ts en-US --skip-types
-	@node ./generate-version1.2.ts eo --skip-types
-	@node ./generate-version1.2.ts es-419 --skip-types
-	@node ./generate-version1.2.ts es-ES --skip-types
-	@node ./generate-version1.2.ts et --skip-types
-	@node ./generate-version1.2.ts fa --skip-types
-	@node ./generate-version1.2.ts fi --skip-types
-	@node ./generate-version1.2.ts fr --skip-types
-	@node ./generate-version1.2.ts he --skip-types
-	@node ./generate-version1.2.ts hi --skip-types
-	@node ./generate-version1.2.ts hr --skip-types
-	@node ./generate-version1.2.ts hu --skip-types
-	@node ./generate-version1.2.ts ia-001 --skip-types
-	@node ./generate-version1.2.ts id --skip-types
-	@node ./generate-version1.2.ts ie --skip-types
-	@node ./generate-version1.2.ts io --skip-types
-	@node ./generate-version1.2.ts it --skip-types
-	@node ./generate-version1.2.ts ja --skip-types
-	@node ./generate-version1.2.ts ko --skip-types
-	@node ./generate-version1.2.ts kw --skip-types
-	@node ./generate-version1.2.ts lb --skip-types
-	@node ./generate-version1.2.ts lt --skip-types
-	@node ./generate-version1.2.ts lv --skip-types
-	@node ./generate-version1.2.ts mt --skip-types
-	@node ./generate-version1.2.ts nl --skip-types
-	@node ./generate-version1.2.ts no --skip-types
-	@node ./generate-version1.2.ts pl --skip-types
-	@node ./generate-version1.2.ts pt-BR --skip-types
-	@node ./generate-version1.2.ts pt-PT --skip-types
-	@node ./generate-version1.2.ts ro --skip-types
-	@node ./generate-version1.2.ts ru --skip-types
-	@node ./generate-version1.2.ts sk --skip-types
-	@node ./generate-version1.2.ts sr-Cyrl --skip-types
-	@node ./generate-version1.2.ts sr-Latn --skip-types
-	@node ./generate-version1.2.ts sv --skip-types
-	@node ./generate-version1.2.ts th --skip-types
-	@node ./generate-version1.2.ts tr --skip-types
-	@node ./generate-version1.2.ts uk --skip-types
-	@node ./generate-version1.2.ts vi --skip-types
-	@node ./generate-version1.2.ts vo --skip-types
-	@node ./generate-version1.2.ts vun --skip-types
-	@node ./generate-version1.2.ts zh-Hans --skip-types
-	@node ./generate-version1.2.ts zh-Hant --skip-types
+generate--version_1_2: generate--version_1_2--types generate--version1_2_0_0 generate--version1_2_1_0
+
+generate--version1_2_0_0:
+	@node ./generate-version1.2.ts af --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ar --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts bg --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ca --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts cs --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts da --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts de --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts el --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts en-AE --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts en-AU --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts en-CA --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts en-GB --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts en-US --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts eo --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts es-419 --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts es-ES --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts et --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts fa --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts fi --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts fr --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts he --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts hi --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts hr --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts hu --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ia-001 --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts id --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ie --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts io --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts it --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ja --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ko --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts kw --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts lb --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts lt --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts lv --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts mt --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts nl --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts no --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts pl --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts pt-BR --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts pt-PT --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ro --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts ru --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts sk --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts sr-Cyrl --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts sr-Latn --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts sv --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts th --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts tr --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts uk --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts vi --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts vo --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts vun --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts zh-Hans --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts zh-Hant --skip-types 1.2.0.0
+
+generate--version1_2_1_0: generate--version1_2--types
+	@node ./generate-version1.2.ts af --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ar --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts bg --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ca --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts cs --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts da --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts de --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts el --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts en-AE --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts en-AU --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts en-CA --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts en-GB --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts en-US --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts eo --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts es-419 --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts es-ES --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts et --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts fa --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts fi --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts fr --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts he --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts hi --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts hr --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts hu --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ia-001 --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts id --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ie --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts io --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts it --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ja --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ko --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts kw --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts lb --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts lt --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts lv --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts mt --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts nl --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts no --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts pl --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts pt-BR --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts pt-PT --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ro --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts ru --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts sk --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts sr-Cyrl --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts sr-Latn --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts sv --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts th --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts tr --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts uk --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts vi --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts vo --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts vun --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts zh-Hans --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts zh-Hant --skip-types 1.2.1.0
