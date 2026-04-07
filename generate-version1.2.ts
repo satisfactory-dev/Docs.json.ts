@@ -37,35 +37,35 @@ if (!is_supported(lang)) {
 }
 
 if ('1.2.0.0' === semver) {
-const {
-	default: release_data_00,
-} = await import(
-	`${import.meta.dirname}/data/1.2.0.0/Docs/${lang}.utf8.json`,
-	{
-		with: {
-			type: 'json',
+	const {
+		default: release_data_00,
+	} = await import(
+		`${import.meta.dirname}/data/1.2.0.0/Docs/${lang}.utf8.json`,
+		{
+			with: {
+				type: 'json',
+			},
 		},
-	},
-) as {
-	default: unknown,
-};
+	) as {
+		default: unknown,
+	};
 
-await generation_factory_00(release_data_00, lang, process_generation);
+	await generation_factory_00(release_data_00, lang, process_generation);
 }
 
 if ('1.2.1.0' === semver) {
-const {
-	default: release_data_10,
-} = await import(
-	`${import.meta.dirname}/data/1.2.1.0/Docs/${lang}.utf8.json`,
-	{
-		with: {
-			type: 'json',
+	const {
+		default: release_data_10,
+	} = await import(
+		`${import.meta.dirname}/data/1.2.1.0/Docs/${lang}.utf8.json`,
+		{
+			with: {
+				type: 'json',
+			},
 		},
-	},
-) as {
-	default: unknown,
-};
+	) as {
+		default: unknown,
+	};
 
-await generation_factory_10(release_data_10, lang, process_generation);
+	await generation_factory_10(release_data_10, lang, process_generation);
 }
