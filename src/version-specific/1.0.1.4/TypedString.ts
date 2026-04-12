@@ -23,7 +23,7 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 import type {
-} from '@signpostmarv/json-schema-typescript-codegen/javascript-overrides';
+} from '@signpostmarv/js-types';
 
 import type {
 	TypedString_DataTo__by_mode as TypedString_DataTo__by_mode__update6,

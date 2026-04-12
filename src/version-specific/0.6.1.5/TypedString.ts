@@ -19,7 +19,7 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 import type {
-} from '@signpostmarv/json-schema-typescript-codegen/javascript-overrides';
+} from '@signpostmarv/js-types';
 
 import {
 	object_has_property,

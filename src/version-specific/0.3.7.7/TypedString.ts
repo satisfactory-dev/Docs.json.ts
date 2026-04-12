@@ -17,7 +17,7 @@ import {
 
 // required for type hinting on github actions checks
 import type {
-} from '@signpostmarv/json-schema-typescript-codegen/javascript-overrides';
+} from '@signpostmarv/js-types';
 
 import {
 	KeywordType,
