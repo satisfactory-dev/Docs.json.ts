@@ -20,12 +20,18 @@ lint--oxlint:
 lint: lint--prettier lint--tsc lint--oxlint
 
 .PHONY: tests
-tests: build
-	@node ./tests.ts
+tests:
+	@node --test
 
 .PHONY: coverage
 coverage: build
-	@./node_modules/.bin/c8 node ./tests.ts
+coverage: lint coverage--skip-lint
+
+coverage--skip-lint:
+	@node --experimental-test-coverage --test-coverage-include='${PWD}/src/**/*.ts' --test
+
+coverage--lcov:
+	@node --experimental-test-coverage --test-coverage-include='${PWD}/src/**/*.ts' --test --test-reporter=lcov --test-reporter-destination=coverage/lcov.info
 
 npm-prep: generate--types tests
 	@echo 'building from ./tsconfig.app-npm.json'
