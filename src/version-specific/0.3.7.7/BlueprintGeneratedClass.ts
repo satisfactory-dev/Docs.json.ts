@@ -21,9 +21,6 @@ import {
 	type StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
-import type {
-} from 'regexp.escape/auto';
-
 type BlueprintGeneratedClass_type = {
 	type: 'string',
 	DocsDotJson_BlueprintGeneratedClass: string|null,

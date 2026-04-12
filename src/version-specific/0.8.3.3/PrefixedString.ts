@@ -9,9 +9,6 @@ import type {
 	TemplatedStringParts,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
-import type {
-} from 'regexp.escape/auto';
-
 import {
 	PrefixedString_base,
 } from '../0.3.7.7/PrefixedString.ts';

@@ -25,9 +25,6 @@ import {
 	type StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
-import type {
-} from 'regexp.escape/auto';
-
 export type mode = (
 	| 'quoted'
 	| 'non_quoted'

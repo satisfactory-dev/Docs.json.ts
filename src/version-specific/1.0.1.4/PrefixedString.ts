@@ -3,9 +3,6 @@ import type {
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
-} from 'regexp.escape/auto';
-
-import type {
 	mode,
 } from '../0.3.7.7/PrefixedString.ts';
 
