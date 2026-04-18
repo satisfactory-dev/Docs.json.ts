@@ -134,6 +134,20 @@ export async function handle_results(
 			);
 		}
 
+		if (
+			result.filename.endsWith('data.ts')
+		) {
+			const check_docs = /export const ([^:]+): \1_docs =/.exec(code);
+
+			if (check_docs) {
+				code = `${code}\n\n${
+					`export default ${check_docs[1]};`
+				}\n`;
+			} else {
+				throw new Error('Could not extract const!');
+			}
+		}
+
 		const filename = `${root_directory || ''}${result.filename}`;
 
 		const directory = dirname(filename);
