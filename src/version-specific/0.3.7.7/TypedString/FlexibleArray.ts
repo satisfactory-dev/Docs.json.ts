@@ -1,15 +1,7 @@
 import type {
-	Is,
-} from '@satisfactory-dev/ajv-utilities';
-
-import type {
 	Expression,
 	TypeNode,
 } from 'typescript';
-
-import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
 
 import type {
 	array_mode,
@@ -62,18 +54,6 @@ export type FlexibleArray_DataTo = ArrayLiteralExpression<
 	[Expression, ...Expression[]],
 	true
 >;
-
-export function FlexibleArray_compile_validator<
-	ArrayMode extends array_mode = array_mode,
->(
-	ajv: Ajv,
-	mode: ArrayMode,
-): Is<FlexibleArray_type<ArrayMode>> {
-	return ajv.compile<FlexibleArray_type<ArrayMode>>({
-		items: FlexibleArray_generate_schema_definition__items(),
-		prefixItems: FlexibleArray_generate_schema_definition__prefixItems(),
-	}[mode]);
-}
 
 export function FlexibleArray_regex__items__inner(
 	items: FlexibleArray_type<'items'>['items'],

@@ -1,8 +1,4 @@
 import type {
-	Is,
-} from '@satisfactory-dev/ajv-utilities';
-
-import type {
 	NullLiteral,
 } from 'typescript';
 
@@ -13,10 +9,6 @@ import type {
 import {
 	factory,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
-
-import {
-	Empty,
-} from '../../../../generated-types/lib/0.3.7.7.ts';
 
 export type Empty_type = {
 	type: 'string',
@@ -33,10 +25,6 @@ export type Empty_DataTo = Identifier<'null'>;
 export type Empty_SchemaTo = LiteralTypeNode<NullLiteral>;
 
 export type Empty_TypeGenerator = undefined;
-
-export function Empty_compile_vaildator(): Is<Empty_type> {
-	return Empty;
-}
 
 export function Empty_generate_typescript_data(): Empty_DataTo {
 	return factory.createIdentifier('null');

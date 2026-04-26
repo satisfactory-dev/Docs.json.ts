@@ -39,7 +39,6 @@ import type {
 } from './TypedString/Empty.ts';
 import {
 	Empty_ajv_macro,
-	Empty_compile_vaildator,
 	Empty_generate_schema_definition,
 	Empty_generate_type_definition,
 	Empty_generate_typescript_data,
@@ -72,7 +71,6 @@ import type {
 import {
 	FlexibleArray_ajv_macro__items,
 	FlexibleArray_ajv_macro__prefixItems,
-	FlexibleArray_compile_validator,
 	FlexibleArray_generate_data,
 	FlexibleArray_generate_schema_definition__items,
 	FlexibleArray_generate_schema_definition__prefixItems,
@@ -113,6 +111,12 @@ import {
 import {
 	RefResolver,
 } from './TypedString/PropertySchemaToRegex/RefResolver.ts';
+
+import {
+	Empty,
+	PropertySchemaToRegex_FlexibleArray__items,
+	PropertySchemaToRegex_FlexibleArray__prefixItems,
+} from '../../../generated-types/lib/0.3.7.7.ts';
 
 export type TypedString_mode = (
 	| 'Empty'
@@ -223,12 +227,11 @@ export function compile_validators(ajv: Ajv): {
 	>
 } {
 	return {
-		Empty: Empty_compile_vaildator(),
+		Empty: Empty,
 		Object: Object_compile_validator(ajv),
-		FlexibleArray__items: FlexibleArray_compile_validator(ajv, 'items'),
-		FlexibleArray__prefixItems: FlexibleArray_compile_validator(
-			ajv,
-			'prefixItems',
+		FlexibleArray__items: PropertySchemaToRegex_FlexibleArray__items,
+		FlexibleArray__prefixItems: (
+			PropertySchemaToRegex_FlexibleArray__prefixItems
 		),
 	};
 }
