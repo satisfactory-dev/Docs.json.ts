@@ -122,11 +122,13 @@ const PrefixedString_schemas: {
 };
 
 const $ref_schema = {
+	// oxlint-disable-next-line @stylistic/max-len
 	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--$ref',
 	...$ref.generate_type_definition(),
 };
 
 const TemplatedString_schema = {
+	// oxlint-disable-next-line @stylistic/max-len
 	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TemplatedString',
 	...TemplatedString.generate_schema_definition(),
 };
