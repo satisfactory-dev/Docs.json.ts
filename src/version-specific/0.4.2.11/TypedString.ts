@@ -122,7 +122,7 @@ export function compile_validators(ajv: Ajv): {
 	>
 } {
 	return {
-		...compile_validators__update3(ajv),
+		...compile_validators__update3(),
 	};
 }
 

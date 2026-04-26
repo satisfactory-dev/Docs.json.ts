@@ -35,6 +35,9 @@ import type {
 import type {
 	Empty_type,
 } from '../../src/version-specific/0.3.7.7/TypedString/Empty.ts';
+import type {
+	Object_type,
+} from '../../src/version-specific/0.3.7.7/TypedString/Object.ts';
 function ajv_utiltiies__definitely_evaluated<T>(maybe: Is<T>): Exclude<Is<T>['evaluated'], undefined> {
 	if (undefined === maybe.evaluated)
 		throw new Error(`${maybe.name}.evaluated not set!`);
@@ -4949,3 +4952,47 @@ function validate33(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	return errors === 0;
 }
 (validate33 as Is).evaluated = { dynamicProps: true, dynamicItems: false };
+export const ObjectSchema = validate34;
+const schema45 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.3.7.7--TypedString--Object', type: 'object', required: ['type'] as const, properties: { type: { type: 'string', const: 'object' } } };
+function validate34(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
+	rootData: unknown,
+}> = {}): data is Object_type {
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--Object" */
+	let vErrors: ErrorObject[] = [];
+	let errors = 0;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate34);
+	if (evaluated0?.dynamicProps) {
+		evaluated0.props = undefined;
+	}
+	if (evaluated0?.dynamicItems) {
+		evaluated0.items = undefined;
+	}
+	if (ajv_utilities__is_probably_object(data)) {
+		if (data.type === undefined) {
+			const err0: ErrorObject = { instancePath, schemaPath: '#/required', keyword: 'required', params: { missingProperty: 'type' }, message: 'must have required property \'' + 'type' + '\'', schema: schema45.required, parentSchema: schema45, data };
+			vErrors.push(err0);
+			errors++;
+		}
+		if (data.type !== undefined) {
+			let data0 = data.type;
+			if (typeof data0 !== 'string') {
+				const err1: ErrorObject = { instancePath: instancePath + '/type', schemaPath: '#/properties/type/type', keyword: 'type', params: { type: 'string' }, message: 'must be string', schema: schema45.properties.type.type, parentSchema: schema45.properties.type, data: data0 };
+				vErrors.push(err1);
+				errors++;
+			}
+			if ('object' !== data0) {
+				const err2: ErrorObject = { instancePath: instancePath + '/type', schemaPath: '#/properties/type/const', keyword: 'const', params: { allowedValue: 'object' }, message: 'must be equal to constant', schema: 'object', parentSchema: schema45.properties.type, data: data0 };
+				vErrors.push(err2);
+				errors++;
+			}
+		}
+	} else {
+		const err3: ErrorObject = { instancePath, schemaPath: '#/type', keyword: 'type', params: { type: 'object' }, message: 'must be object', schema: schema45.type, parentSchema: schema45, data };
+		vErrors.push(err3);
+		errors++;
+	}
+	(validate34 as Is).errors = vErrors.length ? vErrors : null;
+
+	return errors === 0;
+}
+(validate34 as Is).evaluated = { props: { type: true }, dynamicProps: false, dynamicItems: false };

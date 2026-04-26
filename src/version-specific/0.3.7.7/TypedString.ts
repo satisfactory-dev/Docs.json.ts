@@ -55,7 +55,6 @@ import type {
 } from './TypedString/Object.ts';
 import {
 	Object_ajv_macro,
-	Object_compile_validator,
 	Object_generate_schema_definition,
 	Object_generate_type_definition,
 	Object_generate_typescript_data,
@@ -114,6 +113,7 @@ import {
 
 import {
 	Empty,
+	ObjectSchema,
 	PropertySchemaToRegex_FlexibleArray__items,
 	PropertySchemaToRegex_FlexibleArray__prefixItems,
 } from '../../../generated-types/lib/0.3.7.7.ts';
@@ -221,14 +221,14 @@ export type Type_Generator__by_mode = {
 	Object: Object_TypeGenerator,
 };
 
-export function compile_validators(ajv: Ajv): {
+export function compile_validators(): {
 	[key in TypedString_mode]: Is<
 		TypedString_type<key>['typed_string']
 	>
 } {
 	return {
 		Empty: Empty,
-		Object: Object_compile_validator(ajv),
+		Object: ObjectSchema,
 		FlexibleArray__items: PropertySchemaToRegex_FlexibleArray__items,
 		FlexibleArray__prefixItems: (
 			PropertySchemaToRegex_FlexibleArray__prefixItems
@@ -502,7 +502,7 @@ export class TypedString<
 			},
 		},
 	) {
-		const mode_from_schema = compile_validators(options.ajv);
+		const mode_from_schema = compile_validators();
 
 		const entries = Object.entries(mode_from_schema);
 

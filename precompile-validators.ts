@@ -46,6 +46,10 @@ import Empty from './schema/lib/0.3.7.7/TypedString/Empty.schema.json' with {
 	type: 'json',
 };
 
+import ObjectSchema from './schema/lib/0.3.7.7/TypedString/Object.schema.json' with {
+	type: 'json',
+};
+
 import {
 	FlexibleArray_generate_schema_definition__items,
 	FlexibleArray_generate_schema_definition__prefixItems,
@@ -163,6 +167,7 @@ const ajv = new Ajv2020({
 		$ref_schema,
 		TemplatedString_schema,
 		Empty,
+		ObjectSchema,
 	],
 });
 
@@ -200,6 +205,7 @@ const code = `// oxlint-disable @stylistic/max-len${
 			PropertySchemaToRegex_ref: $ref_schema.$id,
 			PropertySchemaToRegex_TemplatedString: TemplatedString_schema.$id,
 			Empty: Empty.$id,
+			ObjectSchema: ObjectSchema.$id,
 		}),
 		{
 			remove_dataCtxKeys: {
@@ -285,6 +291,12 @@ const code = `// oxlint-disable @stylistic/max-len${
 					'rootData',
 					'dynamicAnchors',
 				],
+				[ObjectSchema.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
 			},
 			specify_types: {
 				[ConstString.$id]: [
@@ -365,6 +377,10 @@ const code = `// oxlint-disable @stylistic/max-len${
 				[Empty.$id]: [
 					'Empty_type',
 					'../../src/version-specific/0.3.7.7/TypedString/Empty.ts',
+				],
+				[ObjectSchema.$id]: [
+					'Object_type',
+					'../../src/version-specific/0.3.7.7/TypedString/Object.ts',
 				],
 			},
 		},
