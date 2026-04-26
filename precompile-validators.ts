@@ -42,6 +42,10 @@ import PatternString from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRege
 	type: 'json',
 };
 
+import Empty from './schema/lib/0.3.7.7/TypedString/Empty.schema.json' with {
+	type: 'json',
+};
+
 import {
 	FlexibleArray_generate_schema_definition__items,
 	FlexibleArray_generate_schema_definition__prefixItems,
@@ -158,6 +162,7 @@ const ajv = new Ajv2020({
 		PrefixedString_schemas.version_specific_default,
 		$ref_schema,
 		TemplatedString_schema,
+		Empty,
 	],
 });
 
@@ -194,6 +199,7 @@ const code = `// oxlint-disable @stylistic/max-len${
 
 			PropertySchemaToRegex_ref: $ref_schema.$id,
 			PropertySchemaToRegex_TemplatedString: TemplatedString_schema.$id,
+			Empty: Empty.$id,
 		}),
 		{
 			remove_dataCtxKeys: {
@@ -273,6 +279,12 @@ const code = `// oxlint-disable @stylistic/max-len${
 					'parentData',
 					'parentDataProperty',
 				],
+				[Empty.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
 			},
 			specify_types: {
 				[ConstString.$id]: [
@@ -349,6 +361,10 @@ const code = `// oxlint-disable @stylistic/max-len${
 				[TemplatedString_schema.$id]: [
 					'templated_string_type',
 					'@signpostmarv/json-schema-typescript-codegen/ajv',
+				],
+				[Empty.$id]: [
+					'Empty_type',
+					'../src/version-specific/0.3.7.7/TypedString/Empty.ts',
 				],
 			},
 		},

@@ -3,10 +3,6 @@ import type {
 } from '@satisfactory-dev/ajv-utilities';
 
 import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
-import type {
 	NullLiteral,
 } from 'typescript';
 
@@ -17,6 +13,10 @@ import type {
 import {
 	factory,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+
+import {
+	Empty,
+} from '../../../../generated-types/lib.ts';
 
 export type Empty_type = {
 	type: 'string',
@@ -34,36 +34,8 @@ export type Empty_SchemaTo = LiteralTypeNode<NullLiteral>;
 
 export type Empty_TypeGenerator = undefined;
 
-export function Empty_compile_vaildator(
-	ajv: Ajv,
-): Is<Empty_type> {
-	return ajv.compile<
-		Empty_type
-	>(
-		{
-			oneOf: [
-				{
-					type: 'object',
-					additionalProperties: false,
-					required: ['type', 'const'],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'string',
-						},
-						const: {
-							type: 'string',
-							const: '',
-						},
-					},
-				},
-				{
-					type: 'string',
-					const: '',
-				},
-			],
-		},
-	);
+export function Empty_compile_vaildator(): Is<Empty_type> {
+	return Empty;
 }
 
 export function Empty_generate_typescript_data(): Empty_DataTo {

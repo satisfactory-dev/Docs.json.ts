@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--lib--0.3.7.7--TypedString--Empty",
+	"oneOf": [
+		{
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["type", "const"],
+			"properties": {
+				"type": {
+					"type": "string",
+					"const": "string"
+				},
+				"const": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		{
+			"type": "string",
+			"const": ""
+		}
+	]
+}

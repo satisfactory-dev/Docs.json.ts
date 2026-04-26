@@ -32,6 +32,9 @@ import type {
 import type {
 	templated_string_type,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
+import type {
+	Empty_type,
+} from '../src/version-specific/0.3.7.7/TypedString/Empty.ts';
 function ajv_utilities__is_probably_object(maybe: unknown): maybe is Record<string, unknown> {
 	return !!maybe && typeof maybe === 'object' && !Array.isArray(maybe);
 }
@@ -4821,3 +4824,122 @@ function validate32(data: unknown, { instancePath = '', rootData = data, dynamic
 	return errors === 0;
 }
 (validate32 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+export const Empty = validate33;
+const schema44 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.3.7.7--TypedString--Empty', oneOf: [{ type: 'object', additionalProperties: false, required: ['type', 'const'] as const, properties: { type: { type: 'string', const: 'string' }, const: { type: 'string', const: '' } } }, { type: 'string', const: '' }] as const };
+function validate33(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
+	rootData: unknown,
+}> = {}): data is Empty_type {
+	let props0: (true | {
+		type?: true,
+	} | undefined) = undefined;
+
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--Empty" */
+	let vErrors: ErrorObject[] = [];
+	let errors = 0;
+	const evaluated0 = (validate33 as Is).evaluated;
+	if (evaluated0?.dynamicProps) {
+		evaluated0.props = undefined;
+	}
+	if (evaluated0?.dynamicItems) {
+		evaluated0.items = undefined;
+	}
+	const _errs0 = errors;
+	let valid0 = false;
+	let passing0 = null;
+	const _errs1 = errors;
+	if (ajv_utilities__is_probably_object(data)) {
+		if (data.type === undefined) {
+			const err0: ErrorObject = { instancePath, schemaPath: '#/oneOf/0/required', keyword: 'required', params: { missingProperty: 'type' }, message: 'must have required property \'' + 'type' + '\'', schema: schema44.oneOf[0].required, parentSchema: schema44.oneOf[0], data };
+			vErrors.push(err0);
+			errors++;
+		}
+		if (data.const === undefined) {
+			const err1: ErrorObject = { instancePath, schemaPath: '#/oneOf/0/required', keyword: 'required', params: { missingProperty: 'const' }, message: 'must have required property \'' + 'const' + '\'', schema: schema44.oneOf[0].required, parentSchema: schema44.oneOf[0], data };
+			vErrors.push(err1);
+			errors++;
+		}
+		for (const key0 in data) {
+			if (!((key0 === 'type') || (key0 === 'const'))) {
+				const err2: ErrorObject = { instancePath, schemaPath: '#/oneOf/0/additionalProperties', keyword: 'additionalProperties', params: { additionalProperty: key0 }, message: 'must NOT have additional properties', schema: false, parentSchema: schema44.oneOf[0], data };
+				vErrors.push(err2);
+				errors++;
+			}
+		}
+		if (data.type !== undefined) {
+			let data0 = data.type;
+			if (typeof data0 !== 'string') {
+				const err3: ErrorObject = { instancePath: instancePath + '/type', schemaPath: '#/oneOf/0/properties/type/type', keyword: 'type', params: { type: 'string' }, message: 'must be string', schema: schema44.oneOf[0].properties.type.type, parentSchema: schema44.oneOf[0].properties.type, data: data0 };
+				vErrors.push(err3);
+				errors++;
+			}
+			if ('string' !== data0) {
+				const err4: ErrorObject = { instancePath: instancePath + '/type', schemaPath: '#/oneOf/0/properties/type/const', keyword: 'const', params: { allowedValue: 'string' }, message: 'must be equal to constant', schema: 'string', parentSchema: schema44.oneOf[0].properties.type, data: data0 };
+				vErrors.push(err4);
+				errors++;
+			}
+		}
+		if (data.const !== undefined) {
+			let data1 = data.const;
+			if (typeof data1 !== 'string') {
+				const err5: ErrorObject = { instancePath: instancePath + '/const', schemaPath: '#/oneOf/0/properties/const/type', keyword: 'type', params: { type: 'string' }, message: 'must be string', schema: schema44.oneOf[0].properties.const.type, parentSchema: schema44.oneOf[0].properties.const, data: data1 };
+				vErrors.push(err5);
+				errors++;
+			}
+			if ('' !== data1) {
+				const err6: ErrorObject = { instancePath: instancePath + '/const', schemaPath: '#/oneOf/0/properties/const/const', keyword: 'const', params: { allowedValue: '' }, message: 'must be equal to constant', schema: '', parentSchema: schema44.oneOf[0].properties.const, data: data1 };
+				vErrors.push(err6);
+				errors++;
+			}
+		}
+	} else {
+		const err7: ErrorObject = { instancePath, schemaPath: '#/oneOf/0/type', keyword: 'type', params: { type: 'object' }, message: 'must be object', schema: schema44.oneOf[0].type, parentSchema: schema44.oneOf[0], data };
+		vErrors.push(err7);
+		errors++;
+	}
+	var _valid0 = _errs1 === errors;
+	if (_valid0) {
+		valid0 = true;
+		passing0 = 0;
+		props0 = true;
+	}
+	const _errs8 = errors;
+	if (typeof data !== 'string') {
+		const err8: ErrorObject = { instancePath, schemaPath: '#/oneOf/1/type', keyword: 'type', params: { type: 'string' }, message: 'must be string', schema: schema44.oneOf[1].type, parentSchema: schema44.oneOf[1], data };
+		vErrors.push(err8);
+		errors++;
+	}
+	if ('' !== data) {
+		const err9: ErrorObject = { instancePath, schemaPath: '#/oneOf/1/const', keyword: 'const', params: { allowedValue: '' }, message: 'must be equal to constant', schema: '', parentSchema: schema44.oneOf[1], data };
+		vErrors.push(err9);
+		errors++;
+	}
+	var _valid0 = _errs8 === errors;
+	if (_valid0 && valid0) {
+		valid0 = false;
+		passing0 = [passing0, 1];
+	} else {
+		if (_valid0) {
+			valid0 = true;
+			passing0 = 1;
+		}
+	}
+	if (!valid0) {
+		const err10: ErrorObject = { instancePath, schemaPath: '#/oneOf', keyword: 'oneOf', params: { passingSchemas: passing0 }, message: 'must match exactly one schema in oneOf', schema: schema44.oneOf, parentSchema: schema44, data };
+		vErrors.push(err10);
+		errors++;
+	} else {
+		errors = _errs0;
+		if (vErrors.length) {
+			if (_errs0) {
+				vErrors.length = _errs0;
+			} else {
+				vErrors = [];
+			}
+		}
+	}
+	(validate33 as Is).errors = vErrors.length ? vErrors : null;
+	evaluated0.props = props0;
+
+	return errors === 0;
+}
+(validate33 as Is).evaluated = { dynamicProps: true, dynamicItems: false };

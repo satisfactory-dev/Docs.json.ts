@@ -223,7 +223,7 @@ export function compile_validators(ajv: Ajv): {
 	>
 } {
 	return {
-		Empty: Empty_compile_vaildator(ajv),
+		Empty: Empty_compile_vaildator(),
 		Object: Object_compile_validator(ajv),
 		FlexibleArray__items: FlexibleArray_compile_validator(ajv, 'items'),
 		FlexibleArray__prefixItems: FlexibleArray_compile_validator(
