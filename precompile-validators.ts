@@ -23,17 +23,17 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import standaloneCode from 'ajv/dist/standalone/index.js';
 
 // oxlint-disable-next-line @stylistic/max-len
-import ConstString from './schema/lib/PropertySchemaToRegex/ConstString.schema.json' with {
+import ConstString from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/ConstString.schema.json' with {
 	type: 'json',
 };
 
 // oxlint-disable-next-line @stylistic/max-len
-import EnumString from './schema/lib/PropertySchemaToRegex/EnumString.schema.json' with {
+import EnumString from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/EnumString.schema.json' with {
 	type: 'json',
 };
 
 // oxlint-disable-next-line @stylistic/max-len
-import NamedList from './schema/lib/PropertySchemaToRegex/NamedList.schema.json' with {
+import NamedList from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/NamedList.schema.json' with {
 	type: 'json',
 };
 
@@ -43,7 +43,7 @@ import {
 } from './src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts';
 
 // oxlint-disable-next-line @stylistic/max-len
-import PatternString from './schema/lib/PropertySchemaToRegex/PatternString.schema.json' with {
+import PatternString from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.schema.json' with {
 	type: 'json',
 };
 import {
