@@ -11,7 +11,7 @@ import {
 
 import {
 	PropertySchemaToRegex_TemplatedString,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export function TemplatedStringMatcher() {
 	return new PropertySchemaToRegex<templated_string_type>(

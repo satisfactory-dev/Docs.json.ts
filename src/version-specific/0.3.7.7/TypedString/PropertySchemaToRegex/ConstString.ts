@@ -4,7 +4,7 @@ import {
 
 import {
 	PropertySchemaToRegex_ConstString,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export type ConstString = {type: 'string', const: string};
 

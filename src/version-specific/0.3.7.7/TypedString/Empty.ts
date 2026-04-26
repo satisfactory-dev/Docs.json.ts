@@ -16,7 +16,7 @@ import {
 
 import {
 	Empty,
-} from '../../../../generated-types/lib.ts';
+} from '../../../../generated-types/lib/0.3.7.7.ts';
 
 export type Empty_type = {
 	type: 'string',

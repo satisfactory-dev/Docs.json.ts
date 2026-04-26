@@ -626,4 +626,4 @@ precompile-validators:
 	@node ./precompile-validators.ts
 
 precompile-validators--oxlint:
-	@./node_modules/.bin/oxlint --fix ./generated-types/lib.ts
+	@./node_modules/.bin/oxlint --fix ./generated-types/lib/*.ts

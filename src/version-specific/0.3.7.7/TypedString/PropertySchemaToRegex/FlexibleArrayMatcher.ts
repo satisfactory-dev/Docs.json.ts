@@ -13,7 +13,7 @@ import {
 import {
 	PropertySchemaToRegex_FlexibleArray__items,
 	PropertySchemaToRegex_FlexibleArray__prefixItems,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export function FlexibleArrayMatcher__items(
 	matchers: PropertySchemaToRegex<unknown>[],

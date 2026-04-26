@@ -7,25 +7,25 @@ import type {
 } from '@satisfactory-dev/ajv-utilities';
 import type {
 	ConstString,
-} from '../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/ConstString.ts';
+} from '../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/ConstString.ts';
 import type {
 	EnumString,
-} from '../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/EnumString.ts';
+} from '../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/EnumString.ts';
 import type {
 	NamedList_type,
-} from '../src/version-specific/0.3.7.7/NamedList.ts';
+} from '../../src/version-specific/0.3.7.7/NamedList.ts';
 import type {
 	FlexibleArray_type,
-} from '../src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts';
+} from '../../src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts';
 import type {
 	PatternString_type,
-} from '../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.ts';
+} from '../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.ts';
 import type {
 	TypedString_Object_type,
-} from '../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/Object.ts';
+} from '../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/Object.ts';
 import type {
 	PrefixedString_type,
-} from '../src/version-specific/0.3.7.7/PrefixedString.ts';
+} from '../../src/version-specific/0.3.7.7/PrefixedString.ts';
 import type {
 	$ref_type,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -34,7 +34,7 @@ import type {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 import type {
 	Empty_type,
-} from '../src/version-specific/0.3.7.7/TypedString/Empty.ts';
+} from '../../src/version-specific/0.3.7.7/TypedString/Empty.ts';
 function ajv_utilities__is_probably_object(maybe: unknown): maybe is Record<string, unknown> {
 	return !!maybe && typeof maybe === 'object' && !Array.isArray(maybe);
 }

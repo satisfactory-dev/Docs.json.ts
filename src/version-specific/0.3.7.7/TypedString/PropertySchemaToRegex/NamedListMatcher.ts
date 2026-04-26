@@ -11,7 +11,7 @@ import {
 
 import {
 	PropertySchemaToRegex_NamedList,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export function NamedListMatcher() {
 	return new PropertySchemaToRegex<NamedList_type>(

@@ -12,7 +12,7 @@ import {
 
 import {
 	PropertySchemaToRegex_TypedString_object,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export type TypedString_Object_type = {
 	type: 'string',

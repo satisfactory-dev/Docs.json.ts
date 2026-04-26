@@ -291,59 +291,59 @@ const code = `// oxlint-disable @stylistic/max-len${
 					'ConstString',
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/ConstString.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/ConstString.ts',
 				],
 				[EnumString.$id]: [
 					'EnumString',
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/EnumString.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/EnumString.ts',
 				],
 				[NamedList.$id]: [
 					'NamedList_type',
-					'../src/version-specific/0.3.7.7/NamedList.ts',
+					'../../src/version-specific/0.3.7.7/NamedList.ts',
 				],
 				[FlexibleArray__items.$id]: [
 					{name: 'FlexibleArray_type', args: ['items']},
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts',
 				],
 				[FlexibleArray__prefixItems.$id]: [
 					{name: 'FlexibleArray_type', args: ['prefixItems']},
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts',
 				],
 				[PatternString.$id]: [
 					'PatternString_type',
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.ts',
 				],
 				[TypedString_object_schema.$id]: [
 					'TypedString_Object_type',
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/Object.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/PropertySchemaToRegex/Object.ts',
 				],
 				[PrefixedString_schemas.non_quoted.$id]: [
 					{name: 'PrefixedString_type', args: ['non_quoted']},
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/PrefixedString.ts',
+					'../../src/version-specific/0.3.7.7/PrefixedString.ts',
 				],
 				[PrefixedString_schemas.quoted.$id]: [
 					{name: 'PrefixedString_type', args: ['quoted']},
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/PrefixedString.ts',
+					'../../src/version-specific/0.3.7.7/PrefixedString.ts',
 				],
 				[PrefixedString_schemas.single_quoted.$id]: [
 					{name: 'PrefixedString_type', args: ['single_quoted']},
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/PrefixedString.ts',
+					'../../src/version-specific/0.3.7.7/PrefixedString.ts',
 				],
 				[PrefixedString_schemas.version_specific_default.$id]: [
 					{
@@ -352,7 +352,7 @@ const code = `// oxlint-disable @stylistic/max-len${
 					},
 
 					// oxlint-disable-next-line @stylistic/max-len
-					'../src/version-specific/0.3.7.7/PrefixedString.ts',
+					'../../src/version-specific/0.3.7.7/PrefixedString.ts',
 				],
 				[$ref_schema.$id]: [
 					'$ref_type',
@@ -364,7 +364,7 @@ const code = `// oxlint-disable @stylistic/max-len${
 				],
 				[Empty.$id]: [
 					'Empty_type',
-					'../src/version-specific/0.3.7.7/TypedString/Empty.ts',
+					'../../src/version-specific/0.3.7.7/TypedString/Empty.ts',
 				],
 			},
 		},
@@ -374,6 +374,6 @@ const code = `// oxlint-disable @stylistic/max-len${
 await writeFile(
 	`${
 		import.meta.dirname
-	}/generated-types/lib.ts`,
+	}/generated-types/lib/0.3.7.7.ts`,
 	code,
 );

@@ -19,7 +19,7 @@ import {
 	PropertySchemaToRegex_PrefixedString_quoted,
 	PropertySchemaToRegex_PrefixedString_single_quoted,
 	PropertySchemaToRegex_PrefixedString_version_specific_default,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 const PrefixedString_schemas: {
 	[key in mode]: Is<

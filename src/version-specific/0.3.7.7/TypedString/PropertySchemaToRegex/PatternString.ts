@@ -4,7 +4,7 @@ import {
 
 import {
 	PropertySchemaToRegex_PatternString,
-} from '../../../../../generated-types/lib.ts';
+} from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export type PatternString_type = {
 	type: 'string',
