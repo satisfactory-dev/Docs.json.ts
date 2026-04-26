@@ -35,6 +35,12 @@ import type {
 import type {
 	Empty_type,
 } from '../../src/version-specific/0.3.7.7/TypedString/Empty.ts';
+function ajv_utiltiies__definitely_evaluated<T>(maybe: Is<T>): Exclude<Is<T>['evaluated'], undefined> {
+	if (undefined === maybe.evaluated)
+		throw new Error(`${maybe.name}.evaluated not set!`);
+
+	return maybe.evaluated;
+}
 function ajv_utilities__is_probably_object(maybe: unknown): maybe is Record<string, unknown> {
 	return !!maybe && typeof maybe === 'object' && !Array.isArray(maybe);
 }
@@ -53,7 +59,7 @@ function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--ConstString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate20 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate20);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -118,7 +124,7 @@ function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--EnumString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate21 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate21);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -224,7 +230,7 @@ function validate22(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--NamedList" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate22 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate22);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -299,7 +305,7 @@ function validate23(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--items" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate23 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate23);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -805,7 +811,7 @@ function validate24(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--prefixItems" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate24 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate24);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -1338,7 +1344,7 @@ function validate25(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PatternString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate25 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate25);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -1427,7 +1433,7 @@ function validate26(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TypedString--object" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate26 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate26);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -2358,7 +2364,7 @@ function validate27(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate27 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate27);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -2894,7 +2900,7 @@ function validate28(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--quoted" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate28 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate28);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -3430,7 +3436,7 @@ function validate29(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate29 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate29);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -3966,7 +3972,7 @@ function validate30(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate30 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate30);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -4492,7 +4498,7 @@ function validate31(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--$ref" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate31 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate31);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -4562,7 +4568,7 @@ function validate32(data: unknown, { instancePath = '', rootData = data, dynamic
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TemplatedString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate32 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate32);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
@@ -4836,7 +4842,7 @@ function validate33(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--Empty" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
-	const evaluated0 = (validate33 as Is).evaluated;
+	const evaluated0 = ajv_utiltiies__definitely_evaluated(validate33);
 	if (evaluated0?.dynamicProps) {
 		evaluated0.props = undefined;
 	}
