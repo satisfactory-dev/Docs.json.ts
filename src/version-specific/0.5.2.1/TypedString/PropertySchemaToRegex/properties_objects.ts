@@ -1,8 +1,4 @@
 import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
-import type {
 	Object_type,
 } from '../../../0.3.7.7/TypedString/Object.ts';
 import {
@@ -21,15 +17,15 @@ import {
 } from '../../../../../generated-types/lib/0.5.2.1.ts';
 
 export type properties_object_type = {
-		$ref: `${(
-			| 'docs.json.ts--0.5.2.1--properties#/$defs'
-		)}/${(
-			| 'mDisableSnapOn--bottom'
-			| 'mDisableSnapOn--top'
-			| 'mDockingRuleSet'
-			| 'FalloffCurve--EditorCurveData--only'
-			| 'FalloffCurve--EditorCurveData--with-ExternalCurve'
-		)}`,
+	$ref: `${(
+		| 'docs.json.ts--0.5.2.1--properties#/$defs'
+	)}/${(
+		| 'mDisableSnapOn--bottom'
+		| 'mDisableSnapOn--top'
+		| 'mDockingRuleSet'
+		| 'FalloffCurve--EditorCurveData--only'
+		| 'FalloffCurve--EditorCurveData--with-ExternalCurve'
+	)}`,
 };
 
 export function properties_objects(

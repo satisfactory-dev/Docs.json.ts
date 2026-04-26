@@ -14,11 +14,11 @@ import {
 } from '../../../../../generated-types/lib/0.5.2.1.ts';
 
 export type OneOf_type = {
-		oneOf: [
-			SchemaObject,
-			SchemaObject,
-			...SchemaObject[],
-		],
+	oneOf: [
+		SchemaObject,
+		SchemaObject,
+		...SchemaObject[],
+	],
 };
 
 export function OneOfMatcher(
