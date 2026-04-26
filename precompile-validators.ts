@@ -50,9 +50,11 @@ import {
 	Object_generate_schema_definition,
 } from './src/version-specific/0.3.7.7/TypedString/Object.ts';
 
+import type {
+	mode as PrefixedString_mode,
+} from './src/version-specific/0.3.7.7/PrefixedString.ts';
 import {
 	PrefixedString,
-	type mode as PrefixedString_mode,
 } from './src/version-specific/0.3.7.7/PrefixedString.ts';
 
 const FlexibleArray__items = {
