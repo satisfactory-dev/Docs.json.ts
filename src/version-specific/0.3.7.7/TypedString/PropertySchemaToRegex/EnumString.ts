@@ -7,8 +7,8 @@ import {
 } from '../../../../../generated-types/lib/0.3.7.7.ts';
 
 export type EnumString = {
-		type: 'string',
-		enum: [string, string, ...string[]],
+	type: 'string',
+	enum: [string, string, ...string[]],
 };
 
 export function EnumString() {
