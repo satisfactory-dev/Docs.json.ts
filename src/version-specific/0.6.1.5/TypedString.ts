@@ -115,13 +115,13 @@ type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = TypedString_SchemaTo__by_mode[Mode];
 
-export function compile_validators(ajv: Ajv): {
+export function compile_validators(): {
 	[key in TypedString_mode]: Is<
 		TypedString_type<key>['typed_string']
 	>
 } {
 	return {
-		...compile_validators__update5(ajv),
+		...compile_validators__update5(),
 	};
 }
 
@@ -268,7 +268,7 @@ export class TypedString<
 			},
 		},
 	) {
-		const mode_from_schema = compile_validators(options.ajv);
+		const mode_from_schema = compile_validators();
 
 		const entries = Object.entries(mode_from_schema);
 

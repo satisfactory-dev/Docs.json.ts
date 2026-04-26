@@ -266,7 +266,7 @@ export class TypedString<
 			},
 		},
 	) {
-		const mode_from_schema = compile_validators(options.ajv);
+		const mode_from_schema = compile_validators();
 
 		const entries = Object.entries(mode_from_schema);
 

@@ -46,6 +46,7 @@ import Empty from './schema/lib/0.3.7.7/TypedString/Empty.schema.json' with {
 	type: 'json',
 };
 
+// oxlint-disable-next-line @stylistic/max-len
 import ObjectSchema from './schema/lib/0.3.7.7/TypedString/Object.schema.json' with {
 	type: 'json',
 };
