@@ -56,18 +56,20 @@ import {
 } from './src/version-specific/0.3.7.7/PrefixedString.ts';
 
 const FlexibleArray__items = {
-	$id: 'docs.json.ts--lib--PropertySchemaToRegex--FlexibleArray--items',
+	// oxlint-disable-next-line @stylistic/max-len
+	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--items',
 	...FlexibleArray_generate_schema_definition__items(),
 };
 
 const FlexibleArray__prefixItems = {
-// oxlint-disable-next-line @stylistic/max-len
-	$id: 'docs.json.ts--lib--PropertySchemaToRegex--FlexibleArray--prefixItems',
+	// oxlint-disable-next-line @stylistic/max-len
+	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--prefixItems',
 	...FlexibleArray_generate_schema_definition__prefixItems(),
 };
 
 const TypedString_object_schema = {
-	$id: 'docs.json.ts--lib--PropertySchemaToRegex--TypedString--object',
+	// oxlint-disable-next-line @stylistic/max-len
+	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TypedString--object',
 	type: 'object',
 	additionalProperties: false,
 	required: ['type', 'typed_string'],
@@ -89,28 +91,28 @@ const PrefixedString_schemas: {
 } = {
 	non_quoted: {
 		// oxlint-disable-next-line @stylistic/max-len
-		$id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--non_quoted',
+		$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted',
 		...PrefixedString.generate_schema_definition({
 			mode: 'non_quoted',
 		}),
 	},
 	quoted: {
 		// oxlint-disable-next-line @stylistic/max-len
-		$id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--quoted',
+		$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--quoted',
 		...PrefixedString.generate_schema_definition({
 			mode: 'quoted',
 		}),
 	},
 	single_quoted: {
 		// oxlint-disable-next-line @stylistic/max-len
-		$id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--single_quoted',
+		$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted',
 		...PrefixedString.generate_schema_definition({
 			mode: 'single_quoted',
 		}),
 	},
 	version_specific_default: {
 		// oxlint-disable-next-line @stylistic/max-len
-		$id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--version_specific_default',
+		$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default',
 		...PrefixedString.generate_schema_definition({
 			mode: 'version_specific_default',
 		}),
@@ -118,12 +120,12 @@ const PrefixedString_schemas: {
 };
 
 const $ref_schema = {
-	$id: 'docs.json.ts--lib--PropertySchemaToRegex--$ref',
+	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--$ref',
 	...$ref.generate_type_definition(),
 };
 
 const TemplatedString_schema = {
-	$id: 'docs.json.ts--lib--PropertySchemaToRegex--TemplatedString',
+	$id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TemplatedString',
 	...TemplatedString.generate_schema_definition(),
 };
 

@@ -43,11 +43,11 @@ import {
 	ucs2length,
 } from '@satisfactory-dev/ajv-utilities/ajv';
 export const PropertySchemaToRegex_ConstString = validate20;
-const schema31 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--PropertySchemaToRegex--ConstString', type: 'object', additionalProperties: false, required: ['type', 'const'] as const, properties: { type: { type: 'string', const: 'string' }, const: { type: 'string' } } };
+const schema31 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--ConstString', type: 'object', additionalProperties: false, required: ['type', 'const'] as const, properties: { type: { type: 'string', const: 'string' }, const: { type: 'string' } } };
 function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is ConstString {
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--ConstString" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--ConstString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate20 as Is).evaluated;
@@ -107,12 +107,12 @@ function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate20 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_EnumString = validate21;
-const schema32 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--PropertySchemaToRegex--EnumString', type: 'object', additionalProperties: false, required: ['type', 'enum'] as const, properties: { type: { type: 'string', const: 'string' }, enum: { type: 'array', minItems: 2, uniqueItems: true, items: { type: 'string', minLength: 1 } } } };
+const schema32 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--EnumString', type: 'object', additionalProperties: false, required: ['type', 'enum'] as const, properties: { type: { type: 'string', const: 'string' }, enum: { type: 'array', minItems: 2, uniqueItems: true, items: { type: 'string', minLength: 1 } } } };
 const func1 = ucs2length;
 function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is EnumString {
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--EnumString" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--EnumString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate21 as Is).evaluated;
@@ -214,11 +214,11 @@ function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate21 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_NamedList = validate22;
-const schema33 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--PropertySchemaToRegex--NamedList', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_named_list'] as const, properties: { type: { type: 'string', const: 'string' }, DocsDotJson_named_list: { type: 'string' } } };
+const schema33 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--NamedList', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_named_list'] as const, properties: { type: { type: 'string', const: 'string' }, DocsDotJson_named_list: { type: 'string' } } };
 function validate22(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is NamedList_type {
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--NamedList" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--NamedList" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate22 as Is).evaluated;
@@ -278,7 +278,7 @@ function validate22(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate22 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_FlexibleArray__items = validate23;
-const schema34 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--FlexibleArray--items', type: 'object', additionalProperties: false, required: ['type', 'items', 'minItems', 'uniqueItems'] as const, properties: { $schema: { type: 'string', enum: ['https://json-schema.org/draft/2020-12/schema'] as const }, $id: { type: 'string', minLength: 1 }, type: { type: 'string', const: 'array' }, uniqueItems: { type: 'boolean', const: true }, $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, minItems: { type: 'integer', minimum: 0 }, maxItems: { type: 'integer', minimum: 0 }, items: {} } };
+const schema34 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--items', type: 'object', additionalProperties: false, required: ['type', 'items', 'minItems', 'uniqueItems'] as const, properties: { $schema: { type: 'string', enum: ['https://json-schema.org/draft/2020-12/schema'] as const }, $id: { type: 'string', minLength: 1 }, type: { type: 'string', const: 'array' }, uniqueItems: { type: 'boolean', const: true }, $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, minItems: { type: 'integer', minimum: 0 }, maxItems: { type: 'integer', minimum: 0 }, items: {} } };
 const pattern4 = new RegExp('^(.+)?#\\/\\$defs\\/(.+)$', 'u');
 function validate23(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
@@ -293,7 +293,7 @@ function validate23(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--FlexibleArray--items" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--items" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate23 as Is).evaluated;
@@ -784,7 +784,7 @@ function validate23(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate23 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_FlexibleArray__prefixItems = validate24;
-const schema35 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--FlexibleArray--prefixItems', type: 'object', additionalProperties: false, required: ['type', 'items', 'prefixItems'] as const, properties: { $schema: { type: 'string', enum: ['https://json-schema.org/draft/2020-12/schema'] as const }, $id: { type: 'string', minLength: 1 }, type: { type: 'string', const: 'array' }, uniqueItems: { type: 'boolean', const: false }, $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, minItems: { type: 'integer', minimum: 0 }, maxItems: { type: 'integer', minimum: 1 }, items: { type: 'boolean', const: false }, prefixItems: { type: 'array', minItems: 1, items: { type: 'object', minProperties: 1 } } } };
+const schema35 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--prefixItems', type: 'object', additionalProperties: false, required: ['type', 'items', 'prefixItems'] as const, properties: { $schema: { type: 'string', enum: ['https://json-schema.org/draft/2020-12/schema'] as const }, $id: { type: 'string', minLength: 1 }, type: { type: 'string', const: 'array' }, uniqueItems: { type: 'boolean', const: false }, $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, minItems: { type: 'integer', minimum: 0 }, maxItems: { type: 'integer', minimum: 1 }, items: { type: 'boolean', const: false }, prefixItems: { type: 'array', minItems: 1, items: { type: 'object', minProperties: 1 } } } };
 const func6 = { call: (instance: object, property: string) => Object.prototype.hasOwnProperty.call(instance, property) };
 function validate24(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
@@ -799,7 +799,7 @@ function validate24(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--FlexibleArray--prefixItems" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--FlexibleArray--prefixItems" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate24 as Is).evaluated;
@@ -1327,12 +1327,12 @@ function validate24(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate24 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PatternString = validate25;
-const schema36 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--PropertySchemaToRegex--PatternString', type: 'object', additionalProperties: false, required: ['type', 'pattern'] as const, properties: { type: { type: 'string', const: 'string' }, pattern: { type: 'string', pattern: '^\\^.+\\$$' } } };
+const schema36 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PatternString', type: 'object', additionalProperties: false, required: ['type', 'pattern'] as const, properties: { type: { type: 'string', const: 'string' }, pattern: { type: 'string', pattern: '^\\^.+\\$$' } } };
 const pattern8 = new RegExp('^\\^.+\\$$', 'u');
 function validate25(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is PatternString_type {
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--PatternString" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PatternString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate25 as Is).evaluated;
@@ -1398,7 +1398,7 @@ function validate25(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate25 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_TypedString_object = validate26;
-const schema37 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--TypedString--object', type: 'object', additionalProperties: false, required: ['type', 'typed_string'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, typed_string: { type: 'object', required: ['type', 'properties'] as const, additionalProperties: false, properties: { $schema: { type: 'string', enum: ['https://json-schema.org/draft/2020-12/schema'] as const }, $id: { type: 'string', minLength: 1 }, $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'object' }, $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' }, additionalProperties: { type: 'boolean' }, unevaluatedProperties: { type: 'boolean' }, required: { type: 'array', minItems: 1, items: { type: 'string', minLength: 1 } }, properties: { type: 'object', minProperties: 1, additionalProperties: { type: 'object' } } } } } };
+const schema37 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TypedString--object', type: 'object', additionalProperties: false, required: ['type', 'typed_string'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, typed_string: { type: 'object', required: ['type', 'properties'] as const, additionalProperties: false, properties: { $schema: { type: 'string', enum: ['https://json-schema.org/draft/2020-12/schema'] as const }, $id: { type: 'string', minLength: 1 }, $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'object' }, $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' }, additionalProperties: { type: 'boolean' }, unevaluatedProperties: { type: 'boolean' }, required: { type: 'array', minItems: 1, items: { type: 'string', minLength: 1 } }, properties: { type: 'object', minProperties: 1, additionalProperties: { type: 'object' } } } } } };
 function validate26(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is TypedString_Object_type {
@@ -1421,7 +1421,7 @@ function validate26(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--TypedString--object" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TypedString--object" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate26 as Is).evaluated;
@@ -2338,7 +2338,7 @@ function validate26(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate26 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_non_quoted = validate27;
-const schema38 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--non_quoted', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
+const schema38 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
 function validate27(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is PrefixedString_type<'non_quoted'> {
@@ -2352,7 +2352,7 @@ function validate27(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--non_quoted" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate27 as Is).evaluated;
@@ -2874,7 +2874,7 @@ function validate27(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate27 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_quoted = validate28;
-const schema39 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--quoted', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
+const schema39 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--quoted', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
 function validate28(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is PrefixedString_type<'quoted'> {
@@ -2888,7 +2888,7 @@ function validate28(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--quoted" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--quoted" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate28 as Is).evaluated;
@@ -3410,7 +3410,7 @@ function validate28(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate28 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_single_quoted = validate29;
-const schema40 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--single_quoted', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
+const schema40 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
 function validate29(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is PrefixedString_type<'single_quoted'> {
@@ -3424,7 +3424,7 @@ function validate29(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--single_quoted" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate29 as Is).evaluated;
@@ -3946,7 +3946,7 @@ function validate29(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate29 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_version_specific_default = validate30;
-const schema41 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--version_specific_default', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
+const schema41 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const } } } } };
 function validate30(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is PrefixedString_type<'version_specific_default'> {
@@ -3960,7 +3960,7 @@ function validate30(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 			type?: true,
 		} | undefined) = undefined;
 
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--PrefixedString--version_specific_default" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate30 as Is).evaluated;
@@ -4482,11 +4482,11 @@ function validate30(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate30 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_ref = validate31;
-const schema42 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--$ref', type: 'object', required: ['$ref'] as const, additionalProperties: false, properties: { $defs: { type: 'object', additionalProperties: { type: 'object' } }, $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } };
+const schema42 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--$ref', type: 'object', required: ['$ref'] as const, additionalProperties: false, properties: { $defs: { type: 'object', additionalProperties: { type: 'object' } }, $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } };
 function validate31(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is $ref_type {
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--$ref" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--$ref" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate31 as Is).evaluated;
@@ -4551,12 +4551,12 @@ function validate31(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 }
 (validate31 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_TemplatedString = validate32;
-const schema43 = { $id: 'docs.json.ts--lib--PropertySchemaToRegex--TemplatedString', type: 'object', required: ['type', 'templated_string'] as const, additionalProperties: false, properties: { $defs: { type: 'object', additionalProperties: { type: 'object' } }, type: { type: 'string', const: 'string' }, templated_string: { type: 'array', minItems: 1, items: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'object', const: { type: 'string' } }, { type: 'object', const: { type: 'string', minLength: 1 } }, { type: 'array', minItems: 2, items: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'object', const: { type: 'string' } }] as const } }, { $ref: '#' }] as const } } } };
+const schema43 = { $id: 'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TemplatedString', type: 'object', required: ['type', 'templated_string'] as const, additionalProperties: false, properties: { $defs: { type: 'object', additionalProperties: { type: 'object' } }, type: { type: 'string', const: 'string' }, templated_string: { type: 'array', minItems: 1, items: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'object', const: { type: 'string' } }, { type: 'object', const: { type: 'string', minLength: 1 } }, { type: 'array', minItems: 2, items: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'object', const: { type: 'string' } }] as const } }, { $ref: '#' }] as const } } } };
 const func0 = fast_deep_equal;
 function validate32(data: unknown, { instancePath = '', rootData = data, dynamicAnchors = {} }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
 	rootData: unknown,
 }> = {}): data is templated_string_type {
-	/* # sourceURL="docs.json.ts--lib--PropertySchemaToRegex--TemplatedString" */
+	/* # sourceURL="docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--TemplatedString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
 	const evaluated0 = (validate32 as Is).evaluated;

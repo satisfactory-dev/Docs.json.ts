@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "docs.json.ts--lib--PropertySchemaToRegex--EnumString",
+	"$id": "docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--EnumString",
 	"type": "object",
 	"additionalProperties": false,
 	"required": ["type", "enum"],
