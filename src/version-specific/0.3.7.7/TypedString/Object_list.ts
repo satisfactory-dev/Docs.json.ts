@@ -1,11 +1,14 @@
 import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
 import type {
 	PropertyAssignment,
 } from 'typescript';
+
+import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import {
 	is_non_empty_array,
@@ -105,7 +108,7 @@ export type Object_list_TypeGenerator = (
 
 export function Object_list_compile_validator(
 	ajv: Ajv,
-): ValidateFunction<Object_list_type> {
+): Is<Object_list_type> {
 	return ajv.compile<
 		Object_list_type
 	>(

@@ -1,6 +1,6 @@
 import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import {
 	PropertySchemaToRegex,
@@ -14,15 +14,34 @@ import {
 	PrefixedString as PrefixedStringType,
 } from '../../PrefixedString.ts';
 
+import {
+	PropertySchemaToRegex_PrefixedString_non_quoted,
+	PropertySchemaToRegex_PrefixedString_quoted,
+	PropertySchemaToRegex_PrefixedString_single_quoted,
+	PropertySchemaToRegex_PrefixedString_version_specific_default,
+} from '../../../../../generated-types/lib.ts';
+
+const PrefixedString_schemas: {
+	[key in mode]: Is<
+		PrefixedString_type<key>
+	>;
+} = {
+	non_quoted: PropertySchemaToRegex_PrefixedString_non_quoted,
+	quoted: PropertySchemaToRegex_PrefixedString_quoted,
+	single_quoted: PropertySchemaToRegex_PrefixedString_single_quoted,
+
+	// oxlint-disable-next-line @stylistic/max-len
+	version_specific_default: PropertySchemaToRegex_PrefixedString_version_specific_default,
+};
+
 export function PrefixedString<
 	Mode extends mode,
 >(
-	ajv: Ajv,
 	mode: Mode,
 	version_specific_default: Exclude<mode, 'version_specific_default'>,
 ) {
 	return new PropertySchemaToRegex<PrefixedString_type<Mode>>(
-		ajv.compile(PrefixedStringType.generate_schema_definition({mode})),
+		PrefixedString_schemas[mode],
 		({
 			DocsDotJson_PrefixedString: {
 				prefix,

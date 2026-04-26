@@ -1,9 +1,4 @@
-import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
 import {
-	$defs_schema,
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -11,32 +6,24 @@ import type {
 	Object_type,
 } from '../Object.ts';
 import {
-	Object_generate_schema_definition,
 	Object_type_to_regex,
 	PropertySchemaToRegex,
 } from '../Object.ts';
 
+import {
+	PropertySchemaToRegex_TypedString_object,
+} from '../../../../../generated-types/lib.ts';
+
+export type TypedString_Object_type = {
+	type: 'string',
+	typed_string: Object_type,
+};
+
 export function Object(
-	ajv: Ajv,
 	matchers: PropertySchemaToRegex<unknown>[],
 ) {
-	return new PropertySchemaToRegex<{
-		type: 'string',
-		typed_string: Object_type,
-	}>(
-		ajv.compile({
-			type: 'object',
-			additionalProperties: false,
-			required: ['type', 'typed_string'],
-			properties: {
-				$defs: $defs_schema.properties.$defs,
-				type: {
-					type: 'string',
-					const: 'string',
-				},
-				typed_string: Object_generate_schema_definition(),
-			},
-		}),
+	return new PropertySchemaToRegex<TypedString_Object_type>(
+		PropertySchemaToRegex_TypedString_object,
 		(value) => {
 			return Object_type_to_regex(
 				Type.maybe_add_$defs(value, value.typed_string),

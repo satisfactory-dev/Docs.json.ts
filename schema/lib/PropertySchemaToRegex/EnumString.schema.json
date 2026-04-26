@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--lib--PropertySchemaToRegex--EnumString",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["type", "enum"],
+	"properties": {
+		"type": {
+			"type": "string",
+			"const": "string"
+		},
+		"enum": {
+			"type": "array",
+			"minItems": 2,
+			"uniqueItems": true,
+			"items": {
+				"type": "string",
+				"minLength": 1
+			}
+		}
+	}
+}

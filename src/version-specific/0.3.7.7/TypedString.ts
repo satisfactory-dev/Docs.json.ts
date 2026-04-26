@@ -1,7 +1,10 @@
 import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
+
+import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import type {
 	$ref,
@@ -136,7 +139,7 @@ export type TypedString_matcher<
 	Mode extends TypedString_mode,
 > = [
 	Mode,
-	ValidateFunction<TypedString_type<Mode>['typed_string']>,
+	Is<TypedString_type<Mode>['typed_string']>,
 ];
 
 export type TypedString_type_OneOf = {
@@ -215,7 +218,7 @@ export type Type_Generator__by_mode = {
 };
 
 export function compile_validators(ajv: Ajv): {
-	[key in TypedString_mode]: ValidateFunction<
+	[key in TypedString_mode]: Is<
 		TypedString_type<key>['typed_string']
 	>
 } {
@@ -247,29 +250,26 @@ export type PropertySchemaToRegex__matchers_object = {
 export function PropertySchemaToRegex__matchers_as_object(
 ): PropertySchemaToRegex__matchers_object {
 	return {
-		ConstString: ({ajv}) => [ConstString(ajv)],
-		EnumString: ({ajv}) => [EnumString(ajv)],
-		PatternString: ({ajv}) => [PatternString(ajv)],
-		PrefixedStringMatcher: ({ajv}) => [
-			PrefixedStringMatcher(ajv, 'quoted', 'quoted'),
-			PrefixedStringMatcher(ajv, 'single_quoted', 'quoted'),
-			PrefixedStringMatcher(ajv, 'non_quoted', 'quoted'),
-			PrefixedStringMatcher(ajv, 'version_specific_default', 'quoted'),
+		ConstString: () => [ConstString()],
+		EnumString: () => [EnumString()],
+		PatternString: () => [PatternString()],
+		PrefixedStringMatcher: () => [
+			PrefixedStringMatcher('quoted', 'quoted'),
+			PrefixedStringMatcher('single_quoted', 'quoted'),
+			PrefixedStringMatcher('non_quoted', 'quoted'),
+			PrefixedStringMatcher('version_specific_default', 'quoted'),
 		],
-		NamedListMatcher: ({ajv}) => [NamedListMatcher(ajv)],
-		TemplatedStringMatcher: ({ajv}) => [TemplatedStringMatcher(ajv)],
-		FlexibleArrayMatcher: ({ajv, existing}) => [
+		NamedListMatcher: () => [NamedListMatcher()],
+		TemplatedStringMatcher: () => [TemplatedStringMatcher()],
+		FlexibleArrayMatcher: ({existing}) => [
 			FlexibleArrayMatcher__items(
-				ajv,
 				existing,
 			),
 			FlexibleArrayMatcher__prefixItems(
-				ajv,
 				existing,
 			),
 		],
-		$ref: ({ajv, existing, $ref_instance}) => [RefResolver(
-			ajv,
+		$ref: ({existing, $ref_instance}) => [RefResolver(
 			existing,
 			$ref_instance,
 		)],

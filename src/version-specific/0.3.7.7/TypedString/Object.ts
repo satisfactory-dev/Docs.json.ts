@@ -1,12 +1,15 @@
 import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
 import type {
 	ComputedPropertyName,
 	PropertyAssignment,
 } from 'typescript';
+
+import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import type {
 	object_schema,
@@ -75,7 +78,7 @@ export const Object_type_schema = Object.freeze({
 
 export function Object_compile_validator(
 	ajv: Ajv,
-): ValidateFunction<Object_type> {
+): Is<Object_type> {
 	return ajv.compile<
 		Object_type
 	>(
@@ -260,12 +263,12 @@ export function Object_generate_typescript_type(
 export class PropertySchemaToRegex<
 	T,
 > {
-	#matcher: ValidateFunction<T>;
+	#matcher: Is<T>;
 
 	#value_to_regex: (value: T) => string;
 
 	constructor(
-		matcher: ValidateFunction<T>,
+		matcher: Is<T>,
 		value_to_regex: (value: T) => string,
 	) {
 		this.#matcher = matcher;

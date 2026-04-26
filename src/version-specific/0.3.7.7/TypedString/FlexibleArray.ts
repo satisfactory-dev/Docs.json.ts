@@ -1,11 +1,14 @@
 import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
+
+import type {
 	Expression,
 	TypeNode,
 } from 'typescript';
 
 import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
 import type {
@@ -65,7 +68,7 @@ export function FlexibleArray_compile_validator<
 >(
 	ajv: Ajv,
 	mode: ArrayMode,
-): ValidateFunction<FlexibleArray_type<ArrayMode>> {
+): Is<FlexibleArray_type<ArrayMode>> {
 	return ajv.compile<FlexibleArray_type<ArrayMode>>({
 		items: FlexibleArray_generate_schema_definition__items(),
 		prefixItems: FlexibleArray_generate_schema_definition__prefixItems(),

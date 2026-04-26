@@ -107,7 +107,7 @@ export function configure_parser(parser: SchemaParser) {
 		throw new TypeError('Could not find $ref instance!');
 	}
 
-	const Object_matcher_instance = Object_matcher(ajv, matchers);
+	const Object_matcher_instance = Object_matcher(matchers);
 
 	matchers.push(...[
 		...PropertySchemaToRegex__matchers(

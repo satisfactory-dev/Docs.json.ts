@@ -1,7 +1,3 @@
-import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
 import {
 	object_has_property,
 } from '@satisfactory-dev/predicates.ts';
@@ -18,14 +14,16 @@ import {
 	PropertySchemaToRegex,
 } from '../Object.ts';
 
+import {
+	PropertySchemaToRegex_ref,
+} from '../../../../../generated-types/lib.ts';
 
 export function RefResolver(
-	ajv: Ajv,
 	matchers: PropertySchemaToRegex<unknown>[],
 	$ref_instance: $ref,
 ) {
 	return new PropertySchemaToRegex<$ref_type>(
-		ajv.compile($ref.generate_type_definition()),
+		PropertySchemaToRegex_ref,
 		(value) => {
 			const local_$defs: SchemaObject = value.$defs || {};
 

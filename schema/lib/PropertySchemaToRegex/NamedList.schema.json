@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--lib--PropertySchemaToRegex--NamedList",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["type", "DocsDotJson_named_list"],
+	"properties": {
+		"type": {
+			"type": "string",
+			"const": "string"
+		},
+		"DocsDotJson_named_list": {
+			"type": "string"
+		}
+	}
+}

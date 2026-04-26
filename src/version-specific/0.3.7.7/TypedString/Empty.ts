@@ -1,6 +1,9 @@
 import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
+
+import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
 import type {
@@ -33,7 +36,7 @@ export type Empty_TypeGenerator = undefined;
 
 export function Empty_compile_vaildator(
 	ajv: Ajv,
-): ValidateFunction<Empty_type> {
+): Is<Empty_type> {
 	return ajv.compile<
 		Empty_type
 	>(

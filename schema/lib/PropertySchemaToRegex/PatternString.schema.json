@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--lib--PropertySchemaToRegex--PatternString",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["type", "pattern"],
+	"properties": {
+		"type": {
+			"type": "string",
+			"const": "string"
+		},
+		"pattern": {
+			"type": "string",
+			"pattern": "^\\^.+\\$$"
+		}
+	}
+}

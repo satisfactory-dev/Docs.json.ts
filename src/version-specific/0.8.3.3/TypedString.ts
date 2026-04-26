@@ -1,7 +1,10 @@
 import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
+
+import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import {
 	object_has_property,
@@ -84,7 +87,7 @@ type TypedString_matcher<
 	Mode extends TypedString_mode,
 > = [
 	Mode,
-	ValidateFunction<TypedString_type<Mode>['typed_string']>,
+	Is<TypedString_type<Mode>['typed_string']>,
 ];
 
 type TypedString_type_OneOf = {

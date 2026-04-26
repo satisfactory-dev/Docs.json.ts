@@ -1,33 +1,19 @@
-import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
 import {
 	PropertySchemaToRegex,
 } from '../Object.ts';
 
-export function PatternString(
-	ajv: Ajv,
-) {
-	return new PropertySchemaToRegex<{
-		type: 'string',
-		pattern: string,
-	}>(
-		ajv.compile({
-			type: 'object',
-			additionalProperties: false,
-			required: ['type', 'pattern'],
-			properties: {
-				type: {
-					type: 'string',
-					const: 'string',
-				},
-				pattern: {
-					type: 'string',
-					pattern: '^\\^.+\\$$',
-				},
-			},
-		}),
+import {
+	PropertySchemaToRegex_PatternString,
+} from '../../../../../generated-types/lib.ts';
+
+export type PatternString_type = {
+	type: 'string',
+	pattern: string,
+};
+
+export function PatternString() {
+	return new PropertySchemaToRegex<PatternString_type>(
+		PropertySchemaToRegex_PatternString,
 		(value) => {
 			const regex = value.pattern.substring(
 				1,

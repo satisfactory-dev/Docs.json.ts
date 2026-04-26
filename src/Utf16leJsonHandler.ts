@@ -12,8 +12,8 @@ import {
 } from 'path';
 
 import type {
-	ValidateFunction,
-} from 'ajv/dist/2020.js';
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import type {
 	semver_full,
@@ -125,7 +125,7 @@ export class Utf16leJsonHandler<
 
 	#utf8path: utf8path<Version>;
 
-	#validator: ValidateFunction<T>;
+	#validator: Is<T>;
 
 	constructor({
 		validator,
@@ -134,7 +134,7 @@ export class Utf16leJsonHandler<
 		version,
 		file_path,
 	}: {
-		validator: ValidateFunction<T>,
+		validator: Is<T>,
 		data_path: string,
 		cache_path?: string,
 		version: Version,
@@ -164,7 +164,7 @@ export class Utf16leJsonHandler<
 	async read(
 		on_failure?: (
 			data: unknown,
-			errors: ValidateFunction['errors'],
+			errors: Is<T>['errors'],
 		) => void,
 	): Promise<T> {
 		const maybe: unknown = JSON.parse(await this.#maybe_convert());

@@ -621,3 +621,9 @@ generate--version1_2_1_0: generate--version1_2--types
 	@node ./generate-version1.2.ts vun --skip-types 1.2.1.0
 	@node ./generate-version1.2.ts zh-Hans --skip-types 1.2.1.0
 	@node ./generate-version1.2.ts zh-Hant --skip-types 1.2.1.0
+
+precompile-validators:
+	@node ./precompile-validators.ts
+
+precompile-validators--oxlint:
+	@./node_modules/.bin/oxlint --fix ./generated-types/lib.ts

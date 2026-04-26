@@ -1,7 +1,10 @@
 import type {
 	Ajv2020 as Ajv,
-	ValidateFunction,
 } from 'ajv/dist/2020.js';
+
+import type {
+	Is,
+} from '@satisfactory-dev/ajv-utilities';
 
 import type {
 	$ref,
@@ -81,7 +84,7 @@ type TypedString_matcher<
 	Mode extends TypedString_mode,
 > = [
 	Mode,
-	ValidateFunction<TypedString_type<Mode>['typed_string']>,
+	Is<TypedString_type<Mode>['typed_string']>,
 ];
 
 export type TypedString_type_OneOf = {
@@ -117,7 +120,7 @@ type TypedString_DataTo<
 > = TypedString_DataTo__by_mode[Mode];
 
 export function compile_validators(ajv: Ajv): {
-	[key in TypedString_mode]: ValidateFunction<
+	[key in TypedString_mode]: Is<
 		TypedString_type<key>['typed_string']
 	>
 } {
