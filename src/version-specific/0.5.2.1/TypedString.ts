@@ -134,10 +134,9 @@ export function PropertySchemaToRegex__matchers_as_object(
 	return {
 		...PropertySchemaToRegex__matchers_as_object__update4(),
 		properties_objects: ({
-			ajv,
 			Object_matcher_instance,
-		}) => [properties_objects(ajv, Object_matcher_instance)],
-		OneOfMatcher: ({ajv, existing}) => [OneOfMatcher(ajv, existing)],
+		}) => [properties_objects(Object_matcher_instance)],
+		OneOfMatcher: ({existing}) => [OneOfMatcher(existing)],
 	} as PropertySchemaToRegex__matchers_object;
 }
 

@@ -16,14 +16,11 @@ import {
 	object_has_property,
 } from '@satisfactory-dev/predicates.ts';
 
-export function properties_objects(
-	ajv: Ajv,
-	Object_matcher: PropertySchemaToRegex<{
-		type: 'string',
-		typed_string: Object_type,
-	}>,
-) {
-	return new PropertySchemaToRegex<{
+import {
+	properties_object as properties_object_validator,
+} from '../../../../../generated-types/lib/0.5.2.1.ts';
+
+export type properties_object_type = {
 		$ref: `${(
 			| 'docs.json.ts--0.5.2.1--properties#/$defs'
 		)}/${(
@@ -33,25 +30,16 @@ export function properties_objects(
 			| 'FalloffCurve--EditorCurveData--only'
 			| 'FalloffCurve--EditorCurveData--with-ExternalCurve'
 		)}`,
-	}>(
-		ajv.compile({
-			type: 'object',
-			additionalProperties: false,
-			required: ['$ref'],
-			properties: {
-				$ref: {
-					type: 'string',
-					// eslint-disable-next-line @stylistic/max-len
-					pattern: `^docs.json.ts--0.5.2.1--properties#\\/\\$defs\\/(?:${[
-						'mDisableSnapOn--bottom',
-						'mDisableSnapOn--top',
-						'mDockingRuleSet',
-						'FalloffCurve--EditorCurveData--only',
-						'FalloffCurve--EditorCurveData--with-ExternalCurve',
-					].join('|')})$`,
-				},
-			},
-		}),
+};
+
+export function properties_objects(
+	Object_matcher: PropertySchemaToRegex<{
+		type: 'string',
+		typed_string: Object_type,
+	}>,
+) {
+	return new PropertySchemaToRegex<properties_object_type>(
+		properties_object_validator,
 		(value) => {
 			const $ref = value.$ref.split('/')[2];
 

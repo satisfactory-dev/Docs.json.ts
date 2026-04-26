@@ -1,12 +1,7 @@
 import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
-import type {
 	SchemaObject,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
-	OneOf,
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -14,21 +9,23 @@ import {
 	PropertySchemaToRegex,
 } from '../../../0.3.7.7/TypedString/Object.ts';
 
-export function OneOfMatcher(
-	ajv: Ajv,
-	matchers: PropertySchemaToRegex<unknown>[],
-) {
-	return new PropertySchemaToRegex<{
+import {
+	OneOf as OneOf_validator,
+} from '../../../../../generated-types/lib/0.5.2.1.ts';
+
+export type OneOf_type = {
 		oneOf: [
 			SchemaObject,
 			SchemaObject,
 			...SchemaObject[],
 		],
-	}>(
-		ajv.compile(OneOf.generate_schema_definition({
-			kind: 'oneOf',
-			mode: 'unspecified',
-		})),
+};
+
+export function OneOfMatcher(
+	matchers: PropertySchemaToRegex<unknown>[],
+) {
+	return new PropertySchemaToRegex<OneOf_type>(
+		OneOf_validator,
 		(value) => {
 			const regex_parts = value.oneOf.map((sub_schema, i) => {
 				sub_schema = Type.maybe_add_$defs(value, sub_schema);
