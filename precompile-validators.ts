@@ -37,15 +37,16 @@ import NamedList from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/Na
 	type: 'json',
 };
 
+// oxlint-disable-next-line @stylistic/max-len
+import PatternString from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.schema.json' with {
+	type: 'json',
+};
+
 import {
 	FlexibleArray_generate_schema_definition__items,
 	FlexibleArray_generate_schema_definition__prefixItems,
 } from './src/version-specific/0.3.7.7/TypedString/FlexibleArray.ts';
 
-// oxlint-disable-next-line @stylistic/max-len
-import PatternString from './schema/lib/0.3.7.7/TypedString/PropertySchemaToRegex/PatternString.schema.json' with {
-	type: 'json',
-};
 import {
 	Object_generate_schema_definition,
 } from './src/version-specific/0.3.7.7/TypedString/Object.ts';
