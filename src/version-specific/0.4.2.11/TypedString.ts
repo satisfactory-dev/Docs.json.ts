@@ -131,9 +131,8 @@ export function PropertySchemaToRegex__matchers_as_object(
 	return {
 		...PropertySchemaToRegex__matchers_as_object__update3(),
 		TintColor: ({
-			ajv,
 			Object_matcher_instance,
-		}) => [TintColor(ajv, Object_matcher_instance)],
+		}) => [TintColor(Object_matcher_instance)],
 	} as PropertySchemaToRegex__matchers_object;
 }
 

@@ -1,0 +1,13 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--lib--0.4.2.11--TypedString--PropertySchemaToRegex--TintColor",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["$ref"],
+	"properties": {
+		"$ref": {
+			"type": "string",
+			"const": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
+		}
+	}
+}
