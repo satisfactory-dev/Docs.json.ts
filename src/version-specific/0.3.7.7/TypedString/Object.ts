@@ -61,17 +61,6 @@ export type Object_TypeGenerator = (
 	schema_parser: SchemaParser,
 ) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>;
 
-export const Object_type_schema = Object.freeze({
-	type: 'object',
-	required: ['type'],
-	properties: {
-		type: {
-			type: 'string',
-			const: 'object',
-		},
-	},
-});
-
 export function computedProperty_or_string(
 	property: string,
 ): ComputedPropertyName|string {
