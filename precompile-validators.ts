@@ -189,10 +189,84 @@ const code = `// oxlint-disable @stylistic/max-len${
 			PropertySchemaToRegex_TemplatedString: TemplatedString_schema.$id,
 		}),
 		{
-			remove_dataCtxKeys: [
-				'parentData',
-				'parentDataProperty',
-			],
+			remove_dataCtxKeys: {
+				[ConstString.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[EnumString.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[NamedList.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[FlexibleArray__items.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[FlexibleArray__prefixItems.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[PatternString.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[TypedString_object_schema.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[PrefixedString_schemas.non_quoted.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[PrefixedString_schemas.quoted.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[PrefixedString_schemas.single_quoted.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[PrefixedString_schemas.version_specific_default.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[$ref_schema.$id]: [
+					'parentData',
+					'parentDataProperty',
+					'rootData',
+					'dynamicAnchors',
+				],
+				[TemplatedString_schema.$id]: [
+					'parentData',
+					'parentDataProperty',
+				],
+			},
 			specify_types: {
 				[ConstString.$id]: [
 					'ConstString',
