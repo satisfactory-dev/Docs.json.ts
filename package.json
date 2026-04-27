@@ -42,16 +42,23 @@
     "./generated-types/*/types/*.js",
     "./generated-types/*/types/*.js.map",
     "./generated-types/*/classes.ts",
+    "./generated-types/*/classes.d.ts",
     "./generated-types/*/classes.js",
     "./generated-types/*/classes.js.map",
     "./generated-types/*/types.ts",
+    "./generated-types/*/types.d.ts",
     "./generated-types/*/types.js",
     "./generated-types/*/types.js.map",
     "./generated-types/*/properties.ts",
+    "./generated-types/*/properties.d.ts",
     "./generated-types/*/properties.js",
     "./generated-types/*/properties.js.map",
     "./generated-types/*/Base.ts",
+    "./generated-types/*/Base.d.ts",
     "./generated-types/*/Base.js",
-    "./generated-types/*/Base.js.map"
+    "./generated-types/*/Base.js.map",
+    "./generated-types/lib/**/*.ts",
+    "./generated-types/lib/**/*.js",
+    "./generated-types/lib/**/*.map"
   ]
 }
