@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--NonEmptyString",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["type", "minLength"],
+	"properties": {
+		"type": {
+			"type": "string",
+			"const": "string"
+		},
+		"minLength": {
+			"type": "integer",
+			"const": 1
+		}
+	}
+}

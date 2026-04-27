@@ -1,30 +1,16 @@
-import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
 import {
 	PropertySchemaToRegex,
 } from '../../../0.3.7.7/TypedString/Object.ts';
 
-export function NonEmptyString(
-	ajv: Ajv,
-) {
-	return new PropertySchemaToRegex<{type: 'string', minLength: 1}>(
-		ajv.compile({
-			type: 'object',
-			additionalProperties: false,
-			required: ['type', 'minLength'],
-			properties: {
-				type: {
-					type: 'string',
-					const: 'string',
-				},
-				minLength: {
-					type: 'integer',
-					const: 1,
-				},
-			},
-		}),
+import {
+	PropertySchemaToRegex_NonEmptyString,
+} from '../../../../../generated-types/lib/0.8.3.3.ts';
+
+export type NonEmptyString_type = {type: 'string', minLength: 1};
+
+export function NonEmptyString() {
+	return new PropertySchemaToRegex<NonEmptyString_type>(
+		PropertySchemaToRegex_NonEmptyString,
 		() => {
 			return '[^=,)]+';
 		},

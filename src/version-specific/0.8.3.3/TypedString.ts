@@ -122,27 +122,26 @@ export function PropertySchemaToRegex__matchers_as_object(
 ): PropertySchemaToRegex__matchers_object {
 	return {
 		...PropertySchemaToRegex__matchers_as_object__update6(),
-		NonEmptyString: ({ajv}) => [NonEmptyString(ajv)],
-		PrefixedStringMatcher: ({ajv}) => [
+		NonEmptyString: () => [NonEmptyString()],
+		PrefixedStringMatcher: () => [
 			...([
 				'quoted',
 				'single_quoted',
 				'non_quoted',
 				'version_specific_default',
 			] as const).flatMap((mode) => [
-				PrefixedStringMatcher(ajv, mode, 'Engine', 'quoted'),
-				PrefixedStringMatcher(ajv, mode, 'TemplateSequence', 'quoted'),
-				PrefixedStringMatcher(ajv, mode, 'FactoryGame', 'quoted'),
-				PrefixedStringMatcher(ajv, mode, 'AkAudio', 'quoted'),
+				PrefixedStringMatcher(mode, 'Engine', 'quoted'),
+				PrefixedStringMatcher(mode, 'TemplateSequence', 'quoted'),
+				PrefixedStringMatcher(mode, 'FactoryGame', 'quoted'),
+				PrefixedStringMatcher(mode, 'AkAudio', 'quoted'),
 				PrefixedStringMatcher(
-					ajv,
 					mode,
 					'CoreUObject',
 					'quoted',
 				),
 			]),
 		],
-		TemplatedStringMatcher: ({ajv}) => [TemplatedStringMatcher(ajv)],
+		TemplatedStringMatcher: () => [TemplatedStringMatcher()],
 	} as PropertySchemaToRegex__matchers_object;
 }
 
