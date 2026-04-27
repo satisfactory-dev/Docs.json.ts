@@ -1,15 +1,7 @@
 import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
-import type {
 	ComputedPropertyName,
 	PropertyAssignment,
 } from 'typescript';
-
-import type {
-	Is,
-} from '@satisfactory-dev/ajv-utilities';
 
 import type {
 	object_schema,
@@ -80,16 +72,6 @@ export const Object_type_schema = Object.freeze({
 		},
 	},
 });
-
-export function Object_compile_validator(
-	ajv: Ajv,
-): Is<Object_type> {
-	return ajv.compile<
-		Object_type
-	>(
-		Object_type_schema,
-	);
-}
 
 export function computedProperty_or_string(
 	property: string,

@@ -107,7 +107,6 @@ export function configure_parser(parser: SchemaParser) {
 	}
 
 	const Object_matcher_instance = Object_matcher(
-		ajv,
 		matchers,
 		$ref_instance,
 	);
