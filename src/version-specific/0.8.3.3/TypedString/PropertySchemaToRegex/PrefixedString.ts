@@ -106,6 +106,13 @@ const PrefixedString_validators: {
 	},
 };
 
+export function PrefixedString_validator(
+	mode: mode,
+	system_prefix: system_prefix,
+) {
+	return PrefixedString_validators[system_prefix][mode];
+}
+
 export function PrefixedString<
 	Mode extends mode,
 	SystemPrefix extends system_prefix,
@@ -116,7 +123,7 @@ export function PrefixedString<
 	version_specific_default: VersionSpecificDefault,
 ) {
 	return new PropertySchemaToRegex<PrefixedString_type>(
-		PrefixedString_validators[system_prefix][mode],
+		PrefixedString_validator(mode, system_prefix),
 		({
 			DocsDotJson_PrefixedString: {
 				prefix,

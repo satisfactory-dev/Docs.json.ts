@@ -1,7 +1,3 @@
-import type {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
-
 import {
 	PrefixedString as PrefixedStringType,
 } from '../../PrefixedString.ts';
@@ -19,21 +15,21 @@ import type {
 	system_prefix,
 } from '../../../0.8.3.3/PrefixedString.ts';
 
+import {
+	PrefixedString_validator,
+} from '../../../0.8.3.3/TypedString/PropertySchemaToRegex/PrefixedString.ts';
+
 export function PrefixedString<
 	Mode extends mode,
 	SystemPrefix extends system_prefix,
 	VersionSpecificDefault extends Exclude<mode, 'version_specific_default'>,
 >(
-	ajv: Ajv,
 	mode: Mode,
 	system_prefix: SystemPrefix,
 	version_specific_default: VersionSpecificDefault,
 ) {
 	return new PropertySchemaToRegex<PrefixedString_type>(
-		ajv.compile(PrefixedStringType.generate_schema_definition({
-			mode,
-			system_prefix,
-		})),
+		PrefixedString_validator(mode, system_prefix),
 		({
 			DocsDotJson_PrefixedString: {
 				prefix,
