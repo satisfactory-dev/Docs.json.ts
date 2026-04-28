@@ -26,7 +26,7 @@
   "peerDependencies": {
     "@satisfactory-dev/predicates.ts": "^0.3.0",
     "@signpostmarv/js-types": "^0.2.0",
-    "@signpostmarv/json-schema-typescript-codegen": "^0.10.2",
+    "@signpostmarv/json-schema-typescript-codegen": "^0.11.0",
     "ajv": "^8.18.0",
     "typescript": "^6.0.2"
   },
