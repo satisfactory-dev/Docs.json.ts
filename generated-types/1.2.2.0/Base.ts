@@ -1,0 +1,117 @@
+/* eslint-disable @stylistic/max-len */
+
+import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+} from './../common/types.ts';
+
+import type {
+	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C as docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
+	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
+	FGAmmoTypeProjectile as docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeProjectile,
+	FGAmmoTypeSpreadshot as docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeSpreadshot,
+	FGBuildableCircuitSwitch as docs_json_ts_1_2_0_0_classes_base_FGBuildableCircuitSwitch,
+	FGBuildablePriorityPowerSwitch as docs_json_ts_1_2_0_0_classes_base_FGBuildablePriorityPowerSwitch,
+	FGBuildingDescriptor as docs_json_ts_1_2_0_0_classes_base_FGBuildingDescriptor,
+	FGConsumableDescriptor as docs_json_ts_1_2_0_0_classes_base_FGConsumableDescriptor,
+	FGEquipmentDescriptor as docs_json_ts_1_2_0_0_classes_base_FGEquipmentDescriptor,
+	FGItemDescriptor_non_sinkable as docs_json_ts_1_2_0_0_classes_base_FGItemDescriptor_non_sinkable,
+	FGItemDescriptor_sinkable as docs_json_ts_1_2_0_0_classes_base_FGItemDescriptor_sinkable,
+	FGItemDescriptorBiomass as docs_json_ts_1_2_0_0_classes_base_FGItemDescriptorBiomass,
+	FGItemDescriptorNuclearFuel as docs_json_ts_1_2_0_0_classes_base_FGItemDescriptorNuclearFuel,
+	FGItemDescriptorPowerBoosterFuel as docs_json_ts_1_2_0_0_classes_base_FGItemDescriptorPowerBoosterFuel,
+	FGPowerShardDescriptor as docs_json_ts_1_2_0_0_classes_base_FGPowerShardDescriptor,
+	FGResourceDescriptor as docs_json_ts_1_2_0_0_classes_base_FGResourceDescriptor,
+	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_CyberWagon_C,
+	FGVehicleDescriptor_Desc_DroneTransport_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_DroneTransport_C,
+	FGVehicleDescriptor_Desc_Explorer_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Explorer_C,
+	FGVehicleDescriptor_Desc_FluidTruck_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_FluidTruck_C,
+	FGVehicleDescriptor_Desc_FreightWagon_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_FreightWagon_C,
+	FGVehicleDescriptor_Desc_Locomotive_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Locomotive_C,
+	FGVehicleDescriptor_Desc_Tractor_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Tractor_C,
+	FGVehicleDescriptor_Desc_Truck_C as docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Truck_C,
+} from './../1.2.0.0/Base.ts';
+
+type has_mAddToSignificanceManager = {
+	mAddToSignificanceManager: docs_json_ts_common_types_bool_string,
+};
+
+type has_mCachedStackSize = {
+	mCachedStackSize: '200' | '100' | '500' | '50' | '50000' | '1',
+};
+
+type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C & has_mCachedStackSize;
+
+type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C & has_mCachedStackSize;
+
+type FGAmmoTypeProjectile = docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeProjectile & has_mCachedStackSize;
+
+type FGAmmoTypeSpreadshot = docs_json_ts_1_2_0_0_classes_base_FGAmmoTypeSpreadshot & has_mCachedStackSize;
+
+type FGBuildableCircuitSwitch = docs_json_ts_1_2_0_0_classes_base_FGBuildableCircuitSwitch & has_mAddToSignificanceManager;
+
+type FGBuildablePriorityPowerSwitch = docs_json_ts_1_2_0_0_classes_base_FGBuildablePriorityPowerSwitch & has_mAddToSignificanceManager;
+
+type FGBuildingDescriptor = docs_json_ts_1_2_0_0_classes_base_FGBuildingDescriptor & has_mCachedStackSize;
+
+type FGConsumableDescriptor = docs_json_ts_1_2_0_0_classes_base_FGConsumableDescriptor & has_mCachedStackSize;
+
+type FGEquipmentDescriptor = docs_json_ts_1_2_0_0_classes_base_FGEquipmentDescriptor & has_mCachedStackSize;
+
+type FGItemDescriptor_non_sinkable = docs_json_ts_1_2_0_0_classes_base_FGItemDescriptor_non_sinkable & has_mCachedStackSize;
+
+type FGItemDescriptor_sinkable = docs_json_ts_1_2_0_0_classes_base_FGItemDescriptor_sinkable & has_mCachedStackSize;
+
+type FGItemDescriptorBiomass = docs_json_ts_1_2_0_0_classes_base_FGItemDescriptorBiomass & has_mCachedStackSize;
+
+type FGItemDescriptorNuclearFuel = docs_json_ts_1_2_0_0_classes_base_FGItemDescriptorNuclearFuel & has_mCachedStackSize;
+
+type FGItemDescriptorPowerBoosterFuel = docs_json_ts_1_2_0_0_classes_base_FGItemDescriptorPowerBoosterFuel & has_mCachedStackSize;
+
+type FGPowerShardDescriptor = docs_json_ts_1_2_0_0_classes_base_FGPowerShardDescriptor & has_mCachedStackSize;
+
+type FGResourceDescriptor = docs_json_ts_1_2_0_0_classes_base_FGResourceDescriptor & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_CyberWagon_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_CyberWagon_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_DroneTransport_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_DroneTransport_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_Explorer_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Explorer_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_FluidTruck_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_FluidTruck_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_FreightWagon_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_FreightWagon_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_Locomotive_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Locomotive_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_Tractor_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Tractor_C & has_mCachedStackSize;
+
+type FGVehicleDescriptor_Desc_Truck_C = docs_json_ts_1_2_0_0_classes_base_FGVehicleDescriptor_Desc_Truck_C & has_mCachedStackSize;
+
+export type {
+	has_mAddToSignificanceManager,
+	has_mCachedStackSize,
+	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
+	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
+	FGAmmoTypeProjectile,
+	FGAmmoTypeSpreadshot,
+	FGBuildableCircuitSwitch,
+	FGBuildablePriorityPowerSwitch,
+	FGBuildingDescriptor,
+	FGConsumableDescriptor,
+	FGEquipmentDescriptor,
+	FGItemDescriptor_non_sinkable,
+	FGItemDescriptor_sinkable,
+	FGItemDescriptorBiomass,
+	FGItemDescriptorNuclearFuel,
+	FGItemDescriptorPowerBoosterFuel,
+	FGPowerShardDescriptor,
+	FGResourceDescriptor,
+	FGVehicleDescriptor_Desc_CyberWagon_C,
+	FGVehicleDescriptor_Desc_DroneTransport_C,
+	FGVehicleDescriptor_Desc_Explorer_C,
+	FGVehicleDescriptor_Desc_FluidTruck_C,
+	FGVehicleDescriptor_Desc_FreightWagon_C,
+	FGVehicleDescriptor_Desc_Locomotive_C,
+	FGVehicleDescriptor_Desc_Tractor_C,
+	FGVehicleDescriptor_Desc_Truck_C,
+};

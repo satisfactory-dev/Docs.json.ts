@@ -1,0 +1,265 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--1.2.2.0--classes--base",
+	"$defs": {
+		"has--mAddToSignificanceManager": {
+			"type": "object",
+			"required": ["mAddToSignificanceManager"],
+			"properties": {
+				"mAddToSignificanceManager": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"has--mCachedStackSize": {
+			"type": "object",
+			"required": ["mCachedStackSize"],
+			"properties": {
+				"mCachedStackSize": {
+					"type": "string",
+					"enum": ["200", "100", "500", "50", "50000", "1"]
+				}
+			}
+		},
+		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeChaos_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGAmmoTypeInstantHit--Desc_CartridgeStandard_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeStandard_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGAmmoTypeProjectile"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGAmmoTypeSpreadshot": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGAmmoTypeSpreadshot"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGBuildableCircuitSwitch": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGBuildableCircuitSwitch"
+				},
+				{
+					"$ref": "#/$defs/has--mAddToSignificanceManager"
+				}
+			]
+		},
+		"FGBuildablePriorityPowerSwitch": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGBuildablePriorityPowerSwitch"
+				},
+				{
+					"$ref": "#/$defs/has--mAddToSignificanceManager"
+				}
+			]
+		},
+		"FGBuildingDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGBuildingDescriptor"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGConsumableDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGConsumableDescriptor"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGEquipmentDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGEquipmentDescriptor"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGItemDescriptor--non-sinkable": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGItemDescriptor--non-sinkable"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGItemDescriptor--sinkable": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGItemDescriptor--sinkable"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGItemDescriptorBiomass": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGItemDescriptorBiomass"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGItemDescriptorNuclearFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGItemDescriptorNuclearFuel"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGItemDescriptorPowerBoosterFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGItemDescriptorPowerBoosterFuel"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGPowerShardDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGPowerShardDescriptor"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGResourceDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGResourceDescriptor"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_CyberWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_DroneTransport_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Explorer_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Explorer_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_FluidTruck_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_FluidTruck_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_FreightWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Locomotive_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Locomotive_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Tractor_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Tractor_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Truck_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--1.2.0.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Truck_C"
+				},
+				{
+					"$ref": "#/$defs/has--mCachedStackSize"
+				}
+			]
+		}
+	}
+}

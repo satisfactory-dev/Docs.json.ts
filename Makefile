@@ -50,6 +50,7 @@ prepare--quick: prepare--update8
 	@node ./prepare-1.1.2.2.ts en-US
 	@node ./prepare-1.2.0.0.ts en-US
 	@node ./prepare-1.2.1.0.ts en-US
+	@node ./prepare-1.2.2.0.ts en-US
 
 prepare--update3:
 	@echo 'prepare 0.3.7.7'
@@ -306,6 +307,63 @@ prepare--version1_2_1_0: prepare--version1_2_0_0
 	@node ./prepare-1.2.1.0.ts zh-Hans
 	@node ./prepare-1.2.1.0.ts zh-Hant
 
+prepare--version1_2_2_0: prepare--version1_2_1_0
+	@node ./prepare-1.2.2.0.ts af
+	@node ./prepare-1.2.2.0.ts ar
+	@node ./prepare-1.2.2.0.ts bg
+	@node ./prepare-1.2.2.0.ts ca
+	@node ./prepare-1.2.2.0.ts cs
+	@node ./prepare-1.2.2.0.ts da
+	@node ./prepare-1.2.2.0.ts de
+	@node ./prepare-1.2.2.0.ts el
+	@node ./prepare-1.2.2.0.ts en-AE
+	@node ./prepare-1.2.2.0.ts en-AU
+	@node ./prepare-1.2.2.0.ts en-CA
+	@node ./prepare-1.2.2.0.ts en-GB
+	@node ./prepare-1.2.2.0.ts en-US
+	@node ./prepare-1.2.2.0.ts eo
+	@node ./prepare-1.2.2.0.ts es-419
+	@node ./prepare-1.2.2.0.ts es-ES
+	@node ./prepare-1.2.2.0.ts et
+	@node ./prepare-1.2.2.0.ts fa
+	@node ./prepare-1.2.2.0.ts fi
+	@node ./prepare-1.2.2.0.ts fr
+	@node ./prepare-1.2.2.0.ts he
+	@node ./prepare-1.2.2.0.ts hi
+	@node ./prepare-1.2.2.0.ts hr
+	@node ./prepare-1.2.2.0.ts hu
+	@node ./prepare-1.2.2.0.ts ia-001
+	@node ./prepare-1.2.2.0.ts id
+	@node ./prepare-1.2.2.0.ts ie
+	@node ./prepare-1.2.2.0.ts io
+	@node ./prepare-1.2.2.0.ts it
+	@node ./prepare-1.2.2.0.ts ja
+	@node ./prepare-1.2.2.0.ts ko
+	@node ./prepare-1.2.2.0.ts kw
+	@node ./prepare-1.2.2.0.ts lb
+	@node ./prepare-1.2.2.0.ts lt
+	@node ./prepare-1.2.2.0.ts lv
+	@node ./prepare-1.2.2.0.ts mt
+	@node ./prepare-1.2.2.0.ts nl
+	@node ./prepare-1.2.2.0.ts no
+	@node ./prepare-1.2.2.0.ts pl
+	@node ./prepare-1.2.2.0.ts pt-BR
+	@node ./prepare-1.2.2.0.ts pt-PT
+	@node ./prepare-1.2.2.0.ts ro
+	@node ./prepare-1.2.2.0.ts ru
+	@node ./prepare-1.2.2.0.ts sk
+	@node ./prepare-1.2.2.0.ts sr-Cyrl
+	@node ./prepare-1.2.2.0.ts sr-Latn
+	@node ./prepare-1.2.2.0.ts sv
+	@node ./prepare-1.2.2.0.ts th
+	@node ./prepare-1.2.2.0.ts tr
+	@node ./prepare-1.2.2.0.ts uk
+	@node ./prepare-1.2.2.0.ts vi
+	@node ./prepare-1.2.2.0.ts vo
+	@node ./prepare-1.2.2.0.ts vun
+	@node ./prepare-1.2.2.0.ts zh-Hans
+	@node ./prepare-1.2.2.0.ts zh-Hant
+
 generate--clean:
 	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
@@ -502,11 +560,13 @@ generate--version1_1: generate--version1_1--types
 generate--version1_2--types:
 	@node ./prepare-1.2.0.0.ts en-US
 	@node ./prepare-1.2.1.0.ts en-US
+	@node ./prepare-1.2.2.0.ts en-US
 	@echo 'running generator'
 	@node ./generate-version1.2.ts en-US --skip-data 1.2.0.0
 	@node ./generate-version1.2.ts en-US --skip-data 1.2.1.0
+	@node ./generate-version1.2.ts en-US --skip-data 1.2.2.0
 
-generate--version_1_2: generate--version_1_2--types generate--version1_2_0_0 generate--version1_2_1_0
+generate--version_1_2: generate--version_1_2--types generate--version1_2_0_0 generate--version1_2_1_0 generate--version1_2_2_0
 
 generate--version1_2_0_0:
 	@node ./generate-version1.2.ts af --skip-types 1.2.0.0
@@ -621,6 +681,64 @@ generate--version1_2_1_0: generate--version1_2--types
 	@node ./generate-version1.2.ts vun --skip-types 1.2.1.0
 	@node ./generate-version1.2.ts zh-Hans --skip-types 1.2.1.0
 	@node ./generate-version1.2.ts zh-Hant --skip-types 1.2.1.0
+
+
+generate--version1_2_2_0: generate--version1_2--types
+	@node ./generate-version1.2.ts af --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ar --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts bg --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ca --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts cs --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts da --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts de --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts el --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts en-AE --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts en-AU --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts en-CA --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts en-GB --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts en-US --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts eo --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts es-419 --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts es-ES --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts et --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts fa --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts fi --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts fr --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts he --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts hi --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts hr --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts hu --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ia-001 --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts id --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ie --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts io --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts it --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ja --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ko --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts kw --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts lb --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts lt --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts lv --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts mt --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts nl --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts no --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts pl --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts pt-BR --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts pt-PT --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ro --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts ru --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts sk --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts sr-Cyrl --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts sr-Latn --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts sv --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts th --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts tr --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts uk --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts vi --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts vo --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts vun --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts zh-Hans --skip-types 1.2.2.0
+	@node ./generate-version1.2.ts zh-Hant --skip-types 1.2.2.0
 
 precompile-validators:
 	@node ./precompile-validators.ts

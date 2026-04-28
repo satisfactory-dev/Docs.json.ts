@@ -1,0 +1,126 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--1.2.2.0--classes",
+	"$defs": {
+		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeChaos_C",
+			"unevaluatedProperties": false
+		},
+		"FGAmmoTypeInstantHit--Desc_CartridgeStandard_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeStandard_C",
+			"unevaluatedProperties": false
+		},
+		"FGAmmoTypeProjectile": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGAmmoTypeProjectile",
+			"unevaluatedProperties": false
+		},
+		"FGAmmoTypeSpreadshot": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGAmmoTypeSpreadshot",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableCircuitSwitch": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGBuildableCircuitSwitch",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePriorityPowerSwitch": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGBuildablePriorityPowerSwitch",
+			"unevaluatedProperties": false
+		},
+		"FGBuildingDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGBuildingDescriptor",
+			"unevaluatedProperties": false
+		},
+		"FGConsumableDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGConsumableDescriptor",
+			"unevaluatedProperties": false
+		},
+		"FGEquipmentDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGEquipmentDescriptor",
+			"unevaluatedProperties": false
+		},
+		"FGItemDescriptor--non-sinkable": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGItemDescriptor--non-sinkable",
+			"unevaluatedProperties": false
+		},
+		"FGItemDescriptor--sinkable": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGItemDescriptor--sinkable",
+			"unevaluatedProperties": false
+		},
+		"FGItemDescriptorBiomass": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGItemDescriptorBiomass",
+			"unevaluatedProperties": false
+		},
+		"FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGItemDescriptorNuclearFuel",
+			"unevaluatedProperties": false
+		},
+		"FGItemDescriptorPowerBoosterFuel": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGItemDescriptorPowerBoosterFuel",
+			"unevaluatedProperties": false
+		},
+		"FGPowerShardDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGPowerShardDescriptor",
+			"unevaluatedProperties": false
+		},
+		"FGResourceDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGResourceDescriptor",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_CyberWagon_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_DroneTransport_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_Explorer_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Explorer_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_FluidTruck_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_FluidTruck_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_FreightWagon_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_Locomotive_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Locomotive_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_Tractor_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Tractor_C",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--Desc_Truck_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--1.2.2.0--classes--base#/$defs/FGVehicleDescriptor--Desc_Truck_C",
+			"unevaluatedProperties": false
+		}
+	}
+}
