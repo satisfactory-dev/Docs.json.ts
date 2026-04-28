@@ -9,8 +9,6 @@
 			"type": "string",
 			"const": "string"
 		},
-		"DocsDotJson_named_list": {
-			"type": "string"
-		}
+		"DocsDotJson_named_list": {"type": "string"}
 	}
 }

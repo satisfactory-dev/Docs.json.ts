@@ -9,8 +9,6 @@
 			"type": "string",
 			"const": "string"
 		},
-		"const": {
-			"type": "string"
-		}
+		"const": {"type": "string"}
 	}
 }

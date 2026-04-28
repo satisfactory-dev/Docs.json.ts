@@ -129,13 +129,37 @@ function sort_$defs(schema: SchemaObjectWith$id) {
 	schema.$defs = sorted_$defs;
 }
 
+const known_no_defs = [
+	'docs.json.ts--1.2.1.0',
+	'docs.json.ts--lib--0.3.7.7--TypedString--Empty',
+	'docs.json.ts--lib--0.3.7.7--TypedString--Object',
+
+	// oxlint-disable-next-line @stylistic/max-len
+	'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--ConstString',
+
+	// oxlint-disable-next-line @stylistic/max-len
+	'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--EnumString',
+
+	// oxlint-disable-next-line @stylistic/max-len
+	'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--NamedList',
+
+	// oxlint-disable-next-line @stylistic/max-len
+	'docs.json.ts--lib--0.3.7.7--TypedString--PropertySchemaToRegex--PatternString',
+
+	// oxlint-disable-next-line @stylistic/max-len
+	'docs.json.ts--lib--0.4.2.11--TypedString--PropertySchemaToRegex--TintColor',
+
+	// oxlint-disable-next-line @stylistic/max-len
+	'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--NonEmptyString',
+];
+
 for await (const filepath of glob(`${import.meta.dirname}/schema/**/*.json`)) {
 	const schema = JSON.parse(
 		(await readFile(filepath)).toString(),
 	) as SchemaObjectWith$id;
 
 	if (
-		'docs.json.ts--1.2.1.0' !== schema.$id
+		!known_no_defs.includes(schema.$id)
 	) {
 		sort_$defs(schema);
 	}
