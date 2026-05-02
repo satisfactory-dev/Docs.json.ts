@@ -1,9 +1,9 @@
 // oxlint-disable @stylistic/max-len
 import type {
-	ErrorObject, ValidateFunction,
+	ErrorObject,
 } from 'ajv';
 import type {
-	Is,
+	IsStandalone, StandaloneDataValidationCxt,
 } from '@satisfactory-dev/ajv-utilities';
 import type {
 	OneOf_type,
@@ -11,7 +11,7 @@ import type {
 import type {
 	properties_object_type,
 } from '../../src/version-specific/0.5.2.1/TypedString/PropertySchemaToRegex/properties_objects.ts';
-function ajv_utiltiies__definitely_evaluated<T>(maybe: Is<T>): Exclude<Is<T>['evaluated'], undefined> {
+function ajv_utiltiies__definitely_evaluated<T>(maybe: IsStandalone<T>): Exclude<IsStandalone<T>['evaluated'], undefined> {
 	if (undefined === maybe.evaluated)
 		throw new Error(`${maybe.name}.evaluated not set!`);
 
@@ -25,9 +25,7 @@ function ajv_utilities__is_probably_array(maybe: unknown): maybe is unknown[] {
 }
 export const OneOf = validate20;
 const schema31 = { $id: 'docs.json.ts--lib--0.5.2.1--TypedString--PropertySchemaToRegex--OneOf', type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { $defs: { type: 'object', additionalProperties: { type: 'object' } }, oneOf: { type: 'array', minItems: 2, items: { type: 'object', minProperties: 1, additionalProperties: {} } } } };
-function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is OneOf_type {
+function validate20(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is OneOf_type {
 	/* # sourceURL="docs.json.ts--lib--0.5.2.1--TypedString--PropertySchemaToRegex--OneOf" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
@@ -102,17 +100,15 @@ function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err8);
 		errors++;
 	}
-	(validate20 as Is).errors = vErrors.length ? vErrors : null;
+	(validate20 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate20 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate20 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const properties_object = validate21;
 const schema32 = { $id: 'docs.json.ts--lib--0.5.2.1--TypedString--PropertySchemaToRegex--properties_object', type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^docs.json.ts--0.5.2.1--properties#\\/\\$defs\\/(?:mDisableSnapOn--bottom|mDisableSnapOn--top|mDockingRuleSet|FalloffCurve--EditorCurveData--only|FalloffCurve--EditorCurveData--with-ExternalCurve)$' } } };
 const pattern4 = new RegExp('^docs.json.ts--0.5.2.1--properties#\\/\\$defs\\/(?:mDisableSnapOn--bottom|mDisableSnapOn--top|mDockingRuleSet|FalloffCurve--EditorCurveData--only|FalloffCurve--EditorCurveData--with-ExternalCurve)$', 'u');
-function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is properties_object_type {
+function validate21(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is properties_object_type {
 	/* # sourceURL="docs.json.ts--lib--0.5.2.1--TypedString--PropertySchemaToRegex--properties_object" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
@@ -155,8 +151,8 @@ function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err4);
 		errors++;
 	}
-	(validate21 as Is).errors = vErrors.length ? vErrors : null;
+	(validate21 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate21 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate21 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };

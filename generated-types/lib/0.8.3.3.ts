@@ -1,9 +1,9 @@
 // oxlint-disable @stylistic/max-len
 import type {
-	ErrorObject, ValidateFunction,
+	ErrorObject,
 } from 'ajv';
 import type {
-	Is,
+	IsStandalone, StandaloneDataValidationCxt,
 } from '@satisfactory-dev/ajv-utilities';
 import type {
 	NonEmptyString_type,
@@ -11,7 +11,7 @@ import type {
 import type {
 	PrefixedString_type,
 } from '../../src/version-specific/0.8.3.3/PrefixedString.ts';
-function ajv_utiltiies__definitely_evaluated<T>(maybe: Is<T>): Exclude<Is<T>['evaluated'], undefined> {
+function ajv_utiltiies__definitely_evaluated<T>(maybe: IsStandalone<T>): Exclude<IsStandalone<T>['evaluated'], undefined> {
 	if (undefined === maybe.evaluated)
 		throw new Error(`${maybe.name}.evaluated not set!`);
 
@@ -28,9 +28,7 @@ import {
 } from '@satisfactory-dev/ajv-utilities/ajv';
 export const PropertySchemaToRegex_NonEmptyString = validate20;
 const schema31 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--NonEmptyString', type: 'object', additionalProperties: false, required: ['type', 'minLength'] as const, properties: { type: { type: 'string', const: 'string' }, minLength: { type: 'integer', const: 1 } } };
-function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is NonEmptyString_type {
+function validate20(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is NonEmptyString_type {
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--NonEmptyString" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
@@ -90,26 +88,24 @@ function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err7);
 		errors++;
 	}
-	(validate20 as Is).errors = vErrors.length ? vErrors : null;
+	(validate20 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate20 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate20 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_Engine_non_quoted = validate21;
 const schema32 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--Engine', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'Engine' }, { type: 'boolean', const: false }] as const } } } } };
 const func1 = ucs2length;
 const pattern4 = new RegExp('^(.+)?#\\/\\$defs\\/(.+)$', 'u');
-function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'non_quoted', 'Engine'> {
+function validate21(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'non_quoted', 'Engine'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--Engine" */
@@ -713,24 +709,22 @@ function validate21(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate21 as Is).errors = vErrors.length ? vErrors : null;
+	(validate21 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate21 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate21 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_Engine_quoted = validate22;
 const schema33 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--Engine', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'Engine' }, { type: 'boolean', const: false }] as const } } } } };
-function validate22(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'quoted', 'Engine'> {
+function validate22(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'quoted', 'Engine'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--Engine" */
@@ -1334,24 +1328,22 @@ function validate22(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate22 as Is).errors = vErrors.length ? vErrors : null;
+	(validate22 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate22 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate22 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_Engine_single_quoted = validate23;
 const schema34 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--Engine', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'Engine' }, { type: 'boolean', const: false }] as const } } } } };
-function validate23(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'single_quoted', 'Engine'> {
+function validate23(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'single_quoted', 'Engine'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--Engine" */
@@ -1955,24 +1947,22 @@ function validate23(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate23 as Is).errors = vErrors.length ? vErrors : null;
+	(validate23 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate23 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate23 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_Engine_version_specific_default = validate24;
 const schema35 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--Engine', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'Engine' }, { type: 'boolean', const: false }] as const } } } } };
-function validate24(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'version_specific_default', 'Engine'> {
+function validate24(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'version_specific_default', 'Engine'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--Engine" */
@@ -2576,24 +2566,22 @@ function validate24(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate24 as Is).errors = vErrors.length ? vErrors : null;
+	(validate24 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate24 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate24 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_TemplateSequence_non_quoted = validate25;
 const schema36 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--TemplateSequence', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'TemplateSequence' }, { type: 'boolean', const: false }] as const } } } } };
-function validate25(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'non_quoted', 'TemplateSequence'> {
+function validate25(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'non_quoted', 'TemplateSequence'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--TemplateSequence" */
@@ -3197,24 +3185,22 @@ function validate25(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate25 as Is).errors = vErrors.length ? vErrors : null;
+	(validate25 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate25 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate25 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_TemplateSequence_quoted = validate26;
 const schema37 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--TemplateSequence', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'TemplateSequence' }, { type: 'boolean', const: false }] as const } } } } };
-function validate26(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'quoted', 'TemplateSequence'> {
+function validate26(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'quoted', 'TemplateSequence'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--TemplateSequence" */
@@ -3818,24 +3804,22 @@ function validate26(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate26 as Is).errors = vErrors.length ? vErrors : null;
+	(validate26 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate26 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate26 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_TemplateSequence_single_quoted = validate27;
 const schema38 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--TemplateSequence', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'TemplateSequence' }, { type: 'boolean', const: false }] as const } } } } };
-function validate27(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'single_quoted', 'TemplateSequence'> {
+function validate27(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'single_quoted', 'TemplateSequence'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--TemplateSequence" */
@@ -4439,24 +4423,22 @@ function validate27(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate27 as Is).errors = vErrors.length ? vErrors : null;
+	(validate27 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate27 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate27 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_TemplateSequence_version_specific_default = validate28;
 const schema39 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--TemplateSequence', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'TemplateSequence' }, { type: 'boolean', const: false }] as const } } } } };
-function validate28(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'version_specific_default', 'TemplateSequence'> {
+function validate28(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'version_specific_default', 'TemplateSequence'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--TemplateSequence" */
@@ -5060,24 +5042,22 @@ function validate28(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate28 as Is).errors = vErrors.length ? vErrors : null;
+	(validate28 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate28 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate28 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_FactoryGame_non_quoted = validate29;
 const schema40 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--FactoryGame', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'FactoryGame' }, { type: 'boolean', const: false }] as const } } } } };
-function validate29(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'non_quoted', 'FactoryGame'> {
+function validate29(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'non_quoted', 'FactoryGame'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--FactoryGame" */
@@ -5681,24 +5661,22 @@ function validate29(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate29 as Is).errors = vErrors.length ? vErrors : null;
+	(validate29 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate29 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate29 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_FactoryGame_quoted = validate30;
 const schema41 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--FactoryGame', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'FactoryGame' }, { type: 'boolean', const: false }] as const } } } } };
-function validate30(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'quoted', 'FactoryGame'> {
+function validate30(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'quoted', 'FactoryGame'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--FactoryGame" */
@@ -6302,24 +6280,22 @@ function validate30(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate30 as Is).errors = vErrors.length ? vErrors : null;
+	(validate30 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate30 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate30 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_FactoryGame_single_quoted = validate31;
 const schema42 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--FactoryGame', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'FactoryGame' }, { type: 'boolean', const: false }] as const } } } } };
-function validate31(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'single_quoted', 'FactoryGame'> {
+function validate31(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'single_quoted', 'FactoryGame'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--FactoryGame" */
@@ -6923,24 +6899,22 @@ function validate31(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate31 as Is).errors = vErrors.length ? vErrors : null;
+	(validate31 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate31 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate31 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_FactoryGame_version_specific_default = validate32;
 const schema43 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--FactoryGame', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'FactoryGame' }, { type: 'boolean', const: false }] as const } } } } };
-function validate32(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'version_specific_default', 'FactoryGame'> {
+function validate32(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'version_specific_default', 'FactoryGame'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--FactoryGame" */
@@ -7544,24 +7518,22 @@ function validate32(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate32 as Is).errors = vErrors.length ? vErrors : null;
+	(validate32 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate32 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate32 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_AkAudio_non_quoted = validate33;
 const schema44 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--AkAudio', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'AkAudio' }, { type: 'boolean', const: false }] as const } } } } };
-function validate33(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'non_quoted', 'AkAudio'> {
+function validate33(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'non_quoted', 'AkAudio'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--AkAudio" */
@@ -8165,24 +8137,22 @@ function validate33(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate33 as Is).errors = vErrors.length ? vErrors : null;
+	(validate33 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate33 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate33 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_AkAudio_quoted = validate34;
 const schema45 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--AkAudio', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'AkAudio' }, { type: 'boolean', const: false }] as const } } } } };
-function validate34(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'quoted', 'AkAudio'> {
+function validate34(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'quoted', 'AkAudio'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--AkAudio" */
@@ -8786,24 +8756,22 @@ function validate34(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate34 as Is).errors = vErrors.length ? vErrors : null;
+	(validate34 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate34 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate34 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_AkAudio_single_quoted = validate35;
 const schema46 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--AkAudio', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'AkAudio' }, { type: 'boolean', const: false }] as const } } } } };
-function validate35(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'single_quoted', 'AkAudio'> {
+function validate35(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'single_quoted', 'AkAudio'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--AkAudio" */
@@ -9407,24 +9375,22 @@ function validate35(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate35 as Is).errors = vErrors.length ? vErrors : null;
+	(validate35 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate35 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate35 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_AkAudio_version_specific_default = validate36;
 const schema47 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--AkAudio', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'AkAudio' }, { type: 'boolean', const: false }] as const } } } } };
-function validate36(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'version_specific_default', 'AkAudio'> {
+function validate36(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'version_specific_default', 'AkAudio'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--AkAudio" */
@@ -10028,24 +9994,22 @@ function validate36(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate36 as Is).errors = vErrors.length ? vErrors : null;
+	(validate36 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate36 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate36 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_CoreUObject_non_quoted = validate37;
 const schema48 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--CoreUObject', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'non_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'CoreUObject' }, { type: 'boolean', const: false }] as const } } } } };
-function validate37(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'non_quoted', 'CoreUObject'> {
+function validate37(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'non_quoted', 'CoreUObject'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--non_quoted--CoreUObject" */
@@ -10649,24 +10613,22 @@ function validate37(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate37 as Is).errors = vErrors.length ? vErrors : null;
+	(validate37 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate37 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate37 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_CoreUObject_quoted = validate38;
 const schema49 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--CoreUObject', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'CoreUObject' }, { type: 'boolean', const: false }] as const } } } } };
-function validate38(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'quoted', 'CoreUObject'> {
+function validate38(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'quoted', 'CoreUObject'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--quoted--CoreUObject" */
@@ -11270,24 +11232,22 @@ function validate38(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate38 as Is).errors = vErrors.length ? vErrors : null;
+	(validate38 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate38 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate38 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_CoreUObject_single_quoted = validate39;
 const schema50 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--CoreUObject', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'single_quoted' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'CoreUObject' }, { type: 'boolean', const: false }] as const } } } } };
-function validate39(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'single_quoted', 'CoreUObject'> {
+function validate39(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'single_quoted', 'CoreUObject'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--single_quoted--CoreUObject" */
@@ -11891,24 +11851,22 @@ function validate39(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate39 as Is).errors = vErrors.length ? vErrors : null;
+	(validate39 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate39 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate39 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
 export const PropertySchemaToRegex_PrefixedString_CoreUObject_version_specific_default = validate40;
 const schema51 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--CoreUObject', type: 'object', additionalProperties: false, required: ['type', 'DocsDotJson_PrefixedString'] as const, properties: { $defs: { type: 'object', minProperties: 1, additionalProperties: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['allOf'] as const, properties: { allOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }, { type: 'object', additionalProperties: false, required: ['oneOf'] as const, properties: { oneOf: { type: 'array', minItems: 2, items: { oneOf: [{ type: 'object', required: ['type'] as const, properties: { type: { type: 'string', minLength: 1 } } }, { type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', pattern: '^(.+)?#\\/\\$defs\\/(.+)$' } } }] as const } } } }] as const } }, type: { type: 'string', const: 'string' }, DocsDotJson_PrefixedString: { type: 'object', additionalProperties: false, required: ['prefix', 'mode', 'value'] as const, properties: { prefix: { type: 'string', minLength: 1 }, mode: { type: 'string', const: 'version_specific_default' }, value: { oneOf: [{ type: 'string', minLength: 1 }, { type: 'null' }] as const }, first_path: { type: 'string', minLength: 1 }, root_path: { type: 'string', minLength: 1 }, system_prefix: { oneOf: [{ type: 'string', const: 'CoreUObject' }, { type: 'boolean', const: false }] as const } } } } };
-function validate40(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is PrefixedString_type<'version_specific_default', 'CoreUObject'> {
+function validate40(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is PrefixedString_type<'version_specific_default', 'CoreUObject'> {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--PrefixedString--version_specific_default--CoreUObject" */
@@ -12512,8 +12470,8 @@ function validate40(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err64);
 		errors++;
 	}
-	(validate40 as Is).errors = vErrors.length ? vErrors : null;
+	(validate40 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate40 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate40 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };

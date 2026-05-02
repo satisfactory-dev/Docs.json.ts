@@ -1,14 +1,14 @@
 // oxlint-disable @stylistic/max-len
 import type {
-	ErrorObject, ValidateFunction,
+	ErrorObject,
 } from 'ajv';
 import type {
-	Is,
+	IsStandalone, StandaloneDataValidationCxt,
 } from '@satisfactory-dev/ajv-utilities';
 import type {
 	TintColor_type,
 } from '../../src/version-specific/0.4.2.11/TypedString/PropertySchemaToRegex/TintColor.ts';
-function ajv_utiltiies__definitely_evaluated<T>(maybe: Is<T>): Exclude<Is<T>['evaluated'], undefined> {
+function ajv_utiltiies__definitely_evaluated<T>(maybe: IsStandalone<T>): Exclude<IsStandalone<T>['evaluated'], undefined> {
 	if (undefined === maybe.evaluated)
 		throw new Error(`${maybe.name}.evaluated not set!`);
 
@@ -19,9 +19,7 @@ function ajv_utilities__is_probably_object(maybe: unknown): maybe is Record<stri
 }
 export const TintColor = validate20;
 const schema31 = { $schema: 'https://json-schema.org/draft/2020-12/schema', $id: 'docs.json.ts--lib--0.4.2.11--TypedString--PropertySchemaToRegex--TintColor', type: 'object', additionalProperties: false, required: ['$ref'] as const, properties: { $ref: { type: 'string', const: 'docs.json.ts--0.4.2.11--properties#/$defs/TintColor' } } };
-function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is TintColor_type {
+function validate20(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is TintColor_type {
 	/* # sourceURL="docs.json.ts--lib--0.4.2.11--TypedString--PropertySchemaToRegex--TintColor" */
 	let vErrors: ErrorObject[] = [];
 	let errors = 0;
@@ -63,8 +61,8 @@ function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err4);
 		errors++;
 	}
-	(validate20 as Is).errors = vErrors.length ? vErrors : null;
+	(validate20 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate20 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate20 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };

@@ -1,14 +1,14 @@
 // oxlint-disable @stylistic/max-len
 import type {
-	ErrorObject, ValidateFunction,
+	ErrorObject,
 } from 'ajv';
 import type {
-	Is,
+	IsStandalone, StandaloneDataValidationCxt,
 } from '@satisfactory-dev/ajv-utilities';
 import type {
 	ObjectSchema_type,
 } from '../../src/version-specific/1.0.1.4/TypedString/PropertySchemaToRegex/Object.ts';
-function ajv_utiltiies__definitely_evaluated<T>(maybe: Is<T>): Exclude<Is<T>['evaluated'], undefined> {
+function ajv_utiltiies__definitely_evaluated<T>(maybe: IsStandalone<T>): Exclude<IsStandalone<T>['evaluated'], undefined> {
 	if (undefined === maybe.evaluated)
 		throw new Error(`${maybe.name}.evaluated not set!`);
 
@@ -28,26 +28,24 @@ const schema31 = { $id: 'docs.json.ts--lib--0.8.3.3--TypedString--PropertySchema
 const func1 = ucs2length;
 const func4 = { call: (instance: object, property: string) => Object.prototype.hasOwnProperty.call(instance, property) };
 const pattern4 = new RegExp('^(.+)?#\\/\\$defs\\/(.+)$', 'u');
-function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<Parameters<ValidateFunction>[1], undefined>, 'rootData'> & {
-	rootData: unknown,
-}> = {}): data is ObjectSchema_type {
+function validate20(data: unknown, { instancePath = '' }: Partial<StandaloneDataValidationCxt> = {}): data is ObjectSchema_type {
 	let props0: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props1: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props2: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props3: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props4: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined,
 		props5: (true | {
-			type?: true,
+			[key: string]: true,
 		} | undefined) = undefined;
 
 	/* # sourceURL="docs.json.ts--lib--0.8.3.3--TypedString--PropertySchemaToRegex--Object" */
@@ -961,8 +959,8 @@ function validate20(data: unknown, { instancePath = '' }: Partial<Omit<Exclude<P
 		vErrors.push(err100);
 		errors++;
 	}
-	(validate20 as Is).errors = vErrors.length ? vErrors : null;
+	(validate20 as IsStandalone).errors = vErrors.length ? vErrors : null;
 
 	return errors === 0;
 }
-(validate20 as Is).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
+(validate20 as IsStandalone).evaluated = { props: true, dynamicProps: false, dynamicItems: false };
