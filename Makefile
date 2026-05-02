@@ -33,7 +33,7 @@ coverage--skip-lint:
 coverage--lcov:
 	@node --experimental-test-coverage --test-coverage-include='${PWD}/src/**/*.ts' --test --test-reporter=lcov --test-reporter-destination=coverage/lcov.info
 
-npm-prep: generate--types tests
+npm-prep: precompile-validators generate--types tests
 	@echo 'building from ./tsconfig.app-npm.json'
 	@./node_modules/.bin/tsc --project ./tsconfig.app-npm.json
 	@npm publish --dry-run
