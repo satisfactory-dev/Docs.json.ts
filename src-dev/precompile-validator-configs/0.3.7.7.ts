@@ -1,5 +1,5 @@
 import {
-	$defs_schema,
+	$defs,
 	$ref,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -78,7 +78,7 @@ const TypedString_object_schema = {
 	additionalProperties: false,
 	required: ['type', 'typed_string'],
 	properties: {
-		$defs: $defs_schema.properties.$defs,
+		$defs: $defs.generate_schema_definition().properties.$defs,
 		type: {
 			type: 'string',
 			const: 'string',

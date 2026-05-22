@@ -1,5 +1,5 @@
 import {
-	$defs_schema,
+	$defs,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import PrecompileValidators from '../PrecompileValidators.ts';
@@ -15,7 +15,7 @@ const ObjectSchema = {
 	additionalProperties: false,
 	required: ['type', 'typed_string'],
 	properties: {
-		$defs: $defs_schema.properties.$defs,
+		$defs: $defs.generate_schema_definition().properties.$defs,
 		type: {
 			type: 'string',
 			const: 'string',

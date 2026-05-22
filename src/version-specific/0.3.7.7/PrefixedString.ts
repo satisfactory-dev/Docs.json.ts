@@ -3,12 +3,13 @@ import type {
 } from 'typescript';
 
 import type {
+	$defs_schema,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
-	$defs_schema,
+	$defs,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
@@ -52,7 +53,7 @@ export type PrefixedString_base_schema<
 > = SchemaDefinitionDefinition<
 	['type', 'DocsDotJson_PrefixedString'],
 	{
-		$defs: (typeof $defs_schema)['properties']['$defs'],
+		$defs: $defs_schema['properties']['$defs'],
 		type: {
 			type: 'string',
 			const: 'string',
@@ -304,7 +305,7 @@ export class PrefixedString<
 				'DocsDotJson_PrefixedString',
 			],
 			properties: {
-				$defs: $defs_schema.properties.$defs,
+				$defs: $defs.generate_schema_definition().properties.$defs,
 				type: {
 					type: 'string',
 					const: 'string',

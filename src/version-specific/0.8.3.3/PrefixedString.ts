@@ -2,7 +2,7 @@ import type {
 	SchemalessTypeOptions,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
-	$defs_schema,
+	$defs,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
@@ -295,7 +295,7 @@ export class PrefixedString<
 				'DocsDotJson_PrefixedString',
 			],
 			properties: {
-				$defs: $defs_schema.properties.$defs,
+				$defs: $defs.generate_schema_definition().properties.$defs,
 				type: {
 					type: 'string',
 					const: 'string',
