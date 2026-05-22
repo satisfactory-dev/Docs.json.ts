@@ -1,6 +1,18 @@
+import type {
+	NodeFactory,
+} from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	SchemaParser,
+	Type,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
 import {
 	Ajv2020 as Ajv,
 } from 'ajv/dist/2020.js';
+
+import {
+	factory,
+} from 'typescript';
 
 import {
 	semver,
@@ -18,11 +30,6 @@ import type {
 	NativeClass,
 } from './src/version-specific/0.3.7.7/types.ts';
 
-import {
-	SchemaParser,
-	Type,
-} from '@signpostmarv/json-schema-typescript-codegen';
-
 import update8 from './schema/0.8.3.3/docs.json' with {
 	type: 'json',
 };
@@ -35,9 +42,9 @@ const ajv = new Ajv({
 	verbose: true,
 });
 
-const parser = new SchemaParser({ajv});
+const parser = new SchemaParser({ajv, factory: factory as NodeFactory});
 
-configure_parser(parser);
+configure_parser(parser, factory as NodeFactory);
 
 const validator = ajv.compile<
 	[NativeClass, ...NativeClass[]]

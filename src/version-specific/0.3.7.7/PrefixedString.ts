@@ -21,9 +21,8 @@ import {
 	TemplatedString,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
-import {
-	factory,
-	type StringLiteral,
+import type {
+	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type mode = (
@@ -169,7 +168,7 @@ export abstract class PrefixedString_base<
 			);
 		}
 
-		return factory.createStringLiteral(data);
+		return this.factory.createStringLiteral(data);
 	}
 
 	generate_typescript_type({
@@ -179,6 +178,7 @@ export abstract class PrefixedString_base<
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
 				this.TemplatedStringParts_by_value(
 					schema.DocsDotJson_PrefixedString,
 				),

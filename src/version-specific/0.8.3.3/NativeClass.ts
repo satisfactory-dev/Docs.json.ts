@@ -79,11 +79,14 @@ export class NativeClass extends
 		schema: NativeClass_type,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				`/Script/CoreUObject.Class'/Script/`,
-				value,
-				`'`,
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
+				[
+					`/Script/CoreUObject.Class'/Script/`,
+					value,
+					`'`,
+				],
+			),
 		);
 	}
 

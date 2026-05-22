@@ -20,9 +20,6 @@ import type {
 	ObjectLiteralExpression,
 	TypeLiteralNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
-import {
-	factory,
-} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type NamedList_type<
 	Name extends string = string,
@@ -99,12 +96,14 @@ export class NamedList<
 			data.length - 2,
 		).split('", "');
 
-		return factory.createObjectLiteralExpression(
+		return this.factory.createObjectLiteralExpression(
 			[
-				factory.createPropertyAssignment(
+				this.factory.createPropertyAssignment(
 					schema.DocsDotJson_named_list,
-					factory.createArrayLiteralExpression(
-						list_chunks.map((e) => factory.createStringLiteral(e)),
+					this.factory.createArrayLiteralExpression(
+						list_chunks.map((
+							e,
+						) => this.factory.createStringLiteral(e)),
 					),
 				),
 			],
@@ -119,18 +118,22 @@ export class NamedList<
 	}): Promise<TypeLiteralNode<PropertySignature>> {
 		const node: TypeLiteralNode<
 			PropertySignature
-		> = factory.createTypeLiteralNode([
-			factory.createPropertySignature(
+		> = this.factory.createTypeLiteralNode([
+			this.factory.createPropertySignature(
 				undefined,
 				schema.DocsDotJson_named_list,
 				undefined,
-				factory.createTupleTypeNode([
-					factory.createKeywordTypeNode(SyntaxKind.StringKeyword),
-					factory.createRestTypeNode(factory.createArrayTypeNode(
-						factory.createKeywordTypeNode(
-							SyntaxKind.StringKeyword,
+				this.factory.createTupleTypeNode([
+					this.factory.createKeywordTypeNode(
+						SyntaxKind.StringKeyword,
+					),
+					this.factory.createRestTypeNode(
+						this.factory.createArrayTypeNode(
+							this.factory.createKeywordTypeNode(
+								SyntaxKind.StringKeyword,
+							),
 						),
-					)),
+					),
 				]),
 			),
 		]);

@@ -1,3 +1,11 @@
+import type {
+	NodeFactory,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
+import {
+	factory,
+} from 'typescript';
+
 import {
 	generation_factory,
 } from './src/version-specific/1.1.2.2/generation_factory.ts';
@@ -40,4 +48,10 @@ const {
 	default: unknown,
 };
 
-await generation_factory(release_data, lang, process_generation);
+await generation_factory(
+	release_data,
+	lang,
+	process_generation,
+	undefined,
+	factory as NodeFactory,
+);

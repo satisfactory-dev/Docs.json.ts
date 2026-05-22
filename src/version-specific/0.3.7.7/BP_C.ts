@@ -83,11 +83,14 @@ export class BP_C extends
 		schema: BP_C_type,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				'BP_',
-				null === value ? {type: 'string'} : value,
-				'_C',
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
+				[
+					'BP_',
+					null === value ? {type: 'string'} : value,
+					'_C',
+				],
+			),
 		);
 	}
 

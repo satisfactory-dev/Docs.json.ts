@@ -16,9 +16,8 @@ import {
 	TemplatedString,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
-import {
-	factory,
-	type StringLiteral,
+import type {
+	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 type BlueprintGeneratedClass_type = {
@@ -169,7 +168,7 @@ abstract class BlueprintGeneratedClass<
 			);
 		}
 
-		return factory.createStringLiteral(data);
+		return this.factory.createStringLiteral(data);
 	}
 
 	static generate_schema_definition<
@@ -334,6 +333,7 @@ export class BlueprintGeneratedClass_non_quoted extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
 				BlueprintGeneratedClass.TemplatedStringParts_by_value(
 					schema.DocsDotJson_BlueprintGeneratedClass,
 					'non_quoted',
@@ -362,6 +362,7 @@ export class BlueprintGeneratedClass_quoted extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
 				BlueprintGeneratedClass.TemplatedStringParts_by_value(
 					schema.DocsDotJson_BlueprintGeneratedClass_quoted,
 					'quoted',

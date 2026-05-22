@@ -8,6 +8,7 @@ import type {
 
 import type {
 	$ref,
+	NodeFactory,
 	SchemalessTypeOptions,
 	SchemaObject,
 	SchemaParser,
@@ -160,6 +161,7 @@ function generate_typescript_data<
 >(
 	data: string,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	schema: TypedString_type<Mode>,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -172,6 +174,7 @@ function generate_typescript_data<
 	return generate_typescript_data__by_mode(
 		data,
 		schema_parser,
+		factory,
 		schema,
 		mode,
 		property_schema_to_regex,
@@ -183,6 +186,7 @@ export function generate_typescript_data__by_mode<
 >(
 	data: string,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	schema: TypedString_type<Mode>,
 	mode: Mode,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -190,6 +194,7 @@ export function generate_typescript_data__by_mode<
 	return generate_typescript_data__by_mode__update3(
 		data,
 		schema_parser,
+		factory,
 		schema,
 		mode,
 		property_schema_to_regex,
@@ -202,6 +207,7 @@ function generate_typescript_type<
 	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
 ): Promise<
 	TypedString_SchemaTo<Mode>
@@ -215,6 +221,7 @@ function generate_typescript_type<
 		data,
 		schema,
 		schema_parser,
+		factory,
 		mode,
 	);
 }
@@ -225,6 +232,7 @@ export function generate_typescript_type__by_mode<
 	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	mode: Mode,
 ): Promise<
 	TypedString_SchemaTo<Mode>
@@ -233,6 +241,7 @@ export function generate_typescript_type__by_mode<
 		data,
 		schema,
 		schema_parser,
+		factory,
 		mode,
 	) as Promise<TypedString_SchemaTo<Mode>>|undefined;
 }
@@ -344,6 +353,7 @@ export class TypedString<
 		const result = generate_typescript_data(
 			data,
 			schema_parser,
+			this.factory,
 			schema,
 			this.#mode_by_validator,
 			this.#property_schema_to_regex,
@@ -369,6 +379,7 @@ export class TypedString<
 			data,
 			schema,
 			schema_parser,
+			this.factory,
 			this.#mode_by_validator,
 		);
 

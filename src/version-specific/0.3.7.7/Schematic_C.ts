@@ -82,11 +82,14 @@ export class Schematic_C extends
 		schema: Schematic_C_type,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				'Schematic_',
-				null === value ? {type: 'string'} : value,
-				'_C',
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
+				[
+					'Schematic_',
+					null === value ? {type: 'string'} : value,
+					'_C',
+				],
+			),
 		);
 	}
 

@@ -8,6 +8,7 @@ import type {
 } from '@satisfactory-dev/ajv-utilities';
 
 import type {
+	NodeFactory,
 	object_schema,
 	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
@@ -20,9 +21,8 @@ import {
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
-import {
-	factory,
-	type ObjectLiteralExpression,
+import type {
+	ObjectLiteralExpression,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 import {
@@ -62,6 +62,7 @@ export type Object_TypeGenerator = (
 ) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>;
 
 export function computedProperty_or_string(
+	factory: NodeFactory,
 	property: string,
 ): ComputedPropertyName|string {
 	return /[?[\] ]/.test(property)
@@ -74,6 +75,7 @@ export function computedProperty_or_string(
 export function Object_generate_typescript_data(
 	data: string,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	coerced_schema: Object_type,
 	schema: SchemaObject,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -194,7 +196,7 @@ export function Object_generate_typescript_data(
 
 		const property_assignment = factory
 			.createPropertyAssignment(
-				computedProperty_or_string(property_name),
+				computedProperty_or_string(factory, property_name),
 				value,
 			);
 

@@ -1,5 +1,6 @@
 import type {
 	ComputedPropertyName,
+	NodeFactory,
 	PropertyAssignment,
 } from 'typescript';
 
@@ -17,9 +18,8 @@ import {
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
-import {
-	factory,
-	type ObjectLiteralExpression,
+import type {
+	ObjectLiteralExpression,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 import {
@@ -74,6 +74,7 @@ export const Object_type_schema = Object.freeze({
 });
 
 export function computedProperty_or_string(
+	factory: NodeFactory,
 	property: string,
 ): ComputedPropertyName|string {
 	return /[?[\] ]/.test(property)
@@ -86,6 +87,7 @@ export function computedProperty_or_string(
 export function Object_generate_typescript_data(
 	data: string,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	coerced_schema: Object_type,
 	schema: SchemaObject,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -215,7 +217,7 @@ export function Object_generate_typescript_data(
 
 		const property_assignment = factory
 			.createPropertyAssignment(
-				computedProperty_or_string(property_name),
+				computedProperty_or_string(factory, property_name),
 				value,
 			);
 

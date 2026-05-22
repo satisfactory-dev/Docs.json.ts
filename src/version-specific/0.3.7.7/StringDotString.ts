@@ -75,11 +75,14 @@ export class StringDotString extends
 		schema: StringDotString_type,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				value,
-				'.',
-				value,
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
+				[
+					value,
+					'.',
+					value,
+				],
+			),
 		);
 	}
 

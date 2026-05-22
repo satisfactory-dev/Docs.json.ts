@@ -83,11 +83,14 @@ export class Desc_C extends
 		schema: Desc_C_type,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				'Desc_',
-				null === value ? {type: 'string'} : value,
-				'_C',
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
+				[
+					'Desc_',
+					null === value ? {type: 'string'} : value,
+					'_C',
+				],
+			),
 		);
 	}
 

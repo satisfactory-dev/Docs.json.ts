@@ -1,7 +1,10 @@
+import type {
+	NodeFactory,
+	SchemaObjectWith$id,
+	SchemaParser,
+} from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	$ref,
-	type SchemaObjectWith$id,
-	type SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
@@ -99,7 +102,10 @@ export function add_schemas(parser: SchemaParser) {
 	parser.add_schema(update8 as SchemaObjectWith$id);
 }
 
-export function configure_parser(parser: SchemaParser) {
+export function configure_parser(
+	parser: SchemaParser,
+	factory: NodeFactory,
+) {
 	if (already_configured.has(parser)) {
 		return;
 	}
@@ -133,16 +139,16 @@ export function configure_parser(parser: SchemaParser) {
 	]);
 
 	parser.types = [
-		new NativeClass({ajv}),
-		new BP_C({ajv}),
-		new Desc_C({ajv}),
-		new ResourceSink_Unlock_C({ajv}),
-		new Schematic_C({ajv}),
-		new StringDotString({ajv}),
-		new NamedList({ajv}, 'NSLOCTEXT'),
+		new NativeClass({ajv, factory}),
+		new BP_C({ajv, factory}),
+		new Desc_C({ajv, factory}),
+		new ResourceSink_Unlock_C({ajv, factory}),
+		new Schematic_C({ajv, factory}),
+		new StringDotString({ajv, factory}),
+		new NamedList({ajv, factory}, 'NSLOCTEXT'),
 		...parser.types,
-		new TemplatedString({ajv}),
-		new TypedString({ajv}, {
+		new TemplatedString({ajv, factory}),
+		new TypedString({ajv, factory}, {
 			$ref_instance,
 			Object: {
 				matchers,
@@ -154,11 +160,14 @@ export function configure_parser(parser: SchemaParser) {
 			'non_quoted',
 			'version_specific_default',
 		] as const).flatMap((mode) => [
-			new PrefixedString({ajv}, mode, 'Engine', 'quoted'),
-			new PrefixedString({ajv}, mode, 'TemplateSequence', 'quoted'),
-			new PrefixedString({ajv}, mode, 'FactoryGame', 'quoted'),
-			new PrefixedString({ajv}, mode, 'AkAudio', 'quoted'),
-			new PrefixedString({ajv}, mode, 'CoreUObject', 'quoted'),
+			new PrefixedString({ajv, factory}, mode, 'Engine', 'quoted'),
+			new PrefixedString({
+				ajv,
+				factory,
+			}, mode, 'TemplateSequence', 'quoted'),
+			new PrefixedString({ajv, factory}, mode, 'FactoryGame', 'quoted'),
+			new PrefixedString({ajv, factory}, mode, 'AkAudio', 'quoted'),
+			new PrefixedString({ajv, factory}, mode, 'CoreUObject', 'quoted'),
 		]),
 	];
 }

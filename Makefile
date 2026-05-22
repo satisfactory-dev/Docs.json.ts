@@ -368,6 +368,13 @@ generate--clean:
 	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
 
+generate--quick: generate--clean generate--types generate--early-access
+	@node ./generate-version1.0.ts en-US --skip-types
+	@node ./generate-version1.1.ts en-US --skip-types
+	@node ./generate-version1.2.ts en-US --skip-types 1.2.0.0
+	@node ./generate-version1.2.ts en-US --skip-types 1.2.1.0
+	@node ./generate-version1.2.ts en-US --skip-types 1.2.2.0
+
 generate--early-access: generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--update8
 
 generate--early-access--types-only: generate--update3--types-only generate--update4--types-only generate--update5--types-only generate--update6--types-only generate--update7--types-only generate--update8--types-only

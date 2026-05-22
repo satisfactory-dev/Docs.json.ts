@@ -7,6 +7,7 @@ import type {
 	array_mode,
 	array_schema,
 	array_type,
+	NodeFactory,
 	SchemaObject,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -20,9 +21,6 @@ import type {
 	ArrayLiteralExpression,
 	RestedTupleTypeNode,
 	TupleTypeNode,
-} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
-import {
-	factory,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 import {
@@ -270,6 +268,7 @@ export function FlexibleArray_generate_data<
 	data: string,
 	schema: FlexibleArray_type<ArrayMode>,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	if ('items' === mode) {
@@ -277,6 +276,7 @@ export function FlexibleArray_generate_data<
 			data,
 			schema as FlexibleArray_type<'items'>,
 			schema_parser,
+			factory,
 			property_schema_to_regex,
 		);
 	}
@@ -285,6 +285,7 @@ export function FlexibleArray_generate_data<
 		data,
 		schema as FlexibleArray_type<'prefixItems'>,
 		schema_parser,
+		factory,
 		property_schema_to_regex,
 	);
 }
@@ -293,6 +294,7 @@ function FlexibleArray_generate_data__items(
 	data: string,
 	schema: FlexibleArray_type<'items'>,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	const regex = FlexibleArray_regex__items__inner(
@@ -348,6 +350,7 @@ function FlexibleArray_generate_data__prefixItems(
 	data: string,
 	schema: FlexibleArray_type<'prefixItems'>,
 	schema_parser: SchemaParser,
+	factory: NodeFactory,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	if (!schema.prefixItems) {

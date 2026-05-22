@@ -1,3 +1,11 @@
+import type {
+	NodeFactory,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
+import {
+	factory,
+} from 'typescript';
+
 import {
 	generation_factory as generation_factory_00,
 } from './src/version-specific/1.2.0.0/generation_factory.ts';
@@ -61,7 +69,13 @@ if ('1.2.0.0' === semver) {
 		default: unknown,
 	};
 
-	await generation_factory_00(release_data_00, lang, process_generation);
+	await generation_factory_00(
+		release_data_00,
+		lang,
+		process_generation,
+		undefined,
+		factory as NodeFactory,
+	);
 }
 
 if ('1.2.1.0' === semver) {
@@ -78,7 +92,13 @@ if ('1.2.1.0' === semver) {
 		default: unknown,
 	};
 
-	await generation_factory_10(release_data_10, lang, process_generation);
+	await generation_factory_10(
+		release_data_10,
+		lang,
+		process_generation,
+		undefined,
+		factory as NodeFactory,
+	);
 }
 
 if ('1.2.2.0' === semver) {
@@ -95,5 +115,11 @@ if ('1.2.2.0' === semver) {
 		default: unknown,
 	};
 
-	await generation_factory_20(release_data_20, lang, process_generation);
+	await generation_factory_20(
+		release_data_20,
+		lang,
+		process_generation,
+		undefined,
+		factory as NodeFactory,
+	);
 }

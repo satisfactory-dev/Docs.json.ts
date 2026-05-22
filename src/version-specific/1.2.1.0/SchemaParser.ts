@@ -1,4 +1,5 @@
 import type {
+	NodeFactory,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
@@ -70,7 +71,10 @@ export function add_schemas(parser: SchemaParser) {
 	parser.add_schema(release_1_2_1_0);
 }
 
-export function configure_parser(parser: SchemaParser) {
+export function configure_parser(
+	parser: SchemaParser,
+	factory: NodeFactory,
+) {
 	if (already_configured.has(parser)) {
 		return;
 	}
@@ -105,16 +109,16 @@ export function configure_parser(parser: SchemaParser) {
 	]);
 
 	parser.types = [
-		new NativeClass({ajv}),
-		new BP_C({ajv}),
-		new Desc_C({ajv}),
-		new ResourceSink_Unlock_C({ajv}),
-		new Schematic_C({ajv}),
-		new StringDotString({ajv}),
-		new NamedList({ajv}, 'NSLOCTEXT'),
+		new NativeClass({ajv, factory}),
+		new BP_C({ajv, factory}),
+		new Desc_C({ajv, factory}),
+		new ResourceSink_Unlock_C({ajv, factory}),
+		new Schematic_C({ajv, factory}),
+		new StringDotString({ajv, factory}),
+		new NamedList({ajv, factory}, 'NSLOCTEXT'),
 		...parser.types,
-		new TemplatedString({ajv}),
-		new TypedString({ajv}, {
+		new TemplatedString({ajv, factory}),
+		new TypedString({ajv, factory}, {
 			$ref_instance,
 			Object: {
 				matchers,
@@ -126,16 +130,28 @@ export function configure_parser(parser: SchemaParser) {
 			'non_quoted',
 			'version_specific_default',
 		] as const).flatMap((mode) => [
-			new PrefixedString({ajv}, mode, 'Engine', 'single_quoted'),
+			new PrefixedString({
+				ajv,
+				factory,
+			}, mode, 'Engine', 'single_quoted'),
 			new PrefixedString(
-				{ajv},
+				{ajv, factory},
 				mode,
 				'TemplateSequence',
 				'single_quoted',
 			),
-			new PrefixedString({ajv}, mode, 'FactoryGame', 'single_quoted'),
-			new PrefixedString({ajv}, mode, 'AkAudio', 'single_quoted'),
-			new PrefixedString({ajv}, mode, 'CoreUObject', 'single_quoted'),
+			new PrefixedString({
+				ajv,
+				factory,
+			}, mode, 'FactoryGame', 'single_quoted'),
+			new PrefixedString({
+				ajv,
+				factory,
+			}, mode, 'AkAudio', 'single_quoted'),
+			new PrefixedString({
+				ajv,
+				factory,
+			}, mode, 'CoreUObject', 'single_quoted'),
 		]),
 	];
 }

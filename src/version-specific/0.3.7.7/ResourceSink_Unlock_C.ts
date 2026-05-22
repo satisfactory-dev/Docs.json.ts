@@ -82,11 +82,14 @@ export class ResourceSink_Unlock_C extends
 		schema: ResourceSink_Unlock_C_type,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				'ResourceSink_',
-				null === value ? {type: 'string'} : value,
-				'_Unlock_C',
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				this.factory,
+				[
+					'ResourceSink_',
+					null === value ? {type: 'string'} : value,
+					'_Unlock_C',
+				],
+			),
 		);
 	}
 
