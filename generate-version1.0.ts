@@ -2,7 +2,7 @@ import type {
 	NodeFactory,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
-import {
+import ts, {
 	factory,
 } from 'typescript';
 
@@ -21,6 +21,11 @@ const lang = remaining.filter((maybe) => !maybe.startsWith('--'))[0];
 const process_generation = {
 	types: true,
 	data: true,
+};
+
+const typed_ts = {
+	...ts,
+	factory: factory as NodeFactory,
 };
 
 if (remaining.includes('--skip-types')) {
@@ -53,5 +58,5 @@ await generation_factory(
 	lang,
 	process_generation,
 	undefined,
-	factory as NodeFactory,
+	typed_ts,
 );

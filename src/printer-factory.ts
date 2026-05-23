@@ -7,6 +7,7 @@ import {
 } from 'node:fs/promises';
 
 import type {
+	printer_ts,
 	SchemaObjectWith$id,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -50,6 +51,7 @@ export async function get_results_from_$defs_only_schema(
 	schema: SchemaObjectWith$id,
 	adjuster: FilenameAdjuster,
 	parser: SchemaParser,
+	ts: printer_ts,
 ) {
 	adjuster.current_id = schema.$id;
 
@@ -59,6 +61,7 @@ export async function get_results_from_$defs_only_schema(
 		{},
 		schema,
 		parser,
+		ts,
 		`${schema.$id}_type`,
 		`${schema.$id}_data`,
 	);
@@ -68,6 +71,7 @@ export async function* get_results(
 	schema: SchemaObjectWith$id,
 	adjuster: FilenameAdjuster,
 	parser: SchemaParser,
+	ts: printer_ts,
 	get_results_from_data_schema: (
 		schema: SchemaObjectWith$id,
 		adjuster: FilenameAdjuster,
@@ -76,7 +80,7 @@ export async function* get_results(
 	process_data: boolean = true,
 ) {
 	if (!('type' in schema)) {
-		yield get_results_from_$defs_only_schema(schema, adjuster, parser);
+		yield get_results_from_$defs_only_schema(schema, adjuster, parser, ts);
 	} else {
 		yield* get_results_from_data_schema(schema, adjuster, process_data);
 	}

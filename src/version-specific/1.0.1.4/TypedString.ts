@@ -12,10 +12,10 @@ import {
 
 import type {
 	$ref,
-	NodeFactory,
 	SchemalessTypeOptions,
 	SchemaObject,
 	SchemaParser,
+	ts,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
@@ -194,7 +194,7 @@ function generate_typescript_data<
 >(
 	data: string,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	schema: TypedString_type<Mode>,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -207,7 +207,7 @@ function generate_typescript_data<
 	return generate_typescript_data__by_mode<Mode>(
 		data,
 		schema_parser,
-		factory,
+		ts,
 		schema,
 		mode,
 		property_schema_to_regex,
@@ -220,7 +220,7 @@ function generate_typescript_type<
 	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
 ): Promise<
 	TypedString_SchemaTo<Mode>
@@ -234,7 +234,7 @@ function generate_typescript_type<
 		data,
 		schema,
 		schema_parser,
-		factory,
+		ts,
 		mode,
 	);
 }
@@ -346,7 +346,7 @@ export class TypedString<
 		const result = generate_typescript_data(
 			data,
 			schema_parser,
-			this.factory,
+			this.ts,
 			schema,
 			this.#mode_by_validator,
 			this.#property_schema_to_regex,
@@ -372,7 +372,7 @@ export class TypedString<
 			data,
 			schema,
 			schema_parser,
-			this.factory,
+			this.ts,
 			this.#mode_by_validator,
 		);
 

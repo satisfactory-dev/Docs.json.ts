@@ -9,7 +9,7 @@ import {
 	Ajv2020 as Ajv,
 } from 'ajv/dist/2020.js';
 
-import {
+import ts, {
 	factory,
 } from 'typescript';
 
@@ -34,9 +34,14 @@ const ajv = new Ajv({
 	verbose: true,
 });
 
-const parser = new SchemaParser({ajv, factory: factory as NodeFactory});
+const typed_ts = {
+	...ts,
+	factory: factory as NodeFactory,
+};
 
-configure_parser(parser, factory as NodeFactory);
+const parser = new SchemaParser({ajv, ts: typed_ts});
+
+configure_parser(parser, typed_ts);
 
 const validator = ajv.compile<
 	[NativeClass, ...NativeClass[]]

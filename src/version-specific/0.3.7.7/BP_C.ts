@@ -84,7 +84,7 @@ export class BP_C extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				[
 					'BP_',
 					null === value ? {type: 'string'} : value,

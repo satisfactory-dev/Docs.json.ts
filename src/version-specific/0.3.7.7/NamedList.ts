@@ -96,14 +96,14 @@ export class NamedList<
 			data.length - 2,
 		).split('", "');
 
-		return this.factory.createObjectLiteralExpression(
+		return this.ts.factory.createObjectLiteralExpression(
 			[
-				this.factory.createPropertyAssignment(
+				this.ts.factory.createPropertyAssignment(
 					schema.DocsDotJson_named_list,
-					this.factory.createArrayLiteralExpression(
+					this.ts.factory.createArrayLiteralExpression(
 						list_chunks.map((
 							e,
-						) => this.factory.createStringLiteral(e)),
+						) => this.ts.factory.createStringLiteral(e)),
 					),
 				),
 			],
@@ -118,18 +118,18 @@ export class NamedList<
 	}): Promise<TypeLiteralNode<PropertySignature>> {
 		const node: TypeLiteralNode<
 			PropertySignature
-		> = this.factory.createTypeLiteralNode([
-			this.factory.createPropertySignature(
+		> = this.ts.factory.createTypeLiteralNode([
+			this.ts.factory.createPropertySignature(
 				undefined,
 				schema.DocsDotJson_named_list,
 				undefined,
-				this.factory.createTupleTypeNode([
-					this.factory.createKeywordTypeNode(
+				this.ts.factory.createTupleTypeNode([
+					this.ts.factory.createKeywordTypeNode(
 						SyntaxKind.StringKeyword,
 					),
-					this.factory.createRestTypeNode(
-						this.factory.createArrayTypeNode(
-							this.factory.createKeywordTypeNode(
+					this.ts.factory.createRestTypeNode(
+						this.ts.factory.createArrayTypeNode(
+							this.ts.factory.createKeywordTypeNode(
 								SyntaxKind.StringKeyword,
 							),
 						),

@@ -15,6 +15,7 @@ import type {
 	ObjectOfSchemas,
 	SchemaObject,
 	SchemaParser,
+	ts,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	ObjectUnspecified,
@@ -75,7 +76,7 @@ export function computedProperty_or_string(
 export function Object_generate_typescript_data(
 	data: string,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	coerced_schema: Object_type,
 	schema: SchemaObject,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -194,16 +195,16 @@ export function Object_generate_typescript_data(
 				property_schema,
 			);
 
-		const property_assignment = factory
+		const property_assignment = ts.factory
 			.createPropertyAssignment(
-				computedProperty_or_string(factory, property_name),
+				computedProperty_or_string(ts.factory, property_name),
 				value,
 			);
 
 		property_assignments.push(property_assignment);
 	}
 
-	const sanity_check: Object_DataTo = factory
+	const sanity_check: Object_DataTo = ts.factory
 		.createObjectLiteralExpression(
 			property_assignments,
 			true,

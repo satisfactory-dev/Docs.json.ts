@@ -7,9 +7,9 @@ import type {
 	array_mode,
 	array_schema,
 	array_type,
-	NodeFactory,
 	SchemaObject,
 	SchemaParser,
+	ts,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	ArrayType,
@@ -268,7 +268,7 @@ export function FlexibleArray_generate_data<
 	data: string,
 	schema: FlexibleArray_type<ArrayMode>,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	if ('items' === mode) {
@@ -276,7 +276,7 @@ export function FlexibleArray_generate_data<
 			data,
 			schema as FlexibleArray_type<'items'>,
 			schema_parser,
-			factory,
+			ts,
 			property_schema_to_regex,
 		);
 	}
@@ -285,7 +285,7 @@ export function FlexibleArray_generate_data<
 		data,
 		schema as FlexibleArray_type<'prefixItems'>,
 		schema_parser,
-		factory,
+		ts,
 		property_schema_to_regex,
 	);
 }
@@ -294,7 +294,7 @@ function FlexibleArray_generate_data__items(
 	data: string,
 	schema: FlexibleArray_type<'items'>,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	const regex = FlexibleArray_regex__items__inner(
@@ -343,14 +343,14 @@ function FlexibleArray_generate_data__items(
 		);
 	});
 
-	return factory.createArrayLiteralExpression(items_as_data);
+	return ts.factory.createArrayLiteralExpression(items_as_data);
 }
 
 function FlexibleArray_generate_data__prefixItems(
 	data: string,
 	schema: FlexibleArray_type<'prefixItems'>,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	if (!schema.prefixItems) {
@@ -398,5 +398,5 @@ function FlexibleArray_generate_data__prefixItems(
 		);
 	});
 
-	return factory.createArrayLiteralExpression(items_as_data);
+	return ts.factory.createArrayLiteralExpression(items_as_data);
 }

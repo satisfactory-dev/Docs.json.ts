@@ -5,7 +5,7 @@ import type {
 import type {
 	Identifier,
 	LiteralTypeNode,
-	NodeFactory,
+	ts,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type Empty_type = {
@@ -25,16 +25,16 @@ export type Empty_SchemaTo = LiteralTypeNode<NullLiteral>;
 export type Empty_TypeGenerator = undefined;
 
 export function Empty_generate_typescript_data(
-	factory: NodeFactory,
+	ts: ts,
 ): Empty_DataTo {
-	return factory.createIdentifier('null');
+	return ts.factory.createIdentifier('null');
 }
 
 export function Empty_generate_typescript_type(
-	factory: NodeFactory,
+	ts: ts,
 ): Empty_SchemaTo {
-	return factory.createLiteralTypeNode(
-		factory.createNull(),
+	return ts.factory.createLiteralTypeNode(
+		ts.factory.createNull(),
 	);
 }
 

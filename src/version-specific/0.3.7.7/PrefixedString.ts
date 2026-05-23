@@ -168,7 +168,7 @@ export abstract class PrefixedString_base<
 			);
 		}
 
-		return this.factory.createStringLiteral(data);
+		return this.ts.factory.createStringLiteral(data);
 	}
 
 	generate_typescript_type({
@@ -178,7 +178,7 @@ export abstract class PrefixedString_base<
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				this.TemplatedStringParts_by_value(
 					schema.DocsDotJson_PrefixedString,
 				),

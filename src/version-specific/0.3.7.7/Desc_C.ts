@@ -84,7 +84,7 @@ export class Desc_C extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				[
 					'Desc_',
 					null === value ? {type: 'string'} : value,

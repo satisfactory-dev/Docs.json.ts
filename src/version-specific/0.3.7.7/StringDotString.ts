@@ -76,7 +76,7 @@ export class StringDotString extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				[
 					value,
 					'.',

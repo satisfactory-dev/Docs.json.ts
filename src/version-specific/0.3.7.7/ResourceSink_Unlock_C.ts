@@ -83,7 +83,7 @@ export class ResourceSink_Unlock_C extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				[
 					'ResourceSink_',
 					null === value ? {type: 'string'} : value,

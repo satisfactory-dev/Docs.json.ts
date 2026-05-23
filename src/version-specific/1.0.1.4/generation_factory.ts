@@ -3,7 +3,7 @@ import {
 } from 'ajv/dist/2020.js';
 
 import type {
-	NodeFactory,
+	printer_ts,
 	SchemaObjectWith$id,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
@@ -137,15 +137,15 @@ async function generation_factory(
 		data: true,
 	},
 	handle_results_options: handle_results_options = {},
-	factory: NodeFactory,
+	ts: printer_ts,
 ): Promise<void> {
 	console.log(`Generating Version 1.0 ${lang}`);
 
 	const ajv = new Ajv({strict: true, verbose: true});
 
-	const parser = new SchemaParser({ajv, factory});
+	const parser = new SchemaParser({ajv, ts});
 
-	configure_parser(parser, factory);
+	configure_parser(parser, ts);
 
 	const $ref_instance = parser.types.find(
 		(maybe) => maybe instanceof $ref,
@@ -170,6 +170,7 @@ async function generation_factory(
 		release_1_0,
 		release_data,
 		parser,
+		ts,
 		lang,
 		'release_1_0_docs',
 		'release_1_0',
@@ -221,6 +222,7 @@ async function generation_factory(
 			schema,
 			adjuster,
 			parser,
+			ts,
 			get_results_from_data_schema,
 		)) {
 			results.push(...schema_results);

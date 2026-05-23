@@ -168,7 +168,7 @@ abstract class BlueprintGeneratedClass<
 			);
 		}
 
-		return this.factory.createStringLiteral(data);
+		return this.ts.factory.createStringLiteral(data);
 	}
 
 	static generate_schema_definition<
@@ -333,7 +333,7 @@ export class BlueprintGeneratedClass_non_quoted extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				BlueprintGeneratedClass.TemplatedStringParts_by_value(
 					schema.DocsDotJson_BlueprintGeneratedClass,
 					'non_quoted',
@@ -362,7 +362,7 @@ export class BlueprintGeneratedClass_quoted extends
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
-				this.factory,
+				this.ts,
 				BlueprintGeneratedClass.TemplatedStringParts_by_value(
 					schema.DocsDotJson_BlueprintGeneratedClass_quoted,
 					'quoted',

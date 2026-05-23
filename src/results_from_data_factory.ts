@@ -3,6 +3,7 @@ import {
 } from '@satisfactory-dev/predicates.ts';
 
 import type {
+	printer_ts,
 	SchemaObjectWith$id,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -23,6 +24,7 @@ function results_from_data_factory(
 	docs_schema: SchemaObjectWith$id,
 	docs_data: unknown,
 	parser: SchemaParser,
+	ts: printer_ts,
 	lang: SupportedLang,
 	type_name: `${string}_docs`,
 	data_name: string,
@@ -64,6 +66,7 @@ function results_from_data_factory(
 			data,
 			schema,
 			parser,
+			ts,
 			type_name,
 			data_name,
 			output_types,

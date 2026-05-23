@@ -2,7 +2,7 @@ import type {
 	NodeFactory,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
-import {
+import ts, {
 	factory,
 } from 'typescript';
 
@@ -43,6 +43,11 @@ const process_generation = {
 	data: true,
 };
 
+const typed_ts = {
+	...ts,
+	factory: factory as NodeFactory,
+};
+
 if (remaining.includes('--skip-types')) {
 	process_generation.types = false;
 }
@@ -74,7 +79,7 @@ if ('1.2.0.0' === semver) {
 		lang,
 		process_generation,
 		undefined,
-		factory as NodeFactory,
+		typed_ts,
 	);
 }
 
@@ -97,7 +102,7 @@ if ('1.2.1.0' === semver) {
 		lang,
 		process_generation,
 		undefined,
-		factory as NodeFactory,
+		typed_ts,
 	);
 }
 
@@ -120,6 +125,6 @@ if ('1.2.2.0' === semver) {
 		lang,
 		process_generation,
 		undefined,
-		factory as NodeFactory,
+		typed_ts,
 	);
 }

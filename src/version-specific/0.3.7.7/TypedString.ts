@@ -8,11 +8,11 @@ import type {
 
 import type {
 	$ref,
-	NodeFactory,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaObject,
 	SchemaParser,
+	ts,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
@@ -304,7 +304,7 @@ export function generate_typescript_data__by_mode<
 >(
 	data: string,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	schema: TypedString_type<Mode>,
 	mode: TypedString_mode,
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -312,7 +312,7 @@ export function generate_typescript_data__by_mode<
 	let result: TypedString_DataTo<Mode>;
 
 	if ('Empty' === mode) {
-		result = Empty_generate_typescript_data(factory) as typeof result;
+		result = Empty_generate_typescript_data(ts) as typeof result;
 	} else if ('Object' === mode) {
 		let coerced_schema = schema.typed_string as TypedString_type<
 			'Object'
@@ -323,7 +323,7 @@ export function generate_typescript_data__by_mode<
 		result = Object_generate_typescript_data(
 			data,
 			schema_parser,
-			factory,
+			ts,
 			coerced_schema,
 			schema,
 			property_schema_to_regex,
@@ -347,7 +347,7 @@ export function generate_typescript_data__by_mode<
 			data,
 			coerced,
 			schema_parser,
-			factory,
+			ts,
 			property_schema_to_regex,
 		) as TypedString_DataTo<Mode>;
 	} else if (
@@ -362,7 +362,7 @@ export function generate_typescript_data__by_mode<
 			data,
 			coerced,
 			schema_parser,
-			factory,
+			ts,
 			property_schema_to_regex,
 		) as TypedString_DataTo<Mode>;
 	} else {
@@ -377,7 +377,7 @@ function generate_typescript_data<
 >(
 	data: string,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	schema: TypedString_type<Mode>,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
@@ -390,7 +390,7 @@ function generate_typescript_data<
 	return generate_typescript_data__by_mode(
 		data,
 		schema_parser,
-		factory,
+		ts,
 		schema,
 		mode,
 		property_schema_to_regex,
@@ -403,7 +403,7 @@ export function generate_typescript_type__by_mode<
 	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	mode: Mode,
 ): Promise<
 	TypedString_SchemaTo<Mode>
@@ -414,7 +414,7 @@ export function generate_typescript_type__by_mode<
 
 	if ('Empty' === mode) {
 		result = Promise.resolve(
-			Empty_generate_typescript_type(factory),
+			Empty_generate_typescript_type(ts),
 		) as typeof result;
 	} else if ('Object' === mode) {
 		const coerced_schema: (
@@ -464,7 +464,7 @@ function generate_typescript_type<
 	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
-	factory: NodeFactory,
+	ts: ts,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
 ): Promise<
 	TypedString_SchemaTo<Mode>
@@ -478,7 +478,7 @@ function generate_typescript_type<
 		data,
 		schema,
 		schema_parser,
-		factory,
+		ts,
 		mode,
 	);
 }
@@ -590,7 +590,7 @@ export class TypedString<
 		const result = generate_typescript_data(
 			data,
 			schema_parser,
-			this.factory,
+			this.ts,
 			schema,
 			this.#mode_by_validator,
 			this.#property_schema_to_regex,
@@ -616,7 +616,7 @@ export class TypedString<
 			data,
 			schema,
 			schema_parser,
-			this.factory,
+			this.ts,
 			this.#mode_by_validator,
 		);
 
