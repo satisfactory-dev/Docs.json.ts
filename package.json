@@ -16,7 +16,7 @@
     "node": "^25.0"
   },
   "devDependencies": {
-    "@satisfactory-dev/ajv-utilities": "^0.26.0",
+    "@satisfactory-dev/ajv-utilities": "^0.27.1",
     "@signpostmarv/oxlint-config": "^0.3.2",
     "@types/node": "^25.6.0",
     "oxlint": "^1.66.0",

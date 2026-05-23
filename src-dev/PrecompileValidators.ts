@@ -15,6 +15,8 @@ import {
 
 import standaloneCode from 'ajv/dist/standalone/index.js';
 
+import ts from 'typescript';
+
 type schemas = {
 	[key: string]: SchemaObject & {
 		$id: string,
@@ -99,6 +101,7 @@ export default class PrecompileValidators {
 						this.#schemas,
 					).map(([label, {$id}]) => [label, $id])),
 				),
+				ts,
 				this.#config,
 			)
 		}`;
