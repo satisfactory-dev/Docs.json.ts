@@ -8,6 +8,8 @@ import type {
 	isNamed as docs_json_ts_common_classes_base_isNamed,
 	ItemDescriptor as docs_json_ts_common_classes_base_ItemDescriptor,
 	Weapon as docs_json_ts_common_classes_base_Weapon,
+	with_mFlowLimit as docs_json_ts_common_classes_base_with_mFlowLimit,
+	with_mSpeed as docs_json_ts_common_classes_base_with_mSpeed,
 } from './classes/Base.ts';
 
 type FGAmmoTypeInstantHit = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
@@ -34,9 +36,9 @@ type FGBuildableBlueprintDesigner = docs_json_ts_common_classes_base_hasClassNam
 
 type FGBuildableCircuitSwitch = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildableConveyorBelt = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+type FGBuildableConveyorBelt = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed & docs_json_ts_common_classes_base_with_mSpeed;
 
-type FGBuildableConveyorLift = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+type FGBuildableConveyorLift = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed & docs_json_ts_common_classes_base_with_mSpeed;
 
 type FGBuildableConveyorMonitor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
@@ -98,7 +100,7 @@ type FGBuildablePipeHyper = docs_json_ts_common_classes_base_hasClassName & docs
 
 type FGBuildablePipeHyperJunction = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildablePipeline = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+type FGBuildablePipeline = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed & docs_json_ts_common_classes_base_with_mFlowLimit;
 
 type FGBuildablePipelineJunction = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 

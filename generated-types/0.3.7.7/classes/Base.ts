@@ -330,7 +330,6 @@ type FGBuildableAttachmentSplitter = docs_json_ts_common_classes_FGBuildableAtta
 
 type FGBuildableConveyorBelt_pre_1_0 = {
 	mItemMeshMap: docs_json_ts_common_types_empty_object,
-	mSpeed: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableConveyorBelt_pre_update8 = {
@@ -601,7 +600,6 @@ type FGBuildablePipeline_base_no_indicator_base = {
 };
 
 type FGBuildablePipeline_base_root = {
-	mFlowLimit: docs_json_ts_common_types_decimal_string,
 	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
 	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
 	mIgnoreActorsForIndicator: '',

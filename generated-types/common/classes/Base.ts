@@ -6,6 +6,10 @@ import type {
 	mRelevantEvents as docs_json_ts_common_properties_mRelevantEvents,
 } from './../properties.ts';
 
+import type {
+	decimal_string as docs_json_ts_common_types_decimal_string,
+} from './../types.ts';
+
 type hasClassName = {
 	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
 };
@@ -29,6 +33,14 @@ type ItemDescriptor = hasClassName & isDescribed & isNamed;
 
 type Weapon = hasClassName;
 
+type with_mFlowLimit = {
+	mFlowLimit: docs_json_ts_common_types_decimal_string,
+};
+
+type with_mSpeed = {
+	mSpeed: docs_json_ts_common_types_decimal_string,
+};
+
 export type {
 	hasClassName,
 	instructive,
@@ -37,4 +49,6 @@ export type {
 	Equipment,
 	ItemDescriptor,
 	Weapon,
+	with_mFlowLimit,
+	with_mSpeed,
 };

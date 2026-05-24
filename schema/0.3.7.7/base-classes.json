@@ -712,13 +712,10 @@
 		},
 		"FGBuildableConveyorBelt--pre-1.0": {
 			"type": "object",
-			"required": ["mItemMeshMap", "mSpeed"],
+			"required": ["mItemMeshMap"],
 			"properties": {
 				"mItemMeshMap": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -2074,7 +2071,6 @@
 		"FGBuildablePipeline--base-root": {
 			"type": "object",
 			"required": [
-				"mFlowLimit",
 				"mFlowIndicatorMinimumPipeLength",
 				"mMaxIndicatorTurnAngle",
 				"mIgnoreActorsForIndicator",
@@ -2084,9 +2080,6 @@
 				"mIsRattling"
 			],
 			"properties": {
-				"mFlowLimit": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mFlowIndicatorMinimumPipeLength": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},

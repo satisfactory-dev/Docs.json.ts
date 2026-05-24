@@ -168,6 +168,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mSpeed"
 				}
 			]
 		},
@@ -181,6 +184,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mSpeed"
 				}
 			]
 		},
@@ -584,6 +590,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mFlowLimit"
 				}
 			]
 		},

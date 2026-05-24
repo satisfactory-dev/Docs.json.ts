@@ -82,6 +82,24 @@
 		"Weapon": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName"
+		},
+		"with--mFlowLimit": {
+			"type": "object",
+			"required": ["mFlowLimit"],
+			"properties": {
+				"mFlowLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"with--mSpeed": {
+			"type": "object",
+			"required": ["mSpeed"],
+			"properties": {
+				"mSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		}
 	}
 }
