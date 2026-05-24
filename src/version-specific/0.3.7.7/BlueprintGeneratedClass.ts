@@ -250,7 +250,6 @@ abstract class BlueprintGeneratedClass<
 			non_quoted: `BlueprintGeneratedClass `,
 		}[mode]);
 
-
 		if (null !== value) {
 			const escaped = RegExp.escape(value);
 			if ('quoted' === mode) {

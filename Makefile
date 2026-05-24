@@ -689,7 +689,6 @@ generate--version1_2_1_0: generate--version1_2--types
 	@node ./generate-version1.2.ts zh-Hans --skip-types 1.2.1.0
 	@node ./generate-version1.2.ts zh-Hant --skip-types 1.2.1.0
 
-
 generate--version1_2_2_0: generate--version1_2--types
 	@node ./generate-version1.2.ts af --skip-types 1.2.2.0
 	@node ./generate-version1.2.ts ar --skip-types 1.2.2.0

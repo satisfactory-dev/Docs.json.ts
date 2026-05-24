@@ -152,7 +152,6 @@ export function FlexibleArray_regex__prefixItems(
 		},
 	);
 
-
 	return `(?:\\((?:${regex_parts.join('), ?(?:')})\\))`;
 }
 
@@ -259,7 +258,6 @@ export function FlexibleArray_generate_type<
 		schema_parser,
 	}) as Promise<FlexibleArray_SchemaTo<ArrayMode>>;
 }
-
 
 export function FlexibleArray_generate_data<
 	ArrayMode extends array_mode = array_mode,

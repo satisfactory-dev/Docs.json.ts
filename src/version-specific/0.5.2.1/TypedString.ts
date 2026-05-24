@@ -250,7 +250,6 @@ export function generate_typescript_type__by_mode<
 	) as Promise<TypedString_SchemaTo<Mode>>|undefined;
 }
 
-
 export class TypedString<
 	Mode extends TypedString_mode,
 > extends

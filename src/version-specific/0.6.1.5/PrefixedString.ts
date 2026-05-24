@@ -278,7 +278,6 @@ export class PrefixedString<
 				: mode
 		]);
 
-
 		if (null !== value) {
 			const escaped = RegExp.escape(value);
 			if ('quoted' === mode) {
