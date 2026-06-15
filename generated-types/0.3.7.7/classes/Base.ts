@@ -34,7 +34,6 @@ import type {
 	mForm as docs_json_ts_0_3_7_7_properties_mForm,
 	mObjectDetails_item as docs_json_ts_0_3_7_7_properties_mObjectDetails_item,
 	mProducedIn as docs_json_ts_0_3_7_7_properties_mProducedIn,
-	mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize,
 	mType as docs_json_ts_0_3_7_7_properties_mType,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
@@ -1084,7 +1083,6 @@ type FGDescriptor = {
 
 type FGDescriptor_base = {
 	mAbbreviatedDisplayName: docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
-	mStackSize: docs_json_ts_0_3_7_7_properties_mStackSize,
 	mCanBeDiscarded: docs_json_ts_common_types_bool_string,
 	mRememberPickUp: docs_json_ts_common_types_bool_string,
 	mEnergyValue: docs_json_ts_common_types_decimal_string,

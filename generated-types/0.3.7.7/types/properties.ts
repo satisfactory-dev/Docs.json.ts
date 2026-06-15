@@ -128,8 +128,6 @@ type mRelevantEvents = [
 	'EV_Christmas',
 ];
 
-type mStackSize = 'SS_HUGE' | 'SS_MEDIUM' | 'SS_BIG' | 'SS_SMALL' | 'SS_ONE' | 'SS_FLUID';
-
 type mType = 'EST_Custom' | 'EST_Tutorial' | 'EST_MAM' | 'EST_HardDrive' | 'EST_Milestone' | 'EST_Alternate' | 'EST_ResourceSink';
 
 type mUnlocks_item_base = {
@@ -192,7 +190,6 @@ export type {
 	mProducedIn_base,
 	mProducedIn_pre_update6,
 	mRelevantEvents,
-	mStackSize,
 	mType,
 	mUnlocks_item_base,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock,

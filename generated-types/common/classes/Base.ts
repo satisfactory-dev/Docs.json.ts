@@ -4,6 +4,7 @@ import type {
 	BlueprintGeneratedClass_non_quoted as docs_json_ts_common_properties_BlueprintGeneratedClass_non_quoted,
 	mDisplayName as docs_json_ts_common_properties_mDisplayName,
 	mRelevantEvents as docs_json_ts_common_properties_mRelevantEvents,
+	mStackSize as docs_json_ts_common_properties_mStackSize,
 } from './../properties.ts';
 
 import type {
@@ -41,6 +42,10 @@ type with_mSpeed = {
 	mSpeed: docs_json_ts_common_types_decimal_string,
 };
 
+type with_mStackSize = {
+	mStackSize: docs_json_ts_common_properties_mStackSize,
+};
+
 export type {
 	hasClassName,
 	instructive,
@@ -51,4 +56,5 @@ export type {
 	Weapon,
 	with_mFlowLimit,
 	with_mSpeed,
+	with_mStackSize,
 };
