@@ -4423,7 +4423,6 @@
 			"type": "object",
 			"required": [
 				"mAbbreviatedDisplayName",
-				"mStackSize",
 				"mCanBeDiscarded",
 				"mRememberPickUp",
 				"mEnergyValue",
@@ -4436,9 +4435,6 @@
 			"properties": {
 				"mAbbreviatedDisplayName": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
-				},
-				"mStackSize": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
 				},
 				"mCanBeDiscarded": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"

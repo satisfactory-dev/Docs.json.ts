@@ -21,6 +21,17 @@
 				]
 			}
 		},
+		"mStackSize": {
+			"type": "string",
+			"enum": [
+				"SS_HUGE",
+				"SS_MEDIUM",
+				"SS_BIG",
+				"SS_SMALL",
+				"SS_ONE",
+				"SS_FLUID"
+			]
+		},
 		"BlueprintGeneratedClass--non-quoted": {
 			"type": "string",
 			"DocsDotJson_PrefixedString": {

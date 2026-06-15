@@ -12,6 +12,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -25,6 +28,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -38,6 +44,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1100,6 +1109,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1134,6 +1146,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1168,8 +1183,14 @@
 			]
 		},
 		"FGEquipmentDescriptor": {
-			"type": "object",
+			"allOf": [
+				{
 			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
+				}
+			]
 		},
 		"FGEquipmentStunSpear": {
 			"type": "object",
@@ -1201,6 +1222,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1214,6 +1238,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1227,24 +1254,51 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
 		"FGItemDescriptor": {
-			"type": "object",
+			"allOf": [
+				{
 			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
+				}
+			]
 		},
 		"FGItemDescriptorBiomass": {
-			"type": "object",
+			"allOf": [
+				{
 			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
+				}
+			]
 		},
 		"FGItemDescriptorNuclearFuel": {
-			"type": "object",
+			"allOf": [
+				{
 			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
+				}
+			]
 		},
 		"FGItemDescriptorPowerBoosterFuel": {
-			"type": "object",
+			"allOf": [
+				{
 			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
+				}
+			]
 		},
 		"FGJetPack": {
 			"type": "object",
@@ -1289,6 +1343,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1306,6 +1363,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1332,6 +1392,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
@@ -1366,6 +1429,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
 				}
 			]
 		},
