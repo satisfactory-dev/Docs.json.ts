@@ -1185,7 +1185,7 @@
 		"FGEquipmentDescriptor": {
 			"allOf": [
 				{
-			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
@@ -1263,7 +1263,7 @@
 		"FGItemDescriptor": {
 			"allOf": [
 				{
-			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
@@ -1273,7 +1273,7 @@
 		"FGItemDescriptorBiomass": {
 			"allOf": [
 				{
-			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
@@ -1283,7 +1283,7 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
-			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
@@ -1293,7 +1293,7 @@
 		"FGItemDescriptorPowerBoosterFuel": {
 			"allOf": [
 				{
-			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/with--mStackSize"
